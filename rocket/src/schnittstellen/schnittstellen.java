@@ -61,6 +61,7 @@ public class schnittstellen {
 		//String[3] = sieger
 		String returnString[] = new String[4];
 		
+		//Bereitet die Extraktion des XML-Files vor
 		DocumentBuilderFactory builderFactory =
 		        DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = null;
@@ -71,14 +72,18 @@ public class schnittstellen {
 		}
 		
 		try {
+			//Dokument wird ausgelesen vom Ordnerpfad
 		    Document document = builder.parse(
 		        new FileInputStream(dateipfad + "server2spieler" + spielerwahl + ".xml"));
 		    
+		    //root-Element wird ausgelesen
 		    Element element = document.getDocumentElement();
 		    
+		    //alle Kinder des root-Elements werden gelesen
 		    NodeList nodes = element.getChildNodes();
 
-		    int j = 0;
+		    int j = 0; //Zähler für die 4 zu lesenden Attribute im returnstring
+		    
 		    for(int i=0; i<nodes.getLength(); i++){
 		      Node node = nodes.item(i);
 
@@ -86,21 +91,23 @@ public class schnittstellen {
 		        //a child element to process
 		        Element child = (Element) node;
 		        
+		        //Fügt dem returnString den Inhalt des aktuellen Kinds des root-Elements hinzu
 		        returnString[j] = child.getTextContent();
 		        j++;
 		      }
-
-		    }
-		    
+		    }   
 		} catch (SAXException e) {
 		    e.printStackTrace();
 		} catch (IOException e) {
 		    e.printStackTrace();
 		}
 		
+		//Testweise Ausgabe des Returnstrings in der Konsole
 		for (int i=0; i<returnString.length; i++){
 			System.out.println(returnString[i]);
 		}
+		
+		//Rückgabe des returnString
 		return returnString;
 	}
 }
