@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="520.0" prefWidth="784.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button layoutX="85.0" layoutY="68.0" mnemonicParsing="false" text="Button">
+               <effect>
+                  <ColorAdjust brightness="-0.5" hue="0.02" saturation="-0.1" />
+               </effect>
+            </Button>
+            <CheckBox layoutX="96.0" layoutY="115.0" mnemonicParsing="false" text="CheckBox" />
+            <CheckBox layoutX="96.0" layoutY="150.0" mnemonicParsing="false" text="CheckBox" />
+            <MenuBar layoutX="6.0" layoutY="6.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="sdgfgdf" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </MenuBar>
+            <Slider blockIncrement="0.1" layoutX="96.0" layoutY="302.0" max="10.0" min="0.5" value="2.0" />
+            <Label layoutX="392.0" layoutY="41.0" text="axvxbghn" />
+            <TextField layoutX="85.0" layoutY="219.0" />
+            <RadioButton layoutX="85.0" layoutY="382.0" mnemonicParsing="false" text="RadioButton" />
+            <ToggleButton layoutX="309.0" layoutY="297.0" mnemonicParsing="false" text="ToggleButton" />
+            <TableView editable="true" layoutX="457.0" layoutY="291.0" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
