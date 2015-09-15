@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
@@ -8,56 +9,97 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="784.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane prefHeight="520.0" prefWidth="784.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane prefHeight="471.0" prefWidth="681.0" style="-fx-background-color: #F2F5A9;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <effect>
+            <ColorAdjust />
+         </effect>
          <children>
-            <Button layoutX="85.0" layoutY="68.0" mnemonicParsing="false" text="Button">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="517.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Dropbox/WI-Projekt/Logo/rocket_ohne.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="241.0" layoutY="197.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="199.0" text="Spiel starten" textAlignment="CENTER">
+               <font>
+                  <Font name="Calibri" size="30.0" />
+               </font>
                <effect>
-                  <ColorAdjust brightness="-0.5" hue="0.02" saturation="-0.1" />
+                  <Lighting diffuseConstant="0.98" specularConstant="0.18" specularExponent="34.42" surfaceScale="4.18">
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant azimuth="309.77" color="#ff2e2efd" elevation="57.56" />
+                     </light>
+                  </Lighting>
                </effect>
             </Button>
-            <CheckBox layoutX="96.0" layoutY="115.0" mnemonicParsing="false" text="CheckBox" />
-            <CheckBox layoutX="96.0" layoutY="150.0" mnemonicParsing="false" text="CheckBox" />
-            <MenuBar layoutX="6.0" layoutY="6.0">
+            <MenuBar layoutX="14.0" layoutY="14.0">
               <menus>
-                <Menu mnemonicParsing="false" text="File">
+                <Menu mnemonicParsing="false" text="Spielart">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                        <MenuItem mnemonicParsing="false" text="sdgfgdf" />
+                        <MenuItem mnemonicParsing="false" text="Push" />
+                    <MenuItem mnemonicParsing="false" text="File" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-              </menus>
-               <contextMenu>
-                  <ContextMenu>
+                <Menu mnemonicParsing="false" text="Statistik" />
+                  <Menu mnemonicParsing="false" text="Hilfe">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                      <MenuItem mnemonicParsing="false" text="Spielregeln" />
+                        <MenuItem mnemonicParsing="false" text="Impressum" />
                     </items>
-                  </ContextMenu>
-               </contextMenu>
+                  </Menu>
+              </menus>
             </MenuBar>
-            <Slider blockIncrement="0.1" layoutX="96.0" layoutY="302.0" max="10.0" min="0.5" value="2.0" />
-            <Label layoutX="392.0" layoutY="41.0" text="axvxbghn" />
-            <TextField layoutX="85.0" layoutY="219.0" />
-            <RadioButton layoutX="85.0" layoutY="382.0" mnemonicParsing="false" text="RadioButton" />
-            <ToggleButton layoutX="309.0" layoutY="297.0" mnemonicParsing="false" text="ToggleButton" />
-            <TableView editable="true" layoutX="457.0" layoutY="291.0" prefHeight="200.0" prefWidth="200.0">
+            <RadioButton layoutX="53.0" layoutY="420.0" mnemonicParsing="false" text="X">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="53.0" layoutY="395.0" mnemonicParsing="false" selected="true" text="O">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+            <Label layoutX="214.0" layoutY="58.0" text="Willkommen bei">
+               <font>
+                  <Font size="42.0" />
+               </font>
+            </Label>
+            <TableView layoutX="517.0" layoutY="290.0" prefHeight="170.0" prefWidth="150.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn prefWidth="75.0" text="Name" />
+                <TableColumn prefWidth="75.0" text="Punkte" />
               </columns>
             </TableView>
+            <Label layoutX="520.0" layoutY="263.0" text="Highscore-Tabelle">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="367.0" text="Ich möchte Symbol...">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="125.0" layoutY="420.0" text="... sein.">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Slider blockIncrement="0.1" layoutX="60.0" layoutY="178.0" max="10.0" min="0.5" orientation="VERTICAL" value="2.0" />
+            <Label layoutX="14.0" layoutY="147.0" text="Zeiteinstellung">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="92.0" layoutY="282.0" text="&lt;Wert&gt; sec">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
