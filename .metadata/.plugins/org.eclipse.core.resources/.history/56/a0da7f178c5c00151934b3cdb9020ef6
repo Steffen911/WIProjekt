@@ -1,0 +1,74 @@
+package datenbank;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class DBConnector {
+	Connection con;
+	DBDef dbDef;
+	
+	public DBConnector(){
+		dbDef = new DBDef();
+		connectToDB();
+	}
+	
+	void testDB(){
+		try {
+		  Statement stmt = con.createStatement(); 
+		  
+	      
+	      String sql = "create table FTEST (TESTC nvarchar(20)";
+	      stmt.execute(sql);
+	      //ResultSet rs = stmt.executeQuery(sql); 
+	  
+	   /*   while ( rs.next() ) 
+	      {
+	        String id = rs.getString(1);
+	        String firstName = rs.getString(2);
+	        String lastName = rs.getString(3);
+	        System.out.println(id + ", " + firstName + " " + lastName);
+	      }
+	       
+	      // Resultset schließen
+	      rs.close(); */
+	  
+	      // Statement schließen
+	      stmt.close(); 
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+	}
+	
+	void connectToDB(){
+		try { 
+	      // Treiberklasse laden
+	      Class.forName( "org.hsqldb.jdbcDriver" ); 
+	    } catch ( ClassNotFoundException e ) { 
+	      System.err.println( "Treiberklasse nicht gefunden!" ); 
+	      return; 
+	    } 
+	  
+	    con = null; 
+	  
+	    try{ 
+	      con = DriverManager.getConnection(dbDef.url, dbDef.user, dbDef.password); 
+	      
+	    } catch ( SQLException e ) { 
+	      e.printStackTrace(); 
+	    } 
+//	    finally
+//	    { 
+//	      if ( dbConn != null ) 
+//	      {
+//	        try { 
+//	            con.close(); 
+//	            } catch ( SQLException e ) { 
+//	                e.printStackTrace(); 
+//	            }
+//	      }
+//	    } 
+	}
+}

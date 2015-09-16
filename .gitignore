@@ -6,3 +6,5 @@
 *.fdx
 
 .recommenders/index/http___download_eclipse_org_recommenders_models_mars_/_1.fdt
+
+.metadata/.plugins/org.eclipse.core.resources/8.snap

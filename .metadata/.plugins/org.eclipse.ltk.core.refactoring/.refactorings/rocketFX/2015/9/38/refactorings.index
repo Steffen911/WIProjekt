@@ -5,3 +5,5 @@
 1442255609998	Rename package 'ServerKommunikation'
 1442255642671	Rename package 'schnittstellen'
 1442255677609	Rename type 'test'
+1442414818741	Rename type 'DBDefinition'
+1442418357923	Rename field 'dbConn'

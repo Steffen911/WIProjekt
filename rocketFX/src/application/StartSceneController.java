@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import datenbank.DBConnector;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,10 +21,15 @@ public class StartSceneController implements  Initializable{
 	@FXML RadioButton radioBtnO;
 	@FXML RadioButton radioBtnX;
 	
+	public DBConnector dbConn;
+	
 
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		// Verbindung zur DB herstellen
+		dbConn = new DBConnector();
 		
 		spielStartenBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
