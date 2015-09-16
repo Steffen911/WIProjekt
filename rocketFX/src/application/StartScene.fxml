@@ -53,12 +53,12 @@
                   </Menu>
               </menus>
             </MenuBar>
-            <RadioButton layoutX="53.0" layoutY="420.0" mnemonicParsing="false" text="X">
+            <RadioButton fx:id="radioBtnX" layoutX="53.0" layoutY="420.0" mnemonicParsing="false" text="X">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="53.0" layoutY="395.0" mnemonicParsing="false" selected="true" text="O">
+            <RadioButton fx:id="radioBtnO" layoutX="53.0" layoutY="395.0" mnemonicParsing="false" selected="true" text="O">
                <font>
                   <Font size="18.0" />
                </font>
