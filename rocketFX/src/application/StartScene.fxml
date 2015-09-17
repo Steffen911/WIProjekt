@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
@@ -18,7 +19,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="517.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../Dropbox/WI-Projekt/Logo/rocket_ohne.png" />
+                  <Image url="@../../../../../../../Dropbox/WI-Projekt/Bilder/rocket_ohne.png" />
                </image>
             </ImageView>
             <Button fx:id="spielStartenBtn" layoutX="241.0" layoutY="197.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="199.0" text="Spiel starten" textAlignment="CENTER">
@@ -40,8 +41,8 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Spielart">
                   <items>
-                        <MenuItem mnemonicParsing="false" text="Push" />
-                    <MenuItem mnemonicParsing="false" text="File" />
+                        <RadioMenuItem mnemonicParsing="false" text="Push" />
+                        <RadioMenuItem mnemonicParsing="false" text="File" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Statistik" />
