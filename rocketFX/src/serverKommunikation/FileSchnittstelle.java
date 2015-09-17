@@ -1,6 +1,8 @@
 package serverKommunikation;
 
 import java.io.*;
+import java.nio.file.Files;
+
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
@@ -59,6 +61,22 @@ public class FileSchnittstelle {
 		//String[3] = sieger
 		String returnString[] = new String[4];
 		
+		//Prüft alle 300ms ob ein file vorhanden ist
+		while(true){
+			
+			File f = new File(dateipfad + "server2spieler" + spielerwahl + ".xml");
+			if(f.exists() && !f.isDirectory()) { break; }
+			
+			try {
+				Thread.sleep(300);
+				System.out.println("Warten...");
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
 		//Bereitet die Extraktion des XML-Files vor
 		DocumentBuilderFactory builderFactory =
 		        DocumentBuilderFactory.newInstance();
@@ -104,6 +122,10 @@ public class FileSchnittstelle {
 		for (int i=0; i<returnString.length; i++){
 			System.out.println(returnString[i]);
 		}
+		
+		//Löschen der XML nach Gebrauch
+		File f = new File(dateipfad + "server2spieler" + spielerwahl + ".xml");
+		f.delete();
 		
 		//Rückgabe des returnString
 		return returnString;
