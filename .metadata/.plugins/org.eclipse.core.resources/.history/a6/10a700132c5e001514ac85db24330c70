@@ -19,7 +19,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="517.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../pictures/rocket_ohne.png" />
+                  <Image url="@../../../../../../../Dropbox/WI-Projekt/Bilder/rocket_ohne.png" />
                </image>
             </ImageView>
             <MenuBar layoutX="14.0" layoutY="14.0">
@@ -39,43 +39,23 @@
                   </Menu>
               </menus>
             </MenuBar>
-            <Button layoutX="581.0" layoutY="424.0" mnemonicParsing="false" text="Abbrechen" />
-            <Label layoutX="82.0" layoutY="56.0" text="4 Gewinnt speichern- ">
+            <Label layoutX="263.0" layoutY="62.0" text="Statistik">
                <font>
                   <Font size="45.0" />
                </font>
             </Label>
-            <Button layoutX="496.0" layoutY="424.0" mnemonicParsing="false" text="Speichern" />
-            <Label layoutX="86.0" layoutY="142.0" text="Gewinner:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="86.0" layoutY="185.0" text="Spielgegner:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="86.0" layoutY="232.0" text="Spielstand:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="86.0" layoutY="322.0" text="Züge:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <TextField layoutX="216.0" layoutY="145.0" />
-            <TextField layoutX="216.0" layoutY="189.0" />
-            <TextField layoutX="216.0" layoutY="235.0" />
-            <TextArea layoutX="216.0" layoutY="317.0" prefHeight="107.0" prefWidth="270.0" />
-            <TextField layoutX="216.0" layoutY="281.0" />
-            <Label layoutX="86.0" layoutY="274.0" text="Starter:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
+            <TableView layoutX="56.0" layoutY="175.0" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+            <TableView layoutX="430.0" layoutY="175.0" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
          </children>
       </Pane>
    </children>
