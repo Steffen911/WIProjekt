@@ -3,7 +3,7 @@ package serverKommunikation;
 public class StartSchnittstelleForTesting {
 
 	public static void main(String[] args) {
-		FileSchnittstelle sst = new FileSchnittstelle("x", "//Users//Steffen//Dropbox//WI-Projekt//Server+Technik//");
+		FileSchnittstelle sst = new FileSchnittstelle("x", "//Users//Steffen//Dropbox//");
 /*
 		try {
 			sst.fileWriter(1);
