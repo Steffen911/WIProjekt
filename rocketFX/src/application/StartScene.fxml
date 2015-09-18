@@ -19,7 +19,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="517.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="/rocketFX/pictures/rocket_ohne.png" />
+                  <Image url="@../../pictures/rocket_ohne.png" />
                </image>
             </ImageView>
             <Button fx:id="spielStartenBtn" layoutX="241.0" layoutY="197.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="199.0" text="Spiel starten" textAlignment="CENTER">

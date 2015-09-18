@@ -8,18 +8,26 @@ import javafx.scene.layout.Pane;
 
 
 public class Main extends Application {
+
+	private static Stage primStage;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			primStage = primaryStage;
 			// Lade FXML Datei "StartScene" als erstes Fenster
 			Pane root = (Pane) FXMLLoader.load(getClass().getResource("StartScene.fxml"));
 			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			primStage.setScene(scene);
+			primStage.show();
 
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static Stage getPrimaryStage(){
+		return primStage;
 	}
 	
 	public static void main(String[] args) {

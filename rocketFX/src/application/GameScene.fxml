@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StartSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.GameSceneController">
    <children>
       <Pane prefHeight="471.0" prefWidth="681.0" style="-fx-background-color: #F2F5A9;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <effect>
@@ -19,7 +19,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="517.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../Dropbox/WI-Projekt/Bilder/rocket_ohne.png" />
+                  <Image url="@../../pictures/rocket_ohne.png" />
                </image>
             </ImageView>
             <MenuBar layoutX="14.0" layoutY="14.0">
@@ -41,7 +41,7 @@
             </MenuBar>
             <ImageView fitHeight="462.0" fitWidth="598.0" layoutX="-19.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../Dropbox/WI-Projekt/Bilder/4gewinnt.png" />
+                  <Image url="@../../pictures/4gewinnt.png" />
                </image>
             </ImageView>
             <Label layoutX="489.0" layoutY="219.0" prefHeight="33.0" prefWidth="83.0" text="Spielstand">
