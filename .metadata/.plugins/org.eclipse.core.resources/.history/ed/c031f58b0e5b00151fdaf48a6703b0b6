@@ -1,9 +1,0 @@
-package application;
-
-class StageFunctions {
-	
-	void ButtonClickedTest(){
-		//test
-	}
-
-}

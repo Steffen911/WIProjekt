@@ -3,7 +3,7 @@ package serverKommunikation;
 public class StartSchnittstelleForTesting {
 
 	public static void main(String[] args) {
-		FileSchnittstelle sst = new FileSchnittstelle("x", "//Users//Steffen//Dropbox//");
+		//FileSchnittstelle sst = new FileSchnittstelle("x", "//Users//Steffen//Dropbox//");
 /*		
 		try {
 			sst.fileWriter(1);
@@ -13,7 +13,11 @@ public class StartSchnittstelleForTesting {
 		}
 */
 		
-		sst.fileReader();
+		//sst.fileReader();
+		
+		//PusherSchnittstelle push = new PusherSchnittstelle();
+		
+		
 	}
 
 }
