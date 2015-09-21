@@ -22,23 +22,6 @@
                   <Image url="@../../pictures/rocket_ohne.png" />
                </image>
             </ImageView>
-            <MenuBar layoutX="14.0" layoutY="14.0">
-              <menus>
-                <Menu mnemonicParsing="false" text="Spielart">
-                  <items>
-                        <RadioMenuItem mnemonicParsing="false" text="Push" />
-                        <RadioMenuItem mnemonicParsing="false" text="File" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Statistik" />
-                  <Menu mnemonicParsing="false" text="Hilfe">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Spielregeln" />
-                        <MenuItem mnemonicParsing="false" text="Impressum" />
-                    </items>
-                  </Menu>
-              </menus>
-            </MenuBar>
             <Label layoutX="263.0" layoutY="62.0" text="Statistik">
                <font>
                   <Font size="45.0" />
@@ -56,6 +39,21 @@
                 <TableColumn prefWidth="75.0" text="C2" />
               </columns>
             </TableView>
+            <Button layoutX="56.0" layoutY="388.0" mnemonicParsing="false" text="Ändern" />
+            <Button layoutX="430.0" layoutY="388.0" mnemonicParsing="false" text="Ändern" />
+            <MenuBar layoutX="14.0" layoutY="14.0">
+               <menus>
+                  <Menu mnemonicParsing="false" text="Starten" />
+                  <Menu mnemonicParsing="false" text="Einstellungen" />
+                  <Menu fx:id="statistikMenuBtn" mnemonicParsing="false" text="Statistik" />
+                  <Menu mnemonicParsing="false" text="Hilfe">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Spielregeln" />
+                        <MenuItem mnemonicParsing="false" text="Impressum" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
          </children>
       </Pane>
    </children>

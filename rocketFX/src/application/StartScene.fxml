@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
@@ -37,15 +38,11 @@
                   </Lighting>
                </effect>
             </Button>
-            <MenuBar layoutX="14.0" layoutY="14.0">
+            <MenuBar layoutX="13.0" layoutY="14.0">
               <menus>
-                <Menu mnemonicParsing="false" text="Spielart">
-                  <items>
-                        <RadioMenuItem mnemonicParsing="false" text="Push" />
-                        <RadioMenuItem mnemonicParsing="false" text="File" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Statistik" />
+                <Menu mnemonicParsing="false" text="Starten" />
+                  <Menu mnemonicParsing="false" text="Einstellungen" />
+                <Menu fx:id="statistikMenuBtn" mnemonicParsing="false" text="Statistik" />
                   <Menu mnemonicParsing="false" text="Hilfe">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Spielregeln" />
@@ -54,51 +51,9 @@
                   </Menu>
               </menus>
             </MenuBar>
-            <RadioButton fx:id="radioBtnX" layoutX="53.0" layoutY="420.0" mnemonicParsing="false" text="X">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="radioBtnO" layoutX="53.0" layoutY="395.0" mnemonicParsing="false" selected="true" text="O">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </RadioButton>
             <Label layoutX="214.0" layoutY="58.0" text="Willkommen bei">
                <font>
                   <Font size="42.0" />
-               </font>
-            </Label>
-            <TableView layoutX="517.0" layoutY="290.0" prefHeight="170.0" prefWidth="150.0">
-              <columns>
-                <TableColumn prefWidth="75.0" text="Name" />
-                <TableColumn prefWidth="75.0" text="Punkte" />
-              </columns>
-            </TableView>
-            <Label layoutX="520.0" layoutY="263.0" text="Highscore-Tabelle">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="367.0" text="Ich möchte Symbol...">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="125.0" layoutY="420.0" text="... sein.">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Slider fx:id="zeitslider" blockIncrement="0.1" layoutX="60.0" layoutY="178.0" max="10.0" min="0.5" orientation="VERTICAL" value="2.0" />
-            <Label layoutX="14.0" layoutY="147.0" text="Zeiteinstellung">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="zeitlabel" layoutX="92.0" layoutY="282.0" text="&lt;Wert&gt; sec">
-               <font>
-                  <Font size="18.0" />
                </font>
             </Label>
          </children>

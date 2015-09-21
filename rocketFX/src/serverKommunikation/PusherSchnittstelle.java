@@ -22,7 +22,7 @@ public class PusherSchnittstelle implements ConnectionEventListener, PrivateChan
 	public PusherSchnittstelle() {
 
 		// Authorizer einbinden
-		// Pfad fuer Authorizer
+		// Pfad fuer Authorizer nur Authorizter! Client API
 		HttpAuthorizer authorizer = new HttpAuthorizer("http://kc-holzkoepfe.de/rocket/auth.php?pw=rocket");
 		PusherOptions opt = new PusherOptions();
 		opt.setEncrypted(true);

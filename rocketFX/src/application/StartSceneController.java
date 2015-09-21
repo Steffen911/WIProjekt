@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleGroup;
@@ -22,6 +23,7 @@ public class StartSceneController implements  Initializable{
 	@FXML Slider zeitslider;
 	@FXML Label zeitlabel;
 	@FXML Button spielStartenBtn;
+	@FXML Menu statistikMenuBtn;
 	@FXML RadioButton radioBtnO;
 	@FXML RadioButton radioBtnX;
 	
@@ -41,6 +43,13 @@ public class StartSceneController implements  Initializable{
 				setNewScene("GameScene.fxml");
 			}
 		});
+		
+//		statistikMenuBtn.setOnAction(new EventHandler<ActionEvent>() {
+//			public void handle(ActionEvent event){
+//				setNewScene("StatistikScene.fxml");
+//			}
+//		});
+
 		
 		ToggleGroup choosePlayerToggleGrp = new ToggleGroup();
 		radioBtnO.setToggleGroup(choosePlayerToggleGrp);
