@@ -1,5 +1,7 @@
 package serverKommunikation;
 
+import com.pusher.client.AuthorizationFailureException;
+import com.pusher.client.Authorizer;
 import com.pusher.client.Pusher;
 import com.pusher.client.PusherOptions;
 import com.pusher.client.channel.PrivateChannel;
@@ -13,6 +15,7 @@ public class PusherSchnittstelle implements ConnectionEventListener, PrivateChan
 	// Variablen definieren
 	static final String api_id = "142236";
 	static final String api_key = "d7d48c4729507d0b320f";
+	static final String api_secret ="b8130fe6eec5ae953e6a";
 	static final String api_channel = "private-channel";
 	static final String api_event = "MoveToAgent";
 
@@ -22,11 +25,22 @@ public class PusherSchnittstelle implements ConnectionEventListener, PrivateChan
 	public PusherSchnittstelle() {
 
 		// Authorizer einbinden
-		// Pfad fuer Authorizer nur Authorizter! Client API
-		HttpAuthorizer authorizer = new HttpAuthorizer("http://kc-holzkoepfe.de/rocket/auth.php?pw=rocket");
+		// Pfad fuer Authorizer 
+		//HttpAuthorizer authorizer = new HttpAuthorizer("http://kc-holzkoepfe.de/rocket/auth.php?pw=rocket");
 		PusherOptions opt = new PusherOptions();
 		opt.setEncrypted(true);
-		opt.setAuthorizer(authorizer);
+		
+		//nur Authorizer! Client API
+		Authorizer auth = new Authorizer() {
+			
+			@Override
+			public String authorize(String channelName, String socketId) throws AuthorizationFailureException {
+				return null;	 
+			}
+		};
+		
+		opt.setAuthorizer(auth);
+		
 
 		// Pusherinstanz erzeugen & Connection durchfuehren
 		pusher = new Pusher(api_key, opt);
@@ -80,15 +94,15 @@ public class PusherSchnittstelle implements ConnectionEventListener, PrivateChan
 			 try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 
+			 /*
 			if ("CONNECTED".equals(pusher.getConnection().getState().toString())) {
 				privateChannel.trigger("client-event", "{\"data\": \"4\"}");
 				System.out.println("Nachricht wurde gesendet.");
 			}
-			
+			*/
 		}
 	}
 
