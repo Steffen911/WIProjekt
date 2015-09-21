@@ -29,6 +29,16 @@ public class FileSchnittstelle {
 		//"x" = Spieler x
 		//"o" = Spieler o
 		
+		//Dateischreibobjekt deklarieren und erzeugen
+		FileWriter fileWriter = new FileWriter(dateipfad + "spieler" + spielerwahl + "2server.txt");
+		
+		//Spaltenwahl in eine Datei schreiben
+		fileWriter.write(Integer.toString(spielzug));
+		
+		//Stream schließen
+		fileWriter.close();
+		
+/*		Alter Switch-Case, anpassung oben zum dynamischen Dateipfad
 		//Switch Case fuer jeweilige Erstellung des AgentFiles
 		switch (spielerwahl) {
 		case "x":
@@ -41,7 +51,7 @@ public class FileSchnittstelle {
 			break;
 		case "o":
 			//Dateischreibobjekt deklarieren und erzeugen
-			FileWriter fileWriterO = new FileWriter("C:\\eclipse\\spielero2server.txt");
+			FileWriter fileWriterO = new FileWriter(dateipfad + "spielero2server.txt");
 			// Spaltenwahl in eine Datei schreiben
 			fileWriterO.write(Integer.toString(spielzug));
 			//Stream schliessen
@@ -49,7 +59,9 @@ public class FileSchnittstelle {
 			break;
 		default:
 				System.out.println("Spielerwahl falsch!");
-		}
+		}	
+*/
+		
 	}
 	
 	//File-Schnittstelle: ServerFile lesen
