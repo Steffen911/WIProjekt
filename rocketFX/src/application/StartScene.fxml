@@ -38,24 +38,21 @@
                   </Lighting>
                </effect>
             </Button>
-            <MenuBar layoutX="13.0" layoutY="14.0">
-              <menus>
-                <Menu mnemonicParsing="false" text="Starten" />
-                  <Menu mnemonicParsing="false" text="Einstellungen" />
-                <Menu fx:id="statistikMenuBtn" mnemonicParsing="false" text="Statistik" />
-                  <Menu mnemonicParsing="false" text="Hilfe">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Spielregeln" />
-                        <MenuItem mnemonicParsing="false" text="Impressum" />
-                    </items>
-                  </Menu>
-              </menus>
-            </MenuBar>
             <Label layoutX="214.0" layoutY="58.0" text="Willkommen bei">
                <font>
                   <Font size="42.0" />
                </font>
             </Label>
+            <ImageView fitHeight="45.0" fitWidth="43.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/statistik.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="55.0" fitWidth="54.0" layoutX="77.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/help.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

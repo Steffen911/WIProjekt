@@ -20,14 +20,16 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class StartSceneController implements  Initializable{
-	@FXML Slider zeitslider;
-	@FXML Label zeitlabel;
+//	@FXML Slider zeitslider;
+//	@FXML Label zeitlabel;
 	@FXML Button spielStartenBtn;
 	@FXML Menu statistikMenuBtn;
-	@FXML RadioButton radioBtnO;
-	@FXML RadioButton radioBtnX;
+//	@FXML RadioButton radioBtnO;
+//	@FXML RadioButton radioBtnX;
 	
-	public DBConnector dbConn;
+	private DBConnector dbConn;
+	private ReusableControllerFunctions reuse;
+	
 	
 
 
@@ -36,27 +38,27 @@ public class StartSceneController implements  Initializable{
 		
 		// Verbindung zur DB herstellen
 		//dbConn = new DBConnector();
+		reuse = new ReusableControllerFunctions();
 		
 		spielStartenBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
-				zeitlabel.setText("Test");	
-				setNewScene("GameScene.fxml");
+				reuse.setNewScene("GameScene.fxml");
 			}
 		});
 		
-//		statistikMenuBtn.setOnAction(new EventHandler<ActionEvent>() {
-//			public void handle(ActionEvent event){
-//				setNewScene("StatistikScene.fxml");
-//			}
-//		});
+		statistikMenuBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override public void handle(ActionEvent event){
+				reuse.setNewScene("StatistikScene.fxml");
+			}
+		});
 
 		
-		ToggleGroup choosePlayerToggleGrp = new ToggleGroup();
-		radioBtnO.setToggleGroup(choosePlayerToggleGrp);
-		radioBtnX.setToggleGroup(choosePlayerToggleGrp);
+//		ToggleGroup choosePlayerToggleGrp = new ToggleGroup();
+//		radioBtnO.setToggleGroup(choosePlayerToggleGrp);
+//		radioBtnX.setToggleGroup(choosePlayerToggleGrp);
 
 		
-// Kopiervorlage für Events		
+// Kopiervorlage fuer Events		
 //		.setOnAction(new EventHandler<ActionEvent>() {
 //			@Override public void handle(ActionEvent event) {
 //						
@@ -65,18 +67,6 @@ public class StartSceneController implements  Initializable{
 		
 	}
 	
-	private void setNewScene(String dateiname){
-		try {
-			// Lade neue FXML Datei als Anzeige
-			Pane root = (Pane) FXMLLoader.load(getClass().getResource(dateiname));
-			Scene scene = new Scene(root);
-			Stage primaryStage = Main.getPrimaryStage();
-			primaryStage.setScene(scene);
-			primaryStage.show();
-
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 
 }

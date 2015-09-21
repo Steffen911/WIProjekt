@@ -47,7 +47,6 @@
             <MenuBar layoutX="14.0" layoutY="14.0">
                <menus>
                   <Menu mnemonicParsing="false" text="Starten" />
-                  <Menu mnemonicParsing="false" text="Einstellungen" />
                   <Menu fx:id="statistikMenuBtn" mnemonicParsing="false" text="Statistik" />
                   <Menu mnemonicParsing="false" text="Hilfe">
                      <items>

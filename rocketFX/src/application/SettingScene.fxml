@@ -37,12 +37,7 @@
                   <Font size="42.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="367.0" text="Ich möchte Symbol...">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="125.0" layoutY="420.0" text="... sein.">
+            <Label layoutX="14.0" layoutY="367.0" text="Symbolwahl">
                <font>
                   <Font size="18.0" />
                </font>
@@ -62,7 +57,6 @@
             <MenuBar layoutX="14.0" layoutY="14.0">
                <menus>
                   <Menu mnemonicParsing="false" text="Starten" />
-                  <Menu mnemonicParsing="false" text="Einstellungen" />
                   <Menu fx:id="statistikMenuBtn1" mnemonicParsing="false" text="Statistik" />
                   <Menu mnemonicParsing="false" text="Hilfe">
                      <items>
@@ -72,6 +66,23 @@
                   </Menu>
                </menus>
             </MenuBar>
+            <RadioButton fx:id="radioBtnO1" layoutX="385.0" layoutY="152.0" mnemonicParsing="false" selected="true" text="Push">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="radioBtnX1" layoutX="385.0" layoutY="177.0" mnemonicParsing="false" text="File">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </RadioButton>
+            <Label layoutX="385.0" layoutY="130.0" text="Schnittstelle" />
+            <Label layoutX="385.0" layoutY="227.0" text="Pfad/Key" />
+            <TextField layoutX="443.0" layoutY="219.0" />
+            <TextField layoutX="443.0" layoutY="253.0" />
+            <Label layoutX="385.0" layoutY="261.0" text="Secret" />
+            <TextField layoutX="424.0" layoutY="331.0" />
+            <Label layoutX="381.0" layoutY="335.0" text="Gegner: " />
          </children>
       </Pane>
    </children>
