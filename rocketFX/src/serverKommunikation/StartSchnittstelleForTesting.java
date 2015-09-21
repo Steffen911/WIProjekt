@@ -2,7 +2,7 @@ package serverKommunikation;
 
 public class StartSchnittstelleForTesting {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		//FileSchnittstelle sst = new FileSchnittstelle("x", "//Users//Steffen//Dropbox//");
 /*		
 		try {
@@ -15,8 +15,9 @@ public class StartSchnittstelleForTesting {
 		
 		//sst.fileReader();
 		
-		//PusherSchnittstelle push = new PusherSchnittstelle();
-		
+		PusherSchnittstelle xyz = new PusherSchnittstelle();
+	
+
 		
 	}
 
