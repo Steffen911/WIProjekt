@@ -22,7 +22,7 @@ public class FileSchnittstelle {
 	
 	//File-Schnittstelle: AgentFile erstellen
 	//Uebergabewert (spielzug) gibt an, in welche Spalte gelegt werden soll
-	public void fileWriter (int spielzug) throws IOException {
+	public String[] fileWriter (int spielzug) throws IOException {
 	
 		//Auswahl, ob Spieler x oder o gewaehlt wurde
 		//"x" = Spieler x
@@ -37,29 +37,8 @@ public class FileSchnittstelle {
 		//Stream schliessen
 		fileWriter.close();
 		
-/*		Alter Switch-Case, anpassung oben zum dynamischen Dateipfad
-		//Switch Case fuer jeweilige Erstellung des AgentFiles
-		switch (spielerwahl) {
-		case "x":
-			//Dateischreibobjekt deklarieren und erzeugen
-			FileWriter fileWriterX = new FileWriter(dateipfad + "spielerx2server.txt");
-			// Spaltenwahl in eine Datei schreiben
-			fileWriterX.write(Integer.toString(spielzug));
-			//Stream schliessen
-			fileWriterX.close();
-			break;
-		case "o":
-			//Dateischreibobjekt deklarieren und erzeugen
-			FileWriter fileWriterO = new FileWriter(dateipfad + "spielero2server.txt");
-			// Spaltenwahl in eine Datei schreiben
-			fileWriterO.write(Integer.toString(spielzug));
-			//Stream schliessen
-			fileWriterO.close();
-			break;
-		default:
-				System.out.println("Spielerwahl falsch!");
-		}	
-*/
+		String returnString[] = fileReader();
+		return returnString;
 		
 	}
 	
