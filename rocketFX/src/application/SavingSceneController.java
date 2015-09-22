@@ -7,40 +7,33 @@ import datenbank.DBConnector;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Slider;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
-public class SettingsSceneController implements  Initializable{
-	@FXML Button playBtn;
-
+public class SavingSceneController implements  Initializable{
+	@FXML Button saveBtn;
+	@FXML Button deleteBtn;
+	
 	private DBConnector dbConn;
 	private ReusableControllerFunctions reuse;
 	
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		// TODO Auto-generated method stub
+	
 		reuse = new ReusableControllerFunctions();
 		
-		playBtn.setOnAction(new EventHandler<ActionEvent>() {
+		saveBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
 				reuse.setNewScene("GameScene.fxml");
 			}
-		});
+		});	
 		
-
-		
+		deleteBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override public void handle(ActionEvent event) {
+				reuse.setNewScene("GameScene.fxml");
+			}
+		});	
 	}
-	
-	
 
 }

@@ -16,26 +16,32 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class SettingsSceneController implements  Initializable{
-	@FXML Button playBtn;
+public class StartSceneController implements  Initializable{
+	@FXML Button spielStartenBtn;
+	@FXML ImageView statistikBtn;
 
 	private DBConnector dbConn;
 	private ReusableControllerFunctions reuse;
-	
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		// Verbindung zur DB herstellen
+		//dbConn = new DBConnector();
 		reuse = new ReusableControllerFunctions();
 		
-		playBtn.setOnAction(new EventHandler<ActionEvent>() {
+		spielStartenBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
-				reuse.setNewScene("GameScene.fxml");
+				reuse.setNewScene("SettingsScene.fxml");
 			}
 		});
+		
+		
+		statistikBtn.onMouseClickedProperty();
 		
 
 		
