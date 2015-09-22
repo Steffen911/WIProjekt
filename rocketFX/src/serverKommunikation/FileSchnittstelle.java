@@ -20,29 +20,41 @@ public class FileSchnittstelle {
 		this.dateipfad = dateipfad;
 	}
 	
+	//Communicate Methode sendet spielzug an Server und gibt StringArray vom Server zurück
+	public String[] communicate(int spielzug) {
+		fileWriter(spielzug);
+		return fileReader();
+	}
+	
 	//File-Schnittstelle: AgentFile erstellen
 	//Uebergabewert (spielzug) gibt an, in welche Spalte gelegt werden soll
-	public String[] fileWriter (int spielzug) throws IOException {
+	public void fileWriter (int spielzug) {
 	
 		//Auswahl, ob Spieler x oder o gewaehlt wurde
 		//"x" = Spieler x
 		//"o" = Spieler o
 		
 		//Dateischreibobjekt deklarieren und erzeugen
-		FileWriter fileWriter = new FileWriter(dateipfad + "spieler" + spielerwahl + "2server.txt");
+		FileWriter fileWriter;
+		try {
+			fileWriter = new FileWriter(dateipfad + "spieler" + spielerwahl + "2server.txt");
 		
-		//Spaltenwahl in eine Datei schreiben
-		fileWriter.write(Integer.toString(spielzug));
+			//Spaltenwahl in eine Datei schreiben
+			fileWriter.write(Integer.toString(spielzug));
 		
-		//Stream schliessen
-		fileWriter.close();
+			System.out.println("Datei auf Server abgelegt.");
 		
-		String returnString[] = fileReader();
-		return returnString;
+			//Stream schliessen
+			fileWriter.close();
 		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	//File-Schnittstelle: ServerFile lesen
+	//Gibt einen String-Array zurück
 	public String[] fileReader () {
 		
 		//String[0] = freigabe
