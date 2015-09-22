@@ -23,7 +23,7 @@ public class StartSceneController implements  Initializable{
 //	@FXML Slider zeitslider;
 //	@FXML Label zeitlabel;
 	@FXML Button spielStartenBtn;
-//	@FXML Menu statistikMenuBtn;
+	@FXML Menu statistikMenuBtn;
 //	@FXML RadioButton radioBtnO;
 //	@FXML RadioButton radioBtnX;
 	
@@ -46,11 +46,11 @@ public class StartSceneController implements  Initializable{
 			}
 		});
 		
-//		statistikMenuBtn.setOnAction(new EventHandler<ActionEvent>() {
-//			@Override public void handle(ActionEvent event){
-//				reuse.setNewScene("StatistikScene.fxml");
-//			}
-//		});
+		statistikMenuBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override public void handle(ActionEvent event){
+				reuse.setNewScene("StatistikScene.fxml");
+			}
+		});
 
 		
 //		ToggleGroup choosePlayerToggleGrp = new ToggleGroup();
