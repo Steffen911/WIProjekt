@@ -41,19 +41,16 @@
             </TableView>
             <Button layoutX="56.0" layoutY="388.0" mnemonicParsing="false" text="Ändern" />
             <Button layoutX="430.0" layoutY="388.0" mnemonicParsing="false" text="Ändern" />
-            <MenuBar layoutX="14.0" layoutY="14.0">
-               <menus>
-                  <Menu mnemonicParsing="false" text="Starten" />
-                  <Menu mnemonicParsing="false" text="Einstellungen" />
-                  <Menu fx:id="statistikMenuBtn" mnemonicParsing="false" text="Statistik" />
-                  <Menu mnemonicParsing="false" text="Hilfe">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Spielregeln" />
-                        <MenuItem mnemonicParsing="false" text="Impressum" />
-                     </items>
-                  </Menu>
-               </menus>
-            </MenuBar>
+            <ImageView fitHeight="62.0" fitWidth="33.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/play.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="33.0" fitWidth="49.0" layoutX="57.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/fragezeichen.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

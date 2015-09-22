@@ -38,19 +38,19 @@
                   </Lighting>
                </effect>
             </Button>
-            <Label layoutX="214.0" layoutY="58.0" text="Willkommen bei">
+            <Label layoutX="190.0" layoutY="58.0" text="Willkommen bei">
                <font>
                   <Font size="42.0" />
                </font>
             </Label>
-            <ImageView fitHeight="45.0" fitWidth="43.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="62.0" fitWidth="33.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../pictures/statistik.jpg" />
+                  <Image url="@../../pictures/statistik_S.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="55.0" fitWidth="54.0" layoutX="77.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="33.0" fitWidth="49.0" layoutX="57.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../pictures/help.png" />
+                  <Image url="@../../pictures/fragezeichen.png" />
                </image>
             </ImageView>
          </children>

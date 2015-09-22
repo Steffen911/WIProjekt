@@ -44,18 +44,16 @@
                   <Font size="45.0" />
                </font>
             </Label>
-            <MenuBar layoutX="14.0" layoutY="14.0">
-               <menus>
-                  <Menu mnemonicParsing="false" text="Starten" />
-                  <Menu fx:id="statistikMenuBtn" mnemonicParsing="false" text="Statistik" />
-                  <Menu mnemonicParsing="false" text="Hilfe">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Spielregeln" />
-                        <MenuItem mnemonicParsing="false" text="Impressum" />
-                     </items>
-                  </Menu>
-               </menus>
-            </MenuBar>
+            <ImageView fitHeight="33.0" fitWidth="49.0" layoutX="56.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/fragezeichen.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="62.0" fitWidth="33.0" layoutX="13.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/play.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>
