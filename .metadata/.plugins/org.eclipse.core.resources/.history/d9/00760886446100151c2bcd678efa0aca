@@ -8,7 +8,7 @@ public class StartSchnittstelleForTesting {
 		//FileSchnittstelle fuer MacOS
 		FileSchnittstelle sst = new FileSchnittstelle("x", "//Users//Steffen//Dropbox//");
 		
-		//Sendet eine 4 als Spielzug und erhaelt die Antwort vom Server im StringArray serverAntwort
+		//Sendet eine 4 als Spielzug und erhält die Antwort vom Server im StringArray serverAntwort
 		String[] serverAntwort = sst.communicate(4);
 		
 		//Gibt Testweise das Resultat der ServerAnfrage aus

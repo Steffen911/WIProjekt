@@ -57,7 +57,7 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 		
 	} //end of constructor
 	
-	//Communicate Methode sendet spielzug an Server und gibt StringArray vom Server zurueck
+	//Communicate Methode sendet spielzug an Server und gibt StringArray vom Server zurück
 	public String[] communicate(int spielzug){
 		
 		//String[0] = freigabe
@@ -131,6 +131,7 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			

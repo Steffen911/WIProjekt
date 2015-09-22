@@ -5,10 +5,10 @@ public class StartSchnittstelleForTesting {
 	public static void main(String[] args) throws InterruptedException {
 
 /*
-		//FileSchnittstelle fuer MacOS
+		//FileSchnittstelle für MacOS
 		FileSchnittstelle sst = new FileSchnittstelle("x", "//Users//Steffen//Dropbox//");
 		
-		//Sendet eine 4 als Spielzug und erhaelt die Antwort vom Server im StringArray serverAntwort
+		//Sendet eine 4 als Spielzug und erhält die Antwort vom Server im StringArray serverAntwort
 		String[] serverAntwort = sst.communicate(4);
 		
 		//Gibt Testweise das Resultat der ServerAnfrage aus
@@ -22,7 +22,7 @@ public class StartSchnittstelleForTesting {
 		//Using steffen's apiKey and apiSecret
 		PushSchnittstelle sst = new PushSchnittstelle("c216d52b4b4db2df78b2", "54f848263f22144e49f4");
 		
-		//Sendet eine 4 als Spielzug und erhaelt die Antwort vom Server im StringArray serverAntwort
+		//Sendet eine 4 als Spielzug und erhält die Antwort vom Server im StringArray serverAntwort
 		String[] serverAntwort = sst.communicate(4);
 		
 		//Gibt Testweise das Resultat der ServerAnfrage aus

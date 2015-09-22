@@ -20,7 +20,7 @@ public class FileSchnittstelle {
 		this.dateipfad = dateipfad;
 	}
 	
-	//Communicate Methode sendet spielzug an Server und gibt StringArray vom Server zurueck
+	//Communicate Methode sendet spielzug an Server und gibt StringArray vom Server zurück
 	public String[] communicate(int spielzug) {
 		fileWriter(spielzug);
 		return fileReader();
@@ -54,7 +54,7 @@ public class FileSchnittstelle {
 	}
 	
 	//File-Schnittstelle: ServerFile lesen
-	//Gibt ein String-Array zurueck
+	//Gibt einen String-Array zurück
 	public String[] fileReader () {
 		
 		//String[0] = freigabe
@@ -100,7 +100,7 @@ public class FileSchnittstelle {
 		    //alle Kinder des root-Elements werden gelesen
 		    NodeList nodes = element.getChildNodes();
 
-		    int j = 0; //Zaehler fuer die 4 zu lesenden Attribute im returnstring
+		    int j = 0; //Zähler für die 4 zu lesenden Attribute im returnstring
 		    
 		    for(int i=0; i<nodes.getLength(); i++){
 		      Node node = nodes.item(i);
@@ -109,7 +109,7 @@ public class FileSchnittstelle {
 		        //a child element to process
 		        Element child = (Element) node;
 		        
-		        //Fuegt dem returnString den Inhalt des aktuellen Kinds des root-Elements hinzu
+		        //Fügt dem returnString den Inhalt des aktuellen Kinds des root-Elements hinzu
 		        returnString[j] = child.getTextContent();
 		        j++;
 		      }
