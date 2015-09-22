@@ -15,7 +15,7 @@ public class DBConnector {
 		dbDef = new DBDef();
 		connectToDB();
 		updateDBVersion();
-//		int id = insertNewSpiel("gegner", "Rocket", 3);
+//		int id = insertNewSpiel("nadu", "Rocket", 3);
 //		insertNewSatz(id, 1,"Rocket", "Rocket", "3 4 5 6 7 8", "2 3 4 5 6 7");
 		//testNewSpiel();
 	}
@@ -28,10 +28,10 @@ public class DBConnector {
 			  rs.next();
 			  int id = rs.getInt(1);
 			  System.out.println("ID: "+id);
-		      // Resultset schliessen
+		      // Resultset schließen
 		      rs.close(); 
 		  
-		      // Statement schliessen
+		      // Statement schließen
 		      stmt.close(); 
 		      con.commit();
 		      return id;
@@ -48,7 +48,7 @@ public class DBConnector {
 					  		spielID+","+satzID+",'"+starter+"','"+sieger+"','"+zuegeIch+"','"+zuegeGegner+"'"+")";
 			  stmt.executeQuery(sql);  
 			  
-		      // Statement schliessen
+		      // Statement schließen
 		      stmt.close(); 
 		      con.commit();
 
@@ -66,10 +66,10 @@ public class DBConnector {
 //			  ResultSet rs = stmt.executeQuery(sql); 
 //			  rs.next();
 //			  System.out.println(rs.getInt(1));
-//		      // Resultset schliessen
+//		      // Resultset schließen
 //		      rs.close(); 
 //		  
-//		      // Statement schliessen
+//		      // Statement schließen
 //		      stmt.close(); 
 //		      con.commit();
 //			}catch(SQLException e){
@@ -99,10 +99,10 @@ public class DBConnector {
 	    		  stmt.execute(dbDef.tableCreateStatements[i]);
 	    	  }
 	      }    
-	      // Resultset schliessen
+	      // Resultset schließen
 	      rs.close(); 
 	  
-	      // Statement schliessen
+	      // Statement schließen
 	      stmt.close(); 
 	      con.commit();
 		}catch(SQLException e){
