@@ -16,16 +16,22 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class StartSceneController implements  Initializable{
+public class SettingsSceneController implements  Initializable{
+//	@FXML Slider zeitslider;
+//	@FXML Label zeitlabel;
 	@FXML Button spielStartenBtn;
-	@FXML ImageView statistikBtn;
-
+//	@FXML Menu statistikMenuBtn;
+//	@FXML RadioButton radioBtnO;
+//	@FXML RadioButton radioBtnX;
+	
 	private DBConnector dbConn;
 	private ReusableControllerFunctions reuse;
+	
+	
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -40,12 +46,24 @@ public class StartSceneController implements  Initializable{
 			}
 		});
 		
-//		statistikBtn.setOnMouseClicked(new EventHandler<ActionEvent>() {
-//			@Override public void handle(ActionEvent event) {
+//		statistikMenuBtn.setOnAction(new EventHandler<ActionEvent>() {
+//			@Override public void handle(ActionEvent event){
 //				reuse.setNewScene("StatistikScene.fxml");
 //			}
 //		});
 
+		
+//		ToggleGroup choosePlayerToggleGrp = new ToggleGroup();
+//		radioBtnO.setToggleGroup(choosePlayerToggleGrp);
+//		radioBtnX.setToggleGroup(choosePlayerToggleGrp);
+
+		
+// Kopiervorlage fuer Events		
+//		.setOnAction(new EventHandler<ActionEvent>() {
+//			@Override public void handle(ActionEvent event) {
+//						
+//			}
+//		});
 		
 	}
 	
