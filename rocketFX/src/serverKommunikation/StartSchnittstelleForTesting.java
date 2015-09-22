@@ -26,7 +26,7 @@ public class StartSchnittstelleForTesting {
 		String[] serverAntwort = sst.communicate(4);
 		
 		//Gibt Testweise das Resultat der ServerAnfrage aus
-		System.out.println("serverAntwort ist gleich: ");
+		System.out.println("serverAntwort ist gleich: "); 
 		for(int i = 0; i < serverAntwort.length; i++){
 			System.out.println(serverAntwort[i]);
 		}

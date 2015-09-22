@@ -60,6 +60,10 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 	//Communicate Methode sendet spielzug an Server und gibt StringArray vom Server zurück
 	public String[] communicate(int spielzug){
 		
+		//String[0] = freigabe
+		//String[1] = satzstatus
+		//String[2] = gegnerzug
+		//String[3] = sieger
 		String[] returnString = new String[4];
 		
 		// Pusherinstanz erzeugen & Connection durchfuehren
@@ -100,6 +104,14 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 			@Override
 			public void onEvent(String channel, String event, String data) {
 				System.out.println("Event empfangen: " + data);
+				
+				//data hat die Form " true # Satz spielen # 2 # offen "
+				String[] dataSplit = data.split(" # ");
+				
+				for(int i=0; i<returnString.length;i++){
+					returnString[i] = dataSplit[i];
+				}
+				
 			}
 
 			@Override
@@ -127,11 +139,6 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 				break;
 			}
 		}//end of while
-		
-		//Testweise Ausgabe des Returnstrings in der Konsole
-		for (int i=0; i<returnString.length; i++){
-			System.out.println(returnString[i]);
-		}
 		
 		return returnString;
 		

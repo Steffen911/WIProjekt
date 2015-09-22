@@ -120,11 +120,6 @@ public class FileSchnittstelle {
 		    e.printStackTrace();
 		}
 		
-		//Testweise Ausgabe des Returnstrings in der Konsole
-		for (int i=0; i<returnString.length; i++){
-			System.out.println(returnString[i]);
-		}
-		
 		//Loeschen der XML nach Gebrauch
 		File f = new File(dateipfad + "server2spieler" + spielerwahl + ".xml");
 		f.delete();
