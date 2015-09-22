@@ -32,7 +32,7 @@ public class StartSceneController implements  Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		// Verbindung zur DB herstellen
-		//dbConn = new DBConnector();
+		dbConn = new DBConnector();
 		reuse = new ReusableControllerFunctions();
 		
 		spielStartenBtn.setOnAction(new EventHandler<ActionEvent>() {
