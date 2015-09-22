@@ -17,6 +17,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -40,12 +41,12 @@ public class StartSceneController implements  Initializable{
 			}
 		});
 		
-
-//		statistikBtn.setOnMouseClicked(new EventHandler<ActionEvent>() {
-//			@Override public void handle(ActionEvent event) {
-//				reuse.setNewScene("StatistikScene.fxml");
-//			}
-//		});
+		statistikBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		     @Override
+		     public void handle(MouseEvent event) {
+		    	 reuse.setNewScene("StatistikScene.fxml");
+		     }
+		});
 
 		
 	}

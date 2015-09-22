@@ -12,8 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class GameSceneController implements  Initializable{
-	@FXML Button saveBtn;
+public class StatistikSceneController implements  Initializable{
 	@FXML ImageView playBtn;
 	
 	private DBConnector dbConn;
@@ -21,15 +20,8 @@ public class GameSceneController implements  Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 	
 		reuse = new ReusableControllerFunctions();
-		
-		saveBtn.setOnAction(new EventHandler<ActionEvent>() {
-			@Override public void handle(ActionEvent event) {
-				reuse.setNewScene("SavingScene.fxml");
-			}
-		});	
 		
 		playBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 		     @Override
@@ -37,6 +29,9 @@ public class GameSceneController implements  Initializable{
 		    	 reuse.setNewScene("StartScene.fxml");
 		     }
 		});
+
+		
+		
 	}
 
 }
