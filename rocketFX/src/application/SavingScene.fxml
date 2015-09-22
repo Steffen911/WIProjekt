@@ -22,49 +22,42 @@
                   <Image url="@../../pictures/rocket_ohne.png" />
                </image>
             </ImageView>
-            <Button layoutX="581.0" layoutY="424.0" mnemonicParsing="false" text="Verwerfen" />
+            <Button fx:id="deleteBtn" layoutX="581.0" layoutY="424.0" mnemonicParsing="false" text="Verwerfen" />
             <Label layoutX="82.0" layoutY="56.0" text="4 Gewinnt speichern- ">
                <font>
                   <Font size="45.0" />
                </font>
             </Label>
-            <Button layoutX="496.0" layoutY="424.0" mnemonicParsing="false" text="Speichern" />
-            <Label layoutX="86.0" layoutY="142.0" text="Gewinner:">
+            <Button fx:id="saveBtn" layoutX="496.0" layoutY="424.0" mnemonicParsing="false" text="Speichern" />
+            <Label layoutX="90.0" layoutY="143.0" text="Gewinner:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="86.0" layoutY="232.0" text="Spielstand:">
+            <Label layoutX="90.0" layoutY="225.0" text="Spielstand:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="86.0" layoutY="280.0" text="Züge:">
+            <Label layoutX="90.0" layoutY="266.0" text="Züge:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="216.0" layoutY="145.0" />
-            <TextField layoutX="216.0" layoutY="235.0" />
-            <TextArea layoutX="215.0" layoutY="282.0" prefHeight="107.0" prefWidth="270.0" />
-            <MenuBar layoutX="13.0" layoutY="14.0">
-               <menus>
-                  <Menu mnemonicParsing="false" text="Starten" />
-                  <Menu fx:id="statistikMenuBtn" mnemonicParsing="false" text="Statistik" />
-                  <Menu mnemonicParsing="false" text="Hilfe">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Spielregeln" />
-                        <MenuItem mnemonicParsing="false" text="Impressum" />
-                     </items>
-                  </Menu>
-               </menus>
-            </MenuBar>
-            <TextField layoutX="216.0" layoutY="189.0" />
-            <Label layoutX="86.0" layoutY="182.0" text="Starter:">
+            <TextField layoutX="216.0" layoutY="146.0" />
+            <TextField layoutX="216.0" layoutY="228.0" />
+            <TextArea layoutX="216.0" layoutY="273.0" prefHeight="107.0" prefWidth="270.0" />
+            <TextField layoutX="216.0" layoutY="188.0" />
+            <Label layoutX="90.0" layoutY="185.0" text="Starter:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
+            <ImageView fx:id="helpBtn" fitHeight="33.0" fitWidth="49.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/fragezeichen.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

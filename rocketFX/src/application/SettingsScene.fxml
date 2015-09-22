@@ -22,12 +22,12 @@
                   <Image url="@../../pictures/rocket_ohne.png" />
                </image>
             </ImageView>
-            <RadioButton fx:id="radioBtnX" layoutX="53.0" layoutY="420.0" mnemonicParsing="false" text="X">
+            <RadioButton fx:id="radioBtnX" layoutX="106.0" layoutY="400.0" mnemonicParsing="false" text="X">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="radioBtnO" layoutX="53.0" layoutY="395.0" mnemonicParsing="false" selected="true" text="O">
+            <RadioButton fx:id="radioBtnO" layoutX="106.0" layoutY="375.0" mnemonicParsing="false" selected="true" text="O">
                <font>
                   <Font size="18.0" />
                </font>
@@ -37,52 +37,57 @@
                   <Font size="42.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="367.0" text="Symbolwahl">
+            <Label layoutX="102.0" layoutY="348.0" text="Symbolwahl">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Slider fx:id="zeitslider" blockIncrement="0.1" layoutX="60.0" layoutY="178.0" max="10.0" min="0.5" orientation="VERTICAL" value="2.0" />
-            <Label layoutX="14.0" layoutY="147.0" text="Zeiteinstellung">
+            <Slider fx:id="zeitslider" blockIncrement="0.1" layoutX="106.0" layoutY="179.0" max="10.0" min="0.5" orientation="VERTICAL" value="2.0" />
+            <Label layoutX="101.0" layoutY="151.0" text="Zeiteinstellung">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="zeitlabel" layoutX="92.0" layoutY="282.0" text="&lt;Wert&gt; sec">
+            <Label fx:id="zeitlabel" layoutX="150.0" layoutY="235.0" text="&lt;Wert&gt; sec">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="570.0" layoutY="421.0" mnemonicParsing="false" text="Spiel starten" />
-            <MenuBar layoutX="14.0" layoutY="14.0">
-               <menus>
-                  <Menu mnemonicParsing="false" text="Starten" />
-                  <Menu fx:id="statistikMenuBtn1" mnemonicParsing="false" text="Statistik" />
-                  <Menu mnemonicParsing="false" text="Hilfe">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Spielregeln" />
-                        <MenuItem mnemonicParsing="false" text="Impressum" />
-                     </items>
-                  </Menu>
-               </menus>
-            </MenuBar>
-            <RadioButton fx:id="radioBtnO1" layoutX="385.0" layoutY="152.0" mnemonicParsing="false" selected="true" text="Push">
+            <Button fx:id="playBtn" layoutX="570.0" layoutY="421.0" mnemonicParsing="false" text="Spiel starten" />
+            <RadioButton fx:id="radioBtnO1" layoutX="381.0" layoutY="179.0" mnemonicParsing="false" selected="true" text="Push">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="radioBtnX1" layoutX="385.0" layoutY="177.0" mnemonicParsing="false" text="File">
+            <RadioButton fx:id="radioBtnX1" layoutX="381.0" layoutY="204.0" mnemonicParsing="false" text="File">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <Label layoutX="385.0" layoutY="130.0" text="Schnittstelle" />
-            <Label layoutX="385.0" layoutY="227.0" text="Pfad/Key" />
-            <TextField layoutX="443.0" layoutY="219.0" />
-            <TextField layoutX="443.0" layoutY="253.0" />
-            <Label layoutX="385.0" layoutY="261.0" text="Secret" />
-            <TextField layoutX="424.0" layoutY="331.0" />
-            <Label layoutX="381.0" layoutY="335.0" text="Gegner: " />
+            <Label layoutX="376.0" layoutY="151.0" text="Schnittstelle">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label layoutX="374.0" layoutY="262.0" text="Pfad/Key">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <TextField layoutX="455.0" layoutY="263.0" />
+            <TextField layoutX="455.0" layoutY="307.0" />
+            <Label layoutX="373.0" layoutY="306.0" text="Secret">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <TextField layoutX="454.0" layoutY="349.0" />
+            <Label layoutX="372.0" layoutY="348.0" text="Gegner: ">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <ImageView fx:id="helpBtn" fitHeight="33.0" fitWidth="49.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/fragezeichen.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

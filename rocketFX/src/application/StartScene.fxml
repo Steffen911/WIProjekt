@@ -43,12 +43,12 @@
                   <Font size="42.0" />
                </font>
             </Label>
-            <ImageView fitHeight="62.0" fitWidth="33.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="statistikBtn" fitHeight="62.0" fitWidth="33.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../pictures/statistik_S.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="33.0" fitWidth="49.0" layoutX="57.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="helpBtn" fitHeight="33.0" fitWidth="49.0" layoutX="57.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../pictures/fragezeichen.png" />
                </image>
