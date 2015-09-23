@@ -50,12 +50,12 @@ public class KI {
 			
 		} 
 		
-		//TODO: Siegmuster erkennen
+		//Siegmuster erkennen
 		for(int i=0; i<7;i++){
 			for(int j=0; j<6; j++) {
 				if(spielfeld[i][j] == "_"){
 					
-					//Prüfe waagerecht links -3 
+					//Pruefe waagerecht links -3 
 					try{
 						if(spielfeld[i-3][j] == eigenerStein && spielfeld[i-2][j] == eigenerStein && spielfeld[i-1][j] == eigenerStein){
 							spielzug = i;
@@ -63,7 +63,7 @@ public class KI {
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 					
-					//Prüfe waagerecht links -2 und rechts +1
+					//Pruefe waagerecht links -2 und rechts +1
 					try{
 						if(spielfeld[i-2][j] == eigenerStein && spielfeld[i-1][j] == eigenerStein && spielfeld[i+1][j] == eigenerStein){
 							spielzug = i;
@@ -71,7 +71,7 @@ public class KI {
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 					
-					//Prüfe waagerecht links -1 und rechts +2
+					//Pruefe waagerecht links -1 und rechts +2
 					try{
 						if(spielfeld[i-1][j] == eigenerStein && spielfeld[i+1][j] == eigenerStein && spielfeld[i+2][j] == eigenerStein){
 							spielzug = i;
@@ -79,7 +79,7 @@ public class KI {
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 					
-					//Prüfe waagerecht rechts +3
+					//Pruefe waagerecht rechts +3
 					try{
 						if(spielfeld[i+1][j] == eigenerStein && spielfeld[i+2][j] == eigenerStein && spielfeld[i+3][j] == eigenerStein){
 							spielzug = i;
@@ -87,7 +87,7 @@ public class KI {
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 					
-					//Prüfe senkrecht
+					//Pruefe senkrecht
 					try{
 						if(spielfeld[i][j-1] == eigenerStein && spielfeld[i][j-2] == eigenerStein && spielfeld[i][j-3] == eigenerStein){
 							spielzug = i;
@@ -95,7 +95,7 @@ public class KI {
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 					
-					//Prüfe diagonal links runter -3 
+					//Pruefe diagonal links runter -3 
 					try{
 						if(spielfeld[i-3][j-3] == eigenerStein && spielfeld[i-2][j-2] == eigenerStein && spielfeld[i-1][j-1] == eigenerStein){
 							spielzug = i;
@@ -103,7 +103,7 @@ public class KI {
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 					
-					//Prüfe diagonal links runter -2
+					//Pruefe diagonal links runter -2
 					try{
 						if(spielfeld[i-2][j-2] == eigenerStein && spielfeld[i-1][j-1] == eigenerStein && spielfeld[i+1][j+1] == eigenerStein){
 							spielzug = i;
@@ -111,7 +111,7 @@ public class KI {
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 					
-					//Prüfe diagonal links runter -1
+					//Pruefe diagonal links runter -1
 					try{
 						if(spielfeld[i-1][j-1] == eigenerStein && spielfeld[i+1][j+1] == eigenerStein && spielfeld[i+2][j+2] == eigenerStein){
 							spielzug = i;
@@ -119,7 +119,7 @@ public class KI {
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 					
-					//Prüfe diagonal rechts hoch +3
+					//Pruefe diagonal rechts hoch +3
 					try{
 						if(spielfeld[i+1][j+1] == eigenerStein && spielfeld[i+2][j+2] == eigenerStein && spielfeld[i+3][j+3] == eigenerStein){
 							spielzug = i;
@@ -127,7 +127,7 @@ public class KI {
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 					
-					//Prüfe diagonal rechts runter -3 
+					//Pruefe diagonal rechts runter -3 
 					try{
 						if(spielfeld[i+3][j-3] == eigenerStein && spielfeld[i+2][j-2] == eigenerStein && spielfeld[i+1][j-1] == eigenerStein){
 							spielzug = i;
@@ -135,7 +135,7 @@ public class KI {
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 					
-					//Prüfe diagonal rechts runter -2
+					//Pruefe diagonal rechts runter -2
 					try{
 						if(spielfeld[i+2][j-2] == eigenerStein && spielfeld[i+1][j-1] == eigenerStein && spielfeld[i-1][j+1] == eigenerStein){
 							spielzug = i;
@@ -143,7 +143,7 @@ public class KI {
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 					
-					//Prüfe diagonal rechts runter -1
+					//Pruefe diagonal rechts runter -1
 					try{
 						if(spielfeld[i+1][j-1] == eigenerStein && spielfeld[i-1][j+1] == eigenerStein && spielfeld[i-2][j+2] == eigenerStein){
 							spielzug = i;
@@ -151,7 +151,7 @@ public class KI {
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 					
-					//Prüfe diagonal links hoch +3
+					//Pruefe diagonal links hoch +3
 					try{
 						if(spielfeld[i-1][j+1] == eigenerStein && spielfeld[i-2][j+2] == eigenerStein && spielfeld[i-3][j+3] == eigenerStein){
 							spielzug = i;
