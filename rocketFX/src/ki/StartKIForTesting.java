@@ -5,10 +5,10 @@ public class StartKIForTesting {
 	public static void main(String[] args) {
 		KI ki = new KI("o");
 		
-		ki.zugBerechnen(-1);
-		ki.zugBerechnen(4);
 		ki.zugBerechnen(2);
 		ki.zugBerechnen(3);
+		ki.zugBerechnen(6);
+		ki.zugBerechnen(0);
 		
 		//Array in Konsole ausgeben zum Test
 		String[][] ausgabe = ki.arrayAusgabe();
