@@ -9,6 +9,7 @@ public class KI {
 	//Spielfeld anlegen
 	private String[][] spielfeld = new String[7][6];
 	
+	//Konstruktor für KI, legt Spielsteine fest, inititalisiert den spielfeldarray
 	public KI(String spielerwahl){
 		eigenerStein = spielerwahl;
 		
@@ -32,20 +33,26 @@ public class KI {
 	}
 	
 	//Nimmt eine Spalte zwischen 0 und 6 entgegen
+	//Gibt einen integer mit dem eigenen Spielzug zurueck
 	public int zugBerechnen(int gegnerZug) {
 		
 		int spielzug;
 		
-		for(int i=0; i<6; i++) {
-			if(spielfeld[gegnerZug][i] == "_"){
-				spielfeld[gegnerZug][i] = gegnerStein;
-				break;
-			}
-		}
+		//Falls eigener Agent startet wird -1 uebergeben
+		if(gegnerZug != -1){
+			
+			for(int i=0; i<6; i++) {
+				if(spielfeld[gegnerZug][i] == "_"){
+					spielfeld[gegnerZug][i] = gegnerStein;
+					break;
+				} //end if
+			} //end for
+			
+		} 
 		
 		//Spalte ist voll Erkennung
 		while(true){
-			spielzug = (int)(Math.random() * 6);
+			spielzug = (int)(Math.random() * 7);
 			if (spielfeld[spielzug][5] == "_"){
 				break;
 			}
@@ -63,6 +70,7 @@ public class KI {
 		return spielzug;
 	}
 	
+	//Gibt das aktuelle Spielfeld aus
 	public String[][] arrayAusgabe(){
 		return spielfeld;
 	}
