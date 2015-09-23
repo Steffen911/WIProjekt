@@ -54,12 +54,12 @@
                </font>
             </Label>
             <Button fx:id="playBtn" layoutX="570.0" layoutY="421.0" mnemonicParsing="false" text="Spiel starten" />
-            <RadioButton fx:id="radioBtnO1" layoutX="381.0" layoutY="179.0" mnemonicParsing="false" selected="true" text="Push">
+            <RadioButton fx:id="radioBtnPush" layoutX="381.0" layoutY="179.0" mnemonicParsing="false" selected="true" text="Push">
                <font>
                   <Font size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="radioBtnX1" layoutX="381.0" layoutY="204.0" mnemonicParsing="false" text="File">
+            <RadioButton fx:id="radioBtnFile" layoutX="381.0" layoutY="204.0" mnemonicParsing="false" text="File">
                <font>
                   <Font size="18.0" />
                </font>
@@ -68,17 +68,17 @@
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <Label layoutX="374.0" layoutY="262.0" text="Pfad/Key">
+            <Label fx:id="PfadKeyLabel" layoutX="374.0" layoutY="262.0" text="Pfad/Key">
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <TextField layoutX="455.0" layoutY="263.0" />
-            <TextField layoutX="455.0" layoutY="307.0" />
-            <Label layoutX="373.0" layoutY="306.0" text="Secret">
+            <TextField fx:id="PfadKeyEdit" layoutX="455.0" layoutY="263.0" />
+            <TextField fx:id="SecretEdit" layoutX="455.0" layoutY="307.0" />
+            <Label fx:id="SecretLabel" layoutX="373.0" layoutY="306.0" text="Secret">
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <TextField layoutX="454.0" layoutY="349.0" />
+            <TextField fx:id="GegnerEdit" layoutX="454.0" layoutY="349.0" />
             <Label layoutX="372.0" layoutY="348.0" text="Gegner: ">
                <font>
                   <Font size="18.0" />

@@ -15,12 +15,23 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class SettingsSceneController implements  Initializable{
 	@FXML Button playBtn;
+	@FXML RadioButton radioBtnO;
+	@FXML RadioButton radioBtnX;
+	@FXML RadioButton radioBtnPush;
+	@FXML RadioButton radioBtnFile;
+	@FXML TextField PfadKeyEdit;
+	@FXML TextField SecretEdit;
+	@FXML TextField Edit;
+	@FXML TextField GegnerEdit;
+	@FXML Label PfadKeyLabel;
+	@FXML Label SecretLabel;
 
 	private DBConnector dbConn;
 	private ReusableControllerFunctions reuse;
@@ -37,6 +48,28 @@ public class SettingsSceneController implements  Initializable{
 			}
 		});
 		
+		ToggleGroup pushFileToggle = new ToggleGroup();
+		radioBtnFile.setToggleGroup(pushFileToggle);
+		radioBtnPush.setToggleGroup(pushFileToggle);
+		
+		ToggleGroup playerXOToggle = new ToggleGroup();
+		radioBtnO.setToggleGroup(playerXOToggle);
+		radioBtnX.setToggleGroup(playerXOToggle);
+		
+		radioBtnPush.setOnAction(new EventHandler<ActionEvent>() {
+			@Override public void handle(ActionEvent event) {
+				PfadKeyLabel.setText("Key");
+				SecretEdit.setVisible(true);
+				SecretLabel.setVisible(true);
+			}
+		});
+		radioBtnFile.setOnAction(new EventHandler<ActionEvent>() {
+			@Override public void handle(ActionEvent event) {
+				PfadKeyLabel.setText("Pfad");
+				SecretEdit.setVisible(false);
+				SecretLabel.setVisible(false);
+			}
+		});
 
 		
 	}
