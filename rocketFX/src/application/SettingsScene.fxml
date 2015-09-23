@@ -68,7 +68,7 @@
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <Label fx:id="PfadKeyLabel" layoutX="374.0" layoutY="262.0" text="Pfad/Key">
+            <Label fx:id="PfadKeyLabel" layoutX="374.0" layoutY="262.0" text="Key">
                <font>
                   <Font size="18.0" />
                </font></Label>

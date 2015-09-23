@@ -9,7 +9,7 @@ public class KI {
 	//Spielfeld anlegen
 	private String[][] spielfeld = new String[7][6];
 	
-	//Konstruktor für KI, legt Spielsteine fest, inititalisiert den spielfeldarray
+	//Konstruktor fuer KI, legt Spielsteine fest, inititalisiert den spielfeldarray
 	public KI(String spielerwahl){
 		eigenerStein = spielerwahl;
 		
@@ -21,7 +21,7 @@ public class KI {
 			gegnerStein = "o";
 			break;
 		default:
-			System.out.println("Ungültige Spielerwahl.");
+			System.out.println("Ungueltige Spielerwahl.");
 			break;
 		}
 		
