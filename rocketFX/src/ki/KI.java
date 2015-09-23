@@ -36,7 +36,7 @@ public class KI {
 	//Gibt einen integer mit dem eigenen Spielzug zurueck
 	public int zugBerechnen(int gegnerZug) {
 		
-		int spielzug;
+		int spielzug = -1;
 		
 		//Falls eigener Agent startet wird -1 uebergeben
 		if(gegnerZug != -1){
@@ -50,15 +50,129 @@ public class KI {
 			
 		} 
 		
+		//TODO: Siegmuster erkennen
+		for(int i=0; i<7;i++){
+			for(int j=0; j<6; j++) {
+				if(spielfeld[i][j] == "_"){
+					
+					//Prüfe waagerecht links -3 
+					try{
+						if(spielfeld[i-3][j] == eigenerStein && spielfeld[i-2][j] == eigenerStein && spielfeld[i-1][j] == eigenerStein){
+							spielzug = i;
+							break;
+						}
+					}catch(ArrayIndexOutOfBoundsException e){}
+					
+					//Prüfe waagerecht links -2 und rechts +1
+					try{
+						if(spielfeld[i-2][j] == eigenerStein && spielfeld[i-1][j] == eigenerStein && spielfeld[i+1][j] == eigenerStein){
+							spielzug = i;
+							break;
+						}
+					}catch(ArrayIndexOutOfBoundsException e){}
+					
+					//Prüfe waagerecht links -1 und rechts +2
+					try{
+						if(spielfeld[i-1][j] == eigenerStein && spielfeld[i+1][j] == eigenerStein && spielfeld[i+2][j] == eigenerStein){
+							spielzug = i;
+							break;
+						}
+					}catch(ArrayIndexOutOfBoundsException e){}
+					
+					//Prüfe waagerecht rechts +3
+					try{
+						if(spielfeld[i+1][j] == eigenerStein && spielfeld[i+2][j] == eigenerStein && spielfeld[i+3][j] == eigenerStein){
+							spielzug = i;
+							break;
+						}
+					}catch(ArrayIndexOutOfBoundsException e){}
+					
+					//Prüfe senkrecht
+					try{
+						if(spielfeld[i][j-1] == eigenerStein && spielfeld[i][j-2] == eigenerStein && spielfeld[i][j-3] == eigenerStein){
+							spielzug = i;
+							break;
+						}
+					}catch(ArrayIndexOutOfBoundsException e){}
+					
+					//Prüfe diagonal links runter -3 
+					try{
+						if(spielfeld[i-3][j-3] == eigenerStein && spielfeld[i-2][j-2] == eigenerStein && spielfeld[i-1][j-1] == eigenerStein){
+							spielzug = i;
+							break;
+						}
+					}catch(ArrayIndexOutOfBoundsException e){}
+					
+					//Prüfe diagonal links runter -2
+					try{
+						if(spielfeld[i-2][j-2] == eigenerStein && spielfeld[i-1][j-1] == eigenerStein && spielfeld[i+1][j+1] == eigenerStein){
+							spielzug = i;
+							break;
+						}
+					}catch(ArrayIndexOutOfBoundsException e){}
+					
+					//Prüfe diagonal links runter -1
+					try{
+						if(spielfeld[i-1][j-1] == eigenerStein && spielfeld[i+1][j+1] == eigenerStein && spielfeld[i+2][j+2] == eigenerStein){
+							spielzug = i;
+							break;
+						}
+					}catch(ArrayIndexOutOfBoundsException e){}
+					
+					//Prüfe diagonal rechts hoch +3
+					try{
+						if(spielfeld[i+1][j+1] == eigenerStein && spielfeld[i+2][j+2] == eigenerStein && spielfeld[i+3][j+3] == eigenerStein){
+							spielzug = i;
+							break;
+						}
+					}catch(ArrayIndexOutOfBoundsException e){}
+					
+					//Prüfe diagonal rechts runter -3 
+					try{
+						if(spielfeld[i+3][j-3] == eigenerStein && spielfeld[i+2][j-2] == eigenerStein && spielfeld[i+1][j-1] == eigenerStein){
+							spielzug = i;
+							break;
+						}
+					}catch(ArrayIndexOutOfBoundsException e){}
+					
+					//Prüfe diagonal rechts runter -2
+					try{
+						if(spielfeld[i+2][j-2] == eigenerStein && spielfeld[i+1][j-1] == eigenerStein && spielfeld[i-1][j+1] == eigenerStein){
+							spielzug = i;
+							break;
+						}
+					}catch(ArrayIndexOutOfBoundsException e){}
+					
+					//Prüfe diagonal rechts runter -1
+					try{
+						if(spielfeld[i+1][j-1] == eigenerStein && spielfeld[i-1][j+1] == eigenerStein && spielfeld[i-2][j+2] == eigenerStein){
+							spielzug = i;
+							break;
+						}
+					}catch(ArrayIndexOutOfBoundsException e){}
+					
+					//Prüfe diagonal links hoch +3
+					try{
+						if(spielfeld[i-1][j+1] == eigenerStein && spielfeld[i-2][j+2] == eigenerStein && spielfeld[i-3][j+3] == eigenerStein){
+							spielzug = i;
+							break;
+						}
+					}catch(ArrayIndexOutOfBoundsException e){}
+				} //end if
+				
+			} //end for
+		}
+		
 		//Spalte ist voll Erkennung
 		while(true){
-			spielzug = (int)(Math.random() * 7);
+			if(spielzug == -1){
+				spielzug = (int)(Math.random() * 7);				
+			}
 			if (spielfeld[spielzug][5] == "_"){
 				break;
 			}
 		}
 		
-		//TODO: Siegmuster erkennen
 		
 		for(int i=0; i<6; i++) {
 			if(spielfeld[spielzug][i] == "_"){
