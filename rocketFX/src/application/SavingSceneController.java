@@ -9,9 +9,12 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 public class SavingSceneController implements  Initializable{
 	@FXML Button saveBtn;
+	@FXML ImageView helpBtn;
 	@FXML Button deleteBtn;
 	
 	private DBConnector dbConn;
@@ -34,6 +37,13 @@ public class SavingSceneController implements  Initializable{
 				reuse.setNewScene("GameScene.fxml");
 			}
 		});	
+		
+		helpBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		     @Override
+		     public void handle(MouseEvent event) {
+		    	 reuse.setNewScene("HelpScene.fxml");
+		     }
+		});
 	}
 
 }

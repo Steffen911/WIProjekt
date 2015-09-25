@@ -17,11 +17,14 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class SettingsSceneController implements  Initializable{
 	@FXML Button playBtn;
+	@FXML ImageView helpBtn;
 	@FXML RadioButton radioBtnO;
 	@FXML RadioButton radioBtnX;
 	@FXML RadioButton radioBtnPush;
@@ -69,6 +72,13 @@ public class SettingsSceneController implements  Initializable{
 				SecretEdit.setVisible(false);
 				SecretLabel.setVisible(false);
 			}
+		});
+		
+		helpBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		     @Override
+		     public void handle(MouseEvent event) {
+		    	 reuse.setNewScene("HelpScene.fxml");
+		     }
 		});
 
 		

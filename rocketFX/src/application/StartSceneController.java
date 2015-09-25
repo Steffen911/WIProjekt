@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 
 public class StartSceneController implements  Initializable{
 	@FXML Button spielStartenBtn;
+	@FXML ImageView helpBtn;
 	@FXML ImageView statistikBtn;
 
 	private DBConnector dbConn;
@@ -48,6 +49,12 @@ public class StartSceneController implements  Initializable{
 		     }
 		});
 
+		helpBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		     @Override
+		     public void handle(MouseEvent event) {
+		    	 reuse.setNewScene("HelpScene.fxml");
+		     }
+		});
 		
 	}
 	
