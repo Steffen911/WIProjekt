@@ -20,7 +20,7 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 	TimerStart ts = new TimerStart();
 		
 	//Spielzugdauer wird festgelegt
-	int sekunden;
+	int centisekunden;
 	
 	//Stehen fest
 	static final String apiChannel = "private-channel";
@@ -30,10 +30,10 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 	private PrivateChannel privateChannel;
 	private PusherOptions opt = new PusherOptions();
 	
-	public PushSchnittstelle(String apiKey, String apiSecret, int sekunden){
+	public PushSchnittstelle(String apiKey, String apiSecret, int centisekunden){
 		this.apiKey = apiKey;
 		this.apiSecret = apiSecret;
-		this.sekunden = sekunden;
+		this.centisekunden = centisekunden;
 		
 		//Authorizer einbinden
 		Authorizer auth = new Authorizer() {
@@ -112,7 +112,7 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 			public void onEvent(String channel, String event, String data) {
 				System.out.println("Event empfangen: " + data);
 				
-				ts.startTimer(sekunden);
+				ts.startTimer(centisekunden);
 				
 				//data hat die Form " true # Satz spielen # 2 # offen "
 				String[] dataSplit = data.split(" # ");

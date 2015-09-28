@@ -16,16 +16,16 @@ public class FileSchnittstelle {
 	TimerStart ts = new TimerStart();
 	
 	//Spielzugdauer wird festgelegt
-	int sekunden;
+	int centisekunden;
 	
 	//Uebergabewert (spielerwahl) gibt an, welcher Spieler zugewiesen wurde
 	//Uebergabewert (dateipfad) gibt an, welcher der Kommunikationspfad ist
 	//Uebergabewert (sekunden) gibt an, wie lange ein Spielzug dauern darf
-	public FileSchnittstelle (String spielerwahl, String dateipfad, int sekunden)
+	public FileSchnittstelle (String spielerwahl, String dateipfad, int centisekunden)
 	{
 		this.spielerwahl = spielerwahl;
 		this.dateipfad = dateipfad;
-		this.sekunden = sekunden;
+		this.centisekunden = centisekunden;
 	}
 	
 	//Communicate Methode sendet spielzug an Server und gibt StringArray vom Server zurueck
@@ -103,7 +103,7 @@ public class FileSchnittstelle {
 		        new FileInputStream(dateipfad + "server2spieler" + spielerwahl + ".xml"));
 		    
 		    //Startet den Timer, der die Spielzugzeit bestimmt und gibt nach Ablauf eine Meldung in der Konsole aus
-		    ts.startTimer(sekunden);
+		    ts.startTimer(centisekunden);
 		    
 		    //root-Element wird ausgelesen
 		    Element element = document.getDocumentElement();
