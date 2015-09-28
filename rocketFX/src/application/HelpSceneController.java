@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 
 public class HelpSceneController implements  Initializable{
 	@FXML ImageView playBtn;
+	@FXML Button backToScreen;
 	
 	private DBConnector dbConn;
 	private ReusableControllerFunctions reuse;
@@ -29,6 +30,9 @@ public class HelpSceneController implements  Initializable{
 		    	 reuse.setNewScene("StartScene.fxml");
 		     }
 		});
+		
+		
+		
 
 		
 		

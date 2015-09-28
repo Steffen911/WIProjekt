@@ -1,9 +1,12 @@
 package application;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import datenbank.DBConnector;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,6 +23,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class SettingsSceneController implements  Initializable{
@@ -35,7 +40,10 @@ public class SettingsSceneController implements  Initializable{
 	@FXML TextField GegnerEdit;
 	@FXML Label PfadKeyLabel;
 	@FXML Label SecretLabel;
-
+	@FXML Button chooserBtn;
+	@FXML Slider zeitslider;
+	@FXML Label zeitlabel;
+	
 	private DBConnector dbConn;
 	private ReusableControllerFunctions reuse;
 	
@@ -64,6 +72,7 @@ public class SettingsSceneController implements  Initializable{
 				PfadKeyLabel.setText("Key");
 				SecretEdit.setVisible(true);
 				SecretLabel.setVisible(true);
+				chooserBtn.setVisible(false);
 			}
 		});
 		radioBtnFile.setOnAction(new EventHandler<ActionEvent>() {
@@ -71,6 +80,20 @@ public class SettingsSceneController implements  Initializable{
 				PfadKeyLabel.setText("Pfad");
 				SecretEdit.setVisible(false);
 				SecretLabel.setVisible(false);
+				chooserBtn.setVisible(true);
+			}
+		});
+		
+		chooserBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override public void handle(ActionEvent event) {
+		
+				DirectoryChooser directoryChooser = new DirectoryChooser();
+				Stage stage = new Stage();
+				File selectedDirectory = directoryChooser.showDialog(stage);
+				if(selectedDirectory != null){
+					selectedDirectory.getAbsolutePath();
+				}
+				PfadKeyEdit.setText(selectedDirectory.getPath());
 			}
 		});
 		
@@ -81,6 +104,16 @@ public class SettingsSceneController implements  Initializable{
 		     }
 		});
 
+		
+		zeitslider.valueProperty().addListener(new ChangeListener<Number>() {
+		      @Override public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
+		        if (newValue == null) {
+		          zeitlabel.setText("");
+		          return;
+		        }
+		        zeitlabel.setText(String.format( "%.1f sec",(Math.round(newValue.doubleValue()*10)*0.1)));
+		      }
+		    });		
 		
 	}
 	

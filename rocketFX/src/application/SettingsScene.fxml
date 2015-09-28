@@ -48,7 +48,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="zeitlabel" layoutX="150.0" layoutY="235.0" text="&lt;Wert&gt; sec">
+            <Label fx:id="zeitlabel" layoutX="150.0" layoutY="235.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -88,6 +88,7 @@
                   <Image url="@../../pictures/fragezeichen.png" />
                </image>
             </ImageView>
+            <Button fx:id="chooserBtn" layoutX="603.0" layoutY="263.0" mnemonicParsing="false" text="..." visible="false" />
          </children>
       </Pane>
    </children>
