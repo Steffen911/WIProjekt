@@ -55,6 +55,10 @@ public class SettingsSceneController implements  Initializable{
 		
 		playBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
+				Spiel spiel = reuse.getSpiel();
+				spiel.setGEGNER(GegnerEdit.getText());
+				spiel.saveSpielInDB();
+				spiel.addNewSatz();
 				reuse.setNewScene("GameScene.fxml");
 			}
 		});

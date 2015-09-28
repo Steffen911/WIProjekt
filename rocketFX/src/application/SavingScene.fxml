@@ -44,10 +44,10 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField layoutX="216.0" layoutY="146.0" />
+            <TextField fx:id="gewinnerEdit" layoutX="216.0" layoutY="146.0" />
             <TextField layoutX="216.0" layoutY="228.0" />
-            <TextArea layoutX="216.0" layoutY="273.0" prefHeight="107.0" prefWidth="270.0" />
-            <TextField layoutX="216.0" layoutY="188.0" />
+            <TextArea fx:id="zuegeEdit" layoutX="216.0" layoutY="273.0" prefHeight="107.0" prefWidth="270.0" />
+            <TextField fx:id="starterEdit" layoutX="216.0" layoutY="188.0" />
             <Label layoutX="90.0" layoutY="185.0" text="Starter:">
                <font>
                   <Font size="20.0" />

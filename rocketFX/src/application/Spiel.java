@@ -39,6 +39,10 @@ public class Spiel {
 		ID = id;
 	}
 	
+	public void updateSpielInDB(){
+		db.updateSpiel(ID, SIEGER, PUNKTE);
+	}
+	
 	
 	/*** Getter and Setter ***/
 	public String getSIEGER() {

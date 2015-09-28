@@ -41,6 +41,21 @@ public class DBConnector {
 			}
 	}
 	
+	public void updateSpiel(int id, String sieger, int punkte){
+		try {
+			  Statement stmt = con.createStatement(); 
+			  String sql = "UPDATE SPIELE SET SIEGER = '"+sieger+"', PUNKTE = "+punkte+" WHERE ID = "+id;
+			  stmt.executeQuery(sql);  
+			  
+		      // Statement schliessen
+		      stmt.close(); 
+		      con.commit();
+
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+	}
+	
 	public void insertNewSatz(int spielID,int satzID,String starter, String sieger, String zuegeIch, String zuegeGegner){
 		try {
 			  Statement stmt = con.createStatement(); 

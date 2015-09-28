@@ -66,4 +66,13 @@ public class Satz {
 	public int getSATZID() {
 		return SATZID;
 	}
+
+	public void setZUEGEICH(String zUEGEICH) {
+		ZUEGEICH = zUEGEICH;
+	}
+
+	public void setZUEGEGEGNER(String zUEGEGEGNER) {
+		ZUEGEGEGNER = zUEGEGEGNER;
+	}
+	
 }

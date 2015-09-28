@@ -38,6 +38,7 @@ public class StartSceneController implements  Initializable{
 		
 		spielStartenBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
+				reuse.neuesSpiel();
 				reuse.setNewScene("SettingsScene.fxml");
 			}
 		});
