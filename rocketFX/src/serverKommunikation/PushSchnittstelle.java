@@ -64,6 +64,34 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 		
 	} //end of constructor
 	
+	public void connect(){
+		// Pusherinstanz erzeugen & Connection durchfuehren
+				pusher = new Pusher(apiKey, opt);
+				pusher.disconnect();
+				pusher.connect(this);
+						
+				// Channel abonnieren
+				privateChannel = pusher.subscribePrivate(apiChannel, new PrivateChannelEventListener() {
+
+					// Authentication-Fehler ausgeben
+					@Override
+					public void onAuthenticationFailure(String message, Exception e) {
+						System.out.println(String.format("Authentication-Fehler: [%s], Exception: [%s]", message, e));
+					}
+
+					// Erfolgreiche Subscription melden
+					@Override
+					public void onSubscriptionSucceeded(String arg0) {
+						System.out.println("Subscription zu Channel " + apiChannel + " durchgefuehrt.");
+					}
+
+					// Event
+					@Override
+					public void onEvent(String arg0, String arg1, String arg2) {
+					}
+				});
+	}
+	
 	//Communicate Methode sendet spielzug an Server und gibt StringArray vom Server zurueck
 	public String[] communicate(int spielzug){
 		
@@ -73,7 +101,7 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 		//String[3] = sieger
 		String[] returnString = new String[4];
 		
-		// Pusherinstanz erzeugen & Connection durchfuehren
+/*		// Pusherinstanz erzeugen & Connection durchfuehren
 		pusher = new Pusher(apiKey, opt);
 		pusher.disconnect();
 		pusher.connect(this);
@@ -91,25 +119,27 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 			@Override
 			public void onSubscriptionSucceeded(String arg0) {
 				System.out.println("Subscription zu Channel " + apiChannel + " durchgefuehrt.");
-				
+*/				
 				//Bei erfolgreicher Registrierung wird der Spielzug versendet.
 				if ("CONNECTED".equals(pusher.getConnection().getState().toString())) {
 					privateChannel.trigger("client-event", "{\"move\": \"" + spielzug + "\"}");
 					System.out.println("Nachricht wurde gesendet.");
 				}
-			}
+/*			}
 
 			// Event
 			@Override
 			public void onEvent(String arg0, String arg1, String arg2) {
 			}
 		});
-
+*/
 		// Channel binden und Events abfangen
 		privateChannel.bind(apiEvent, new PrivateChannelEventListener() {
 			@Override
 			public void onEvent(String channel, String event, String data) {
-				
+			
+			//TODO: Es werden mehrfach Events empfangen
+			//TODO: Es wird -2 als Spielzug übergeben
 				ts.startTimer(centisekunden);
 				
 				//Cut the message part from string
@@ -165,7 +195,7 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 		String[] returnString = new String[4];
 		
 		// Pusherinstanz erzeugen & Connection durchfuehren
-				pusher = new Pusher(apiKey, opt);
+/*				pusher = new Pusher(apiKey, opt);
 				pusher.disconnect();
 				pusher.connect(this);
 						
@@ -189,7 +219,7 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 					public void onEvent(String arg0, String arg1, String arg2) {
 					}
 				});
-
+*/
 				// Channel binden und Events abfangen
 				privateChannel.bind(apiEvent, new PrivateChannelEventListener() {
 					@Override

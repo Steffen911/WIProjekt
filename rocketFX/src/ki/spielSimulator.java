@@ -4,7 +4,7 @@ import serverKommunikation.*;
 
 public class spielSimulator {
 	
-	private static String spielerwahl = "x";
+	private static String spielerwahl = "o";
 
 	public static void main(String[] args) {
 		
@@ -15,9 +15,12 @@ public class spielSimulator {
 		
 		//Pushschnittstelle (Einkommentieren fuer Push)
 		//Credentials steffen
-		//PushSchnittstelle sst = new PushSchnittstelle("c216d52b4b4db2df78b2", "54f848263f22144e49f4", 50);
+		PushSchnittstelle sst = new PushSchnittstelle("c216d52b4b4db2df78b2", "54f848263f22144e49f4", 50);
 		//Credentials stefan
-		PushSchnittstelle sst = new PushSchnittstelle("d7d48c4729507d0b320f", "b8130fe6eec5ae953e6a", 50);
+		//PushSchnittstelle sst = new PushSchnittstelle("d7d48c4729507d0b320f", "b8130fe6eec5ae953e6a", 50);
+		
+		//Pusher connect
+		sst.connect();
 		
 		String[] rueckgabe = new String[4];
 		
