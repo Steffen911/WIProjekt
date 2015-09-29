@@ -9,8 +9,8 @@ public class KI {
 	private String gegnerStein;
 	
 	//Gibt positionen der steine wieder
-	private Point eigenerPunkt;
-	private Point gegnerPunkt;
+	private Point eigenerPunkt = new Point(-1,-1);
+	private Point gegnerPunkt = new Point(-1,-1);
 	
 	//Spielfeld anlegen
 	private String[][] spielfeld = new String[7][6];
@@ -37,8 +37,6 @@ public class KI {
 			}
 		}
 	}
-	
-	//TODO: zeile zurueckgeben wo gegnerstein liegt und mein stein liegt
 	
 	//Nimmt eine Spalte zwischen 0 und 6 entgegen
 	//Gibt einen integer mit dem eigenen Spielzug zurueck

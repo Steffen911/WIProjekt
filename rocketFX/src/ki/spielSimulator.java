@@ -11,7 +11,7 @@ public class spielSimulator {
 		KI ki = new KI(spielerwahl);
 		
 		//Fileschnittstelle (Einkommentieren fuer File)
-		//FileSchnittstelle sst = new FileSchnittstelle(spielerwahl, "//Users//Steffen//Dropbox//Test//", 50);
+//		FileSchnittstelle sst = new FileSchnittstelle(spielerwahl, "//Users//Steffen//Dropbox//Test//", 50);
 		
 		//Pushschnittstelle (Einkommentieren fuer Push)
 		//Credentials steffen
