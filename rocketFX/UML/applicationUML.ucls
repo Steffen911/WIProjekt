@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="application.Main" project="rocketFX" file="/rocketFX/src/application/Main.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="136" y="372"/>    
+    <position height="-1" width="-1" x="135" y="347"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="application.GameSceneController" project="rocketFX" 
     file="/rocketFX/src/application/GameSceneController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="133" y="181"/>    
+    <position height="-1" width="-1" x="127" y="145"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="application.SavingSceneController" project="rocketFX" 
     file="/rocketFX/src/application/SavingSceneController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="548" y="672"/>    
+    <position height="-1" width="-1" x="519" y="673"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -73,18 +73,18 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="application.Satz" project="rocketFX" file="/rocketFX/src/application/Satz.java" 
+  <class id="9" language="java" name="application.Spiel" project="rocketFX" file="/rocketFX/src/application/Spiel.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="120" y="720"/>    
+    <position height="-1" width="-1" x="326" y="682"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="application.Spiel" project="rocketFX" file="/rocketFX/src/application/Spiel.java" 
+  <class id="10" language="java" name="application.Satz" project="rocketFX" file="/rocketFX/src/application/Satz.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="318" y="650"/>    
+    <position height="-1" width="-1" x="135" y="680"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -92,27 +92,27 @@
     </display>  
   </class>  
   <association id="11">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="12" name="reuse">        
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="12" name="satzList"/>      
+      <multiplicity id="13" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="14">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="15" name="reuse">        
         <position height="0" width="0" x="2" y="40"/>      
       </attribute>      
-      <multiplicity id="13" minimum="0" maximum="1">        
+      <multiplicity id="16" minimum="0" maximum="1">        
         <position height="0" width="0" x="2" y="40"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="14">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="15" name="spiel"/>      
-      <multiplicity id="16" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <association id="17">    
-    <end type="SOURCE" refId="8" navigable="false">      
+    <end type="SOURCE" refId="5" navigable="false">      
       <attribute id="18" name="reuse">        
         <position height="0" width="0" x="2" y="40"/>      
       </attribute>      
@@ -124,7 +124,7 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="20">    
-    <end type="SOURCE" refId="3" navigable="false">      
+    <end type="SOURCE" refId="8" navigable="false">      
       <attribute id="21" name="reuse">        
         <position height="0" width="0" x="2" y="40"/>      
       </attribute>      
@@ -136,23 +136,23 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="23">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="24" name="reuse">        
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="24" name="spiel"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="26">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="27" name="reuse">        
         <position height="0" width="0" x="2" y="40"/>      
       </attribute>      
-      <multiplicity id="25" minimum="0" maximum="1">        
+      <multiplicity id="28" minimum="0" maximum="1">        
         <position height="0" width="0" x="2" y="40"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="26">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="27" name="satzList"/>      
-      <multiplicity id="28" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="29">    
@@ -168,7 +168,7 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="32">    
-    <end type="SOURCE" refId="7" navigable="false">      
+    <end type="SOURCE" refId="6" navigable="false">      
       <attribute id="33" name="reuse">        
         <position height="0" width="0" x="2" y="40"/>      
       </attribute>      
