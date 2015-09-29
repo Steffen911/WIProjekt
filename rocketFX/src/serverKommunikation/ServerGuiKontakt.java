@@ -21,6 +21,14 @@ public class ServerGuiKontakt {
 		pushS.connect();
 	}
 	
+	public String[] leseVomServer(){
+		if (fileSchnittstelle){
+			return fileS.reader();
+		}else{
+			return pushS.reader();
+		}
+	}
+	
 	public String[] sendZugAnServer(int spielzug){
 		if (fileSchnittstelle){
 			return fileS.communicate(spielzug);

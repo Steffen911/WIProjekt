@@ -64,6 +64,8 @@ public class GameSceneController implements  Initializable{
 		/*ToDo: Ki Methode getGegner y, Rueckgabe bei eigenenm Zug Position 
 		 * => Ki gibt x,y Position der Steine zurueck, sodass GUI nicht auch noch rechnet (Point oder array)*/
 		
+		rueckgabe = server.leseVomServer();
+		
 		while(!rueckgabe[1].equals("beendet")){
 			gegnerZug = Integer.parseInt(rueckgabe[2]);
 			// Gegnerzug in GUI anzeigen
