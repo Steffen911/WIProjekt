@@ -31,7 +31,7 @@ public class SavingSceneController implements  Initializable{
 		Satz satz = (reuse.getSpiel()).getCurrentSatz();
 		gewinnerEdit.setText(satz.getSIEGER());
 		starterEdit.setText(satz.getSTARTER());
-		zuegeEdit.setText("rocket: "+ satz.getZUEGEICH()+"/n"+
+		zuegeEdit.setText("rocket: "+ satz.getZUEGEICH()+"\n"+
 						"Gegner: "+ satz.getZUEGEGEGNER());
 		
 		saveBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -41,7 +41,7 @@ public class SavingSceneController implements  Initializable{
 				satz.setSTARTER(starterEdit.getText());
 				//ToDo: Zuege speichern (String schneiden)
 				String zuege = zuegeEdit.getText().substring(zuegeEdit.getText().indexOf(" ")+1);
-				zuege = zuege.substring(0, zuege.indexOf("/n"));
+				zuege = zuege.substring(0, zuege.indexOf("\n"));
 				satz.setZUEGEICH(zuege);
 				zuege = zuegeEdit.getText().substring(zuegeEdit.getText().indexOf("Gegner: ")+1);
 				satz.setZUEGEGEGNER(zuege); 

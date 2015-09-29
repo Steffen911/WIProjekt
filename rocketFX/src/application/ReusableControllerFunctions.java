@@ -4,12 +4,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import serverKommunikation.ServerGuiKontakt;
 
 public class ReusableControllerFunctions {
 
 	private static String lastSceneOnBack;
 	private static String newScene;
 	private static Spiel spiel;
+	private static ServerGuiKontakt server;
 	
 	
 	public ReusableControllerFunctions() {
@@ -46,5 +48,17 @@ public class ReusableControllerFunctions {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void createServer(String spielerwahl, String dateipfad, int centisekunden){
+		server = new ServerGuiKontakt(spielerwahl, dateipfad, centisekunden);
+	}
+
+	public void createServer(String apiKey, String apiSecret, int centisekunden, String spielerwahl){
+		server = new ServerGuiKontakt(apiKey, apiSecret, centisekunden, spielerwahl);
+	}
+	
+	public ServerGuiKontakt getServer(){
+		return server;
 	}
 }

@@ -44,7 +44,10 @@ public class SettingsSceneController implements  Initializable{
 	@FXML Slider zeitslider;
 	@FXML Label zeitlabel;
 	
-	private DBConnector dbConn;
+	private String spielerwahl;
+	private boolean pushSchnittstelle;
+	private int zeit;
+	
 	private ReusableControllerFunctions reuse;
 	
 	
@@ -52,13 +55,20 @@ public class SettingsSceneController implements  Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		reuse = new ReusableControllerFunctions();
-		
+
 		playBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
+				// SpielObjekt
 				Spiel spiel = reuse.getSpiel();
 				spiel.setGEGNER(GegnerEdit.getText());
 				spiel.saveSpielInDB();
 				spiel.addNewSatz();
+				// ServerObjekt
+				if(pushSchnittstelle){
+					reuse.createServer(PfadKeyEdit.getText(), SecretEdit.getText(), zeit, spielerwahl);
+				}else{
+					reuse.createServer(spielerwahl, PfadKeyEdit.getText(), zeit);
+				}
 				reuse.setNewScene("GameScene.fxml");
 			}
 		});
@@ -77,6 +87,7 @@ public class SettingsSceneController implements  Initializable{
 				SecretEdit.setVisible(true);
 				SecretLabel.setVisible(true);
 				chooserBtn.setVisible(false);
+				pushSchnittstelle = true;
 			}
 		});
 		radioBtnFile.setOnAction(new EventHandler<ActionEvent>() {
@@ -85,8 +96,20 @@ public class SettingsSceneController implements  Initializable{
 				SecretEdit.setVisible(false);
 				SecretLabel.setVisible(false);
 				chooserBtn.setVisible(true);
+				pushSchnittstelle = false;
 			}
 		});
+		
+		radioBtnO.setOnAction(new EventHandler<ActionEvent>() {
+			@Override public void handle(ActionEvent event) {
+				spielerwahl = "o";
+			}
+		});	
+		radioBtnX.setOnAction(new EventHandler<ActionEvent>() {
+			@Override public void handle(ActionEvent event) {
+				spielerwahl = "x";
+			}
+		});	
 		
 		chooserBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
@@ -115,7 +138,8 @@ public class SettingsSceneController implements  Initializable{
 		          zeitlabel.setText("");
 		          return;
 		        }
-		        zeitlabel.setText(String.format( "%.1f sec",(Math.round(newValue.doubleValue()*10)*0.1)));
+		        zeit = (int) Math.round(newValue.doubleValue()*10);
+		        zeitlabel.setText(String.format( "%.1f sec",zeit*0.1));
 		      }
 		    });		
 		
