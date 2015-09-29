@@ -30,13 +30,13 @@ public class FileSchnittstelle {
 	
 	//Communicate Methode sendet spielzug an Server und gibt StringArray vom Server zurueck
 	public String[] communicate(int spielzug) {
-		fileWriter(spielzug);
-		return fileReader();
+		writer(spielzug);
+		return reader();
 	}
 	
 	//File-Schnittstelle: AgentFile erstellen
 	//Uebergabewert (spielzug) gibt an, in welche Spalte gelegt werden soll
-	public void fileWriter (int spielzug) {
+	public void writer (int spielzug) {
 	
 		//Auswahl, ob Spieler x oder o gewaehlt wurde
 		//"x" = Spieler x
@@ -63,7 +63,7 @@ public class FileSchnittstelle {
 	
 	//File-Schnittstelle: ServerFile lesen
 	//Gibt ein String-Array zurueck
-	public String[] fileReader () {
+	public String[] reader () {
 		
 		//String[0] = freigabe
 		//String[1] = satzstatus

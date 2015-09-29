@@ -25,7 +25,7 @@ public class spielSimulator {
 		String[] rueckgabe = new String[4];
 		
 		//Lies Server XML das erste mal aus, berechne den ersten Spielzug und springe im Anschluss in die Dialogschleife
-		rueckgabe = sst.fileReader();
+		rueckgabe = sst.reader();
 		
 		int spielzug;
 		
