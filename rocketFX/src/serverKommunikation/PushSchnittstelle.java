@@ -102,7 +102,6 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 			// Event
 			@Override
 			public void onEvent(String arg0, String arg1, String arg2) {
-				System.out.println(arg0 + arg1 + arg2);
 			}
 		});
 
@@ -110,11 +109,16 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 		privateChannel.bind(apiEvent, new PrivateChannelEventListener() {
 			@Override
 			public void onEvent(String channel, String event, String data) {
-				System.out.println("Event empfangen: " + data);
 				
 				ts.startTimer(centisekunden);
 				
-				//data hat die Form " true # Satz spielen # 2 # offen "
+				//Cut the message part from string
+				data = data.replace("{\"message\":\"", "");
+				data = data.replace("\"}", "");
+				
+				System.out.println("Event empfangen: " + data);
+				
+				//data hat die Form "true # Satz spielen # 2 # offen"
 				String[] dataSplit = data.split(" # ");
 				
 				for(int i=0; i<returnString.length;i++){
@@ -183,7 +187,6 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 					// Event
 					@Override
 					public void onEvent(String arg0, String arg1, String arg2) {
-						System.out.println(arg0 + arg1 + arg2);
 					}
 				});
 
@@ -191,11 +194,16 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 				privateChannel.bind(apiEvent, new PrivateChannelEventListener() {
 					@Override
 					public void onEvent(String channel, String event, String data) {
-						System.out.println("Event empfangen: " + data);
 						
 						ts.startTimer(centisekunden);
 						
-						//data hat die Form " true # Satz spielen # 2 # offen "
+						//Cut the message part from string
+						data = data.replace("{\"message\":\"", "");
+						data = data.replace("\"}", "");
+						
+						System.out.println("Event empfangen: " + data);
+						
+						//data hat die Form "true # Satz spielen # 2 # offen"
 						String[] dataSplit = data.split(" # ");
 						
 						for(int i=0; i<returnString.length;i++){

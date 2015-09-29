@@ -39,7 +39,7 @@ public class KI {
 		int spielzug = -1;
 		
 		//Falls eigener Agent startet wird -1 uebergeben
-		if(gegnerZug != -1){
+		if(gegnerZug >= 0){
 			
 			for(int i=0; i<6; i++) {
 				if(spielfeld[gegnerZug][i] == "_"){
