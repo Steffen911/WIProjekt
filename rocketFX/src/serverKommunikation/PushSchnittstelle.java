@@ -92,139 +92,40 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 				});
 	}
 	
+	//Writer sendet spielzug an Server
+	public void writer(int spielzug){
+	
+		//Bei erfolgreicher Registrierung wird der Spielzug versendet.
+		if ("CONNECTED".equals(pusher.getConnection().getState().toString())) {
+			privateChannel.trigger("client-event", "{\"move\": \"" + spielzug + "\"}");
+			System.out.println("Nachricht wurde gesendet.");
+		}
+		
+	}
+	
 	//Communicate Methode sendet spielzug an Server und gibt StringArray vom Server zurueck
 	public String[] communicate(int spielzug){
 		
-		//String[0] = freigabe
-		//String[1] = satzstatus
-		//String[2] = gegnerzug
-		//String[3] = sieger
-		String[] returnString = new String[4];
-		
-/*		// Pusherinstanz erzeugen & Connection durchfuehren
-		pusher = new Pusher(apiKey, opt);
-		pusher.disconnect();
-		pusher.connect(this);
-				
-		// Channel abonnieren
-		privateChannel = pusher.subscribePrivate(apiChannel, new PrivateChannelEventListener() {
-
-			// Authentication-Fehler ausgeben
-			@Override
-			public void onAuthenticationFailure(String message, Exception e) {
-				System.out.println(String.format("Authentication-Fehler: [%s], Exception: [%s]", message, e));
-			}
-
-			// Erfolgreiche Subscription melden
-			@Override
-			public void onSubscriptionSucceeded(String arg0) {
-				System.out.println("Subscription zu Channel " + apiChannel + " durchgefuehrt.");
-*/				
-				//Bei erfolgreicher Registrierung wird der Spielzug versendet.
-				if ("CONNECTED".equals(pusher.getConnection().getState().toString())) {
-					privateChannel.trigger("client-event", "{\"move\": \"" + spielzug + "\"}");
-					System.out.println("Nachricht wurde gesendet.");
-				}
-/*			}
-
-			// Event
-			@Override
-			public void onEvent(String arg0, String arg1, String arg2) {
-			}
-		});
-*/
-		// Channel binden und Events abfangen
-		privateChannel.bind(apiEvent, new PrivateChannelEventListener() {
-			@Override
-			public void onEvent(String channel, String event, String data) {
-			
-			//TODO: Es werden mehrfach Events empfangen
-			//TODO: Es wird -2 als Spielzug übergeben
-				ts.startTimer(centisekunden);
-				
-				//Cut the message part from string
-				data = data.replace("{\"message\":\"", "");
-				data = data.replace("\"}", "");
-				
-				System.out.println("Event empfangen: " + data);
-				
-				//data hat die Form "true # Satz spielen # 2 # offen"
-				String[] dataSplit = data.split(" # ");
-				
-				for(int i=0; i<returnString.length;i++){
-					returnString[i] = dataSplit[i];
-				}
-				
-			}
-
-			@Override
-			public void onSubscriptionSucceeded(String arg0) {
-			}
-
-			@Override
-			public void onAuthenticationFailure(String arg0, Exception arg1) {
-			}
-		});
-
-		System.out.println(pusher.getConnection().getState().toString());
-	
-		//wait for event and break when server response is received;
-		while(true){
-			
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e1) {
-				e1.printStackTrace();
-			}
-			
-			if (returnString[0] != null){
-				break;
-			}
-		}//end of while
-		
-		return returnString;
+		writer(spielzug);				
+		return reader();
 		
 	}//end of communicate
 	
-	//FileReader gibt erste Serverausgabe zurück
-	public String[] fileReader(){
+	//Reader gibt Serverausgabe zurück
+	public String[] reader(){
 		//String[0] = freigabe
 		//String[1] = satzstatus
 		//String[2] = gegnerzug
 		//String[3] = sieger
 		String[] returnString = new String[4];
 		
-		// Pusherinstanz erzeugen & Connection durchfuehren
-/*				pusher = new Pusher(apiKey, opt);
-				pusher.disconnect();
-				pusher.connect(this);
-						
-				// Channel abonnieren
-				privateChannel = pusher.subscribePrivate(apiChannel, new PrivateChannelEventListener() {
-
-					// Authentication-Fehler ausgeben
-					@Override
-					public void onAuthenticationFailure(String message, Exception e) {
-						System.out.println(String.format("Authentication-Fehler: [%s], Exception: [%s]", message, e));
-					}
-
-					// Erfolgreiche Subscription melden
-					@Override
-					public void onSubscriptionSucceeded(String arg0) {
-						System.out.println("Subscription zu Channel " + apiChannel + " durchgefuehrt.");
-					}
-
-					// Event
-					@Override
-					public void onEvent(String arg0, String arg1, String arg2) {
-					}
-				});
-*/
 				// Channel binden und Events abfangen
 				privateChannel.bind(apiEvent, new PrivateChannelEventListener() {
 					@Override
 					public void onEvent(String channel, String event, String data) {
 						
+						//TODO: Es werden mehrfach Events empfangen
+						//TODO: Es wird -2 als Spielzug übergeben
 						ts.startTimer(centisekunden);
 						
 						//Cut the message part from string
