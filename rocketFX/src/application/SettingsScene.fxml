@@ -53,7 +53,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="playBtn" layoutX="570.0" layoutY="421.0" mnemonicParsing="false" text="Spiel starten" />
+            <Button fx:id="playBtn" layoutX="544.0" layoutY="432.0" mnemonicParsing="false" text="Speichern &amp; Spielen" />
             <RadioButton fx:id="radioBtnPush" layoutX="381.0" layoutY="179.0" mnemonicParsing="false" selected="true" text="Push">
                <font>
                   <Font size="18.0" />
@@ -89,6 +89,7 @@
                </image>
             </ImageView>
             <Button fx:id="chooserBtn" layoutX="603.0" layoutY="263.0" mnemonicParsing="false" text="..." visible="false" />
+            <Button fx:id="saveBtn" layoutX="412.0" layoutY="432.0" mnemonicParsing="false" text="Speichern &amp; Zurück" />
          </children>
       </Pane>
    </children>

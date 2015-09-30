@@ -41,20 +41,15 @@
                   <Font size="23.0" />
                </font>
             </Label>
-            <Button fx:id="saveBtn" layoutX="500.0" layoutY="423.0" mnemonicParsing="false" text="Satz speichern / abbrechen" />
+            <Button fx:id="saveBtn" layoutX="507.0" layoutY="432.0" mnemonicParsing="false" text="Satz speichern / abbrechen" />
             <Label layoutX="238.0" layoutY="62.0" text="4 Gewinnt - ">
                <font>
                   <Font size="45.0" />
                </font>
             </Label>
-            <ImageView fx:id="helpBtn" fitHeight="33.0" fitWidth="49.0" layoutX="56.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="helpBtn" fitHeight="33.0" fitWidth="49.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../pictures/fragezeichen.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="playBtn" fitHeight="62.0" fitWidth="33.0" layoutX="13.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../pictures/play.png" />
                </image>
             </ImageView>
             <GridPane layoutX="107.0" layoutY="199.0" prefHeight="185.0" prefWidth="216.0">

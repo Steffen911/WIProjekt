@@ -22,13 +22,13 @@
                   <Image url="@../../pictures/rocket_ohne.png" />
                </image>
             </ImageView>
-            <Button fx:id="deleteBtn" layoutX="581.0" layoutY="424.0" mnemonicParsing="false" text="Verwerfen" />
+            <Button fx:id="deleteBtn" layoutX="597.0" layoutY="432.0" mnemonicParsing="false" text="Verwerfen" />
             <Label layoutX="82.0" layoutY="56.0" text="4 Gewinnt speichern- ">
                <font>
                   <Font size="45.0" />
                </font>
             </Label>
-            <Button fx:id="saveBtn" layoutX="496.0" layoutY="424.0" mnemonicParsing="false" text="Speichern" />
+            <Button fx:id="saveBtn" layoutX="512.0" layoutY="432.0" mnemonicParsing="false" text="Speichern" />
             <Label layoutX="90.0" layoutY="143.0" text="Gewinner:">
                <font>
                   <Font size="20.0" />

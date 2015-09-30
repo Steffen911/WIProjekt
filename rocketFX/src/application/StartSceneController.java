@@ -25,6 +25,7 @@ public class StartSceneController implements  Initializable{
 	@FXML Button spielStartenBtn;
 	@FXML ImageView helpBtn;
 	@FXML ImageView statistikBtn;
+	@FXML ImageView settingsBtn;
 
 	private DBConnector dbConn;
 	private ReusableControllerFunctions reuse;
@@ -41,6 +42,13 @@ public class StartSceneController implements  Initializable{
 				reuse.neuesSpiel();
 				reuse.setNewScene("SettingsScene.fxml");
 			}
+		});
+		
+		settingsBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		     @Override
+		     public void handle(MouseEvent event) {
+		    	 reuse.setNewScene("SettingsScene.fxml");
+		     }
 		});
 		
 		statistikBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

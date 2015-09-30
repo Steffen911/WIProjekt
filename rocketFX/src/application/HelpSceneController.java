@@ -14,6 +14,8 @@ import javafx.scene.input.MouseEvent;
 
 public class HelpSceneController implements  Initializable{
 	@FXML ImageView playBtn;
+	@FXML ImageView settingsBtn;
+	@FXML ImageView statistikBtn;
 	@FXML Button backToScreen;
 	
 	private DBConnector dbConn;
@@ -31,6 +33,19 @@ public class HelpSceneController implements  Initializable{
 		     }
 		});
 		
+		settingsBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		     @Override
+		     public void handle(MouseEvent event) {
+		    	 reuse.setNewScene("SettingsScene.fxml");
+		     }
+		});
+		
+		statistikBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		     @Override
+		     public void handle(MouseEvent event) {
+		    	 reuse.setNewScene("StatistikScene.fxml");
+		     }
+		});
 		
 		
 

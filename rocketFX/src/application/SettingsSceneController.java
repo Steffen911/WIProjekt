@@ -43,6 +43,7 @@ public class SettingsSceneController implements  Initializable{
 	@FXML Button chooserBtn;
 	@FXML Slider zeitslider;
 	@FXML Label zeitlabel;
+	@FXML Button saveBtn;
 	
 	private String spielerwahl;
 	private boolean pushSchnittstelle;
@@ -72,6 +73,8 @@ public class SettingsSceneController implements  Initializable{
 				reuse.setNewScene("GameScene.fxml");
 			}
 		});
+		
+//ToDO:saveBtn speichern und zurueck
 		
 		ToggleGroup pushFileToggle = new ToggleGroup();
 		radioBtnFile.setToggleGroup(pushFileToggle);

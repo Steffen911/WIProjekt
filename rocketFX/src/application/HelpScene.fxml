@@ -38,6 +38,16 @@
                </font>
             </TextArea>
             <Button fx:id="backToScreen" layoutX="609.0" layoutY="432.0" mnemonicParsing="false" text="Zurück" />
+            <ImageView fx:id="settingsBtn" fitHeight="62.0" fitWidth="33.0" layoutX="56.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/settings.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="statistikBtn" fitHeight="62.0" fitWidth="33.0" layoutX="104.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/statistik_S.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

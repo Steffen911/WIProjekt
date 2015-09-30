@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 public class StatistikSceneController implements  Initializable{
 	@FXML ImageView playBtn;
 	@FXML ImageView helpBtn;
+	@FXML ImageView settingsBtn;
 	
 	private DBConnector dbConn;
 	private ReusableControllerFunctions reuse;
@@ -28,6 +29,13 @@ public class StatistikSceneController implements  Initializable{
 		     @Override
 		     public void handle(MouseEvent event) {
 		    	 reuse.setNewScene("StartScene.fxml");
+		     }
+		});
+		
+		settingsBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		     @Override
+		     public void handle(MouseEvent event) {
+		    	 reuse.setNewScene("SettingsScene.fxml");
 		     }
 		});
 		
