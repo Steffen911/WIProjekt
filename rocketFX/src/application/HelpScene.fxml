@@ -17,12 +17,17 @@
             <ColorAdjust />
          </effect>
          <children>
+            <ImageView fitHeight="533.0" fitWidth="703.0" layoutX="-6.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/background_stars.gif" />
+               </image>
+            </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="517.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../pictures/rocket_ohne.png" />
                </image>
             </ImageView>
-            <Label layoutX="295.0" layoutY="56.0" text="Hilfe">
+            <Label layoutX="295.0" layoutY="56.0" text="Hilfe" textFill="WHITE">
                <font>
                   <Font size="45.0" />
                </font>

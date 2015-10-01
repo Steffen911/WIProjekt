@@ -17,29 +17,34 @@
             <ColorAdjust />
          </effect>
          <children>
+            <ImageView fitHeight="543.0" fitWidth="808.0" layoutX="-10.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/background_stars.gif" />
+               </image>
+            </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="517.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../pictures/rocket_ohne.png" />
                </image>
             </ImageView>
             <Button fx:id="deleteBtn" layoutX="597.0" layoutY="432.0" mnemonicParsing="false" text="Verwerfen" />
-            <Label layoutX="82.0" layoutY="56.0" text="4 Gewinnt speichern- ">
+            <Label layoutX="82.0" layoutY="56.0" text="4 Gewinnt speichern- " textFill="WHITE">
                <font>
                   <Font size="45.0" />
                </font>
             </Label>
             <Button fx:id="saveBtn" layoutX="512.0" layoutY="432.0" mnemonicParsing="false" text="Speichern" />
-            <Label layoutX="90.0" layoutY="143.0" text="Gewinner:">
+            <Label layoutX="90.0" layoutY="143.0" text="Gewinner:" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="90.0" layoutY="225.0" text="Spielstand:">
+            <Label layoutX="90.0" layoutY="225.0" text="Spielstand:" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label layoutX="90.0" layoutY="266.0" text="Züge:">
+            <Label layoutX="90.0" layoutY="266.0" text="Züge:" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -48,7 +53,7 @@
             <TextField layoutX="216.0" layoutY="228.0" />
             <TextArea fx:id="zuegeEdit" layoutX="216.0" layoutY="273.0" prefHeight="107.0" prefWidth="270.0" />
             <TextField fx:id="starterEdit" layoutX="216.0" layoutY="188.0" />
-            <Label layoutX="90.0" layoutY="185.0" text="Starter:">
+            <Label layoutX="90.0" layoutY="185.0" text="Starter:" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

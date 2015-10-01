@@ -18,6 +18,11 @@
             <ColorAdjust />
          </effect>
          <children>
+            <ImageView fitHeight="532.0" fitWidth="728.0" layoutX="-5.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/background_stars.gif" />
+               </image>
+            </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="517.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../pictures/rocket_ohne.png" />
@@ -38,7 +43,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Label layoutX="190.0" layoutY="58.0" text="Willkommen bei">
+            <Label layoutX="190.0" layoutY="58.0" text="Willkommen bei" textFill="WHITE">
                <font>
                   <Font size="42.0" />
                </font>
