@@ -77,7 +77,7 @@
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <TextField fx:id="PfadKeyEdit" layoutX="455.0" layoutY="263.0" />
+            <TextField fx:id="KeyEdit" layoutX="455.0" layoutY="263.0" />
             <TextField fx:id="SecretEdit" layoutX="455.0" layoutY="307.0" />
             <Label fx:id="SecretLabel" layoutX="373.0" layoutY="306.0" text="Secret" textFill="WHITE">
                <font>
@@ -95,6 +95,7 @@
             </ImageView>
             <Button fx:id="chooserBtn" layoutX="603.0" layoutY="263.0" mnemonicParsing="false" text="..." visible="false" />
             <Button fx:id="saveBtn" layoutX="412.0" layoutY="432.0" mnemonicParsing="false" text="Speichern &amp; Zurück" />
+            <TextField fx:id="PfadEdit" layoutX="455.0" layoutY="263.0" visible="false" />
          </children>
       </Pane>
    </children>

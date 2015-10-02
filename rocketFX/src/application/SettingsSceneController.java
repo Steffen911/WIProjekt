@@ -34,7 +34,8 @@ public class SettingsSceneController implements  Initializable{
 	@FXML RadioButton radioBtnX;
 	@FXML RadioButton radioBtnPush;
 	@FXML RadioButton radioBtnFile;
-	@FXML TextField PfadKeyEdit;
+	@FXML TextField PfadEdit;
+	@FXML TextField KeyEdit;
 	@FXML TextField SecretEdit;
 	@FXML TextField Edit;
 	@FXML TextField GegnerEdit;
@@ -66,9 +67,9 @@ public class SettingsSceneController implements  Initializable{
 				spiel.addNewSatz();
 				// ServerObjekt
 				if(pushSchnittstelle){
-					reuse.createServer(PfadKeyEdit.getText(), SecretEdit.getText(), zeit, spielerwahl);
+					reuse.createServer(KeyEdit.getText(), SecretEdit.getText(), zeit, spielerwahl);
 				}else{
-					reuse.createServer(spielerwahl, PfadKeyEdit.getText(), zeit);
+					reuse.createServer(spielerwahl, PfadEdit.getText(), zeit);
 				}
 				reuse.setNewScene("GameScene.fxml");
 			}
@@ -91,6 +92,8 @@ public class SettingsSceneController implements  Initializable{
 				SecretLabel.setVisible(true);
 				chooserBtn.setVisible(false);
 				pushSchnittstelle = true;
+				KeyEdit.setVisible(true);
+				PfadEdit.setVisible(false);
 			}
 		});
 		radioBtnFile.setOnAction(new EventHandler<ActionEvent>() {
@@ -100,6 +103,8 @@ public class SettingsSceneController implements  Initializable{
 				SecretLabel.setVisible(false);
 				chooserBtn.setVisible(true);
 				pushSchnittstelle = false;
+				PfadEdit.setVisible(true);
+				KeyEdit.setVisible(false);
 			}
 		});
 		
@@ -123,7 +128,7 @@ public class SettingsSceneController implements  Initializable{
 				if(selectedDirectory != null){
 					selectedDirectory.getAbsolutePath();
 				}
-				PfadKeyEdit.setText(selectedDirectory.getPath());
+				PfadEdit.setText(selectedDirectory.getPath());
 			}
 		});
 		
