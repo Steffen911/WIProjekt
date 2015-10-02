@@ -28,7 +28,7 @@
                </image>
             </ImageView>
             <Button fx:id="deleteBtn" layoutX="597.0" layoutY="432.0" mnemonicParsing="false" text="Verwerfen" />
-            <Label layoutX="82.0" layoutY="56.0" text="4 Gewinnt speichern- " textFill="WHITE">
+            <Label layoutX="82.0" layoutY="56.0" text="4 Gewinnt speichern " textFill="WHITE">
                <font>
                   <Font size="45.0" />
                </font>
