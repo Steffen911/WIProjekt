@@ -15,7 +15,6 @@ import serverKommunikation.ServerGuiKontakt;
 public class GameSceneController implements  Initializable{
 	@FXML Button saveBtn;
 	@FXML ImageView helpBtn;
-	@FXML ImageView playBtn;
 	
 	private ReusableControllerFunctions reuse;
 	private ServerGuiKontakt server;
@@ -31,12 +30,6 @@ public class GameSceneController implements  Initializable{
 			}
 		});	
 		
-		playBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-		     @Override
-		     public void handle(MouseEvent event) {
-		    	 reuse.setNewScene("StartScene.fxml");
-		     }
-		});
 		
 		helpBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 		     @Override
