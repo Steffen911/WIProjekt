@@ -92,6 +92,10 @@ public class SettingsSceneController implements  Initializable{
 		radioBtnO.setToggleGroup(playerXOToggle);
 		radioBtnX.setToggleGroup(playerXOToggle);
 		
+		// Vorbelegung
+		spielerwahl = "o";
+		pushSchnittstelle = true;
+		
 		radioBtnPush.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
 				PfadKeyLabel.setText("Key");

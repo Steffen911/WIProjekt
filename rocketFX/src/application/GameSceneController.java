@@ -1,7 +1,9 @@
 package application;
 
+import java.awt.Point;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -9,15 +11,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import ki.KI;
 import serverKommunikation.ServerGuiKontakt;
 
 public class GameSceneController implements  Initializable{
 	@FXML Button saveBtn;
 	@FXML ImageView helpBtn;
+	@FXML GridPane GameGrid;
 	
 	private ReusableControllerFunctions reuse;
 	private ServerGuiKontakt server;
+	private KI ki;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -51,7 +58,7 @@ public class GameSceneController implements  Initializable{
 	public void playGame(){
 		int spielzug, gegnerZug;
 		String[] rueckgabe = new String[4];
-		KI ki = new KI(server.getSpielerwahl());
+		ki = new KI(server.getSpielerwahl());
 		
 		// ToDo: mit Steffen abgleichen, ob das so passt; Reader erster Spielzug, Beginn??!
 		/*ToDo: Ki Methode getGegner y, Rueckgabe bei eigenenm Zug Position 
@@ -62,12 +69,12 @@ public class GameSceneController implements  Initializable{
 		while(!rueckgabe[1].equals("beendet")){
 			gegnerZug = Integer.parseInt(rueckgabe[2]);
 			// Gegnerzug in GUI anzeigen
-			showZug(gegnerZug,true);
+			showZug(true);
 			
 			//Berechne neuen Spielzug auf Grundlage des gegnerzugs
 			spielzug = ki.zugBerechnen(gegnerZug);
 			// Spielzug Anzeigen
-			showZug(spielzug, false);
+			showZug(false);
 			//Sende errechneten Spielzug an Server und warte auf XML
 			rueckgabe = server.sendZugAnServer(spielzug);
 			
@@ -88,9 +95,18 @@ public class GameSceneController implements  Initializable{
 		}
 	}
 	
-	private void showZug(int zug, boolean gegner){
+	private void showZug(boolean gegner){
 		// Verknuepfung zu GUI: Zuege anzeigen
-		// ToDo: Spielzug in der GUI anzeigen
+		Point zugP;
+		Circle circle = new Circle(14.0);
+		if(gegner){
+			zugP = ki.getGegnerPunkt();
+			circle.setFill(Color.YELLOW);
+		}else{
+			zugP = ki.getEigenerPunkt();
+			circle.setFill(Color.RED);
+		}
+		GameGrid.add(circle, zugP.x, zugP.y);
 
 	}
 

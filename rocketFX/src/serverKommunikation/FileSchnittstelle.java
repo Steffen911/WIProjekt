@@ -56,7 +56,6 @@ public class FileSchnittstelle {
 			fileWriter.close();
 		
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -81,7 +80,6 @@ public class FileSchnittstelle {
 				Thread.sleep(300);
 				//System.out.println("Warten...");
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
