@@ -47,6 +47,12 @@ public class HelpSceneController implements  Initializable{
 		     }
 		});
 		
+		backToScreen.setOnAction(new EventHandler<ActionEvent>() {
+			@Override public void handle(ActionEvent event) {
+			reuse.setNewScene(reuse.getLastScene());
+			}
+		});
+		
 		
 
 		

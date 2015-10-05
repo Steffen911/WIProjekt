@@ -75,7 +75,14 @@ public class SettingsSceneController implements  Initializable{
 			}
 		});
 		
-//ToDO:saveBtn speichern und zurueck
+		saveBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override public void handle(ActionEvent event) {
+		//ToDO:saveBtn speichern und zurueck
+			reuse.setNewScene(reuse.getLastScene());
+			}
+		});
+		
+
 		
 		ToggleGroup pushFileToggle = new ToggleGroup();
 		radioBtnFile.setToggleGroup(pushFileToggle);
