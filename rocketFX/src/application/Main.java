@@ -16,7 +16,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			primStage = primaryStage;
-			primStage.getIcons().add(new Image("rocketFX/pictures/rocket_icon.png"));
+			//primStage.getIcons().add(new Image("rocketFX/pictures/rocket_icon.png"));
 			primStage.setTitle("Team rocket - 4 Gewinnt");
 			// Lade FXML Datei "StartScene" als erstes Fenster
 			Pane root = (Pane) FXMLLoader.load(getClass().getResource("StartScene.fxml"));
