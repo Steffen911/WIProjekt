@@ -78,7 +78,7 @@ public class FileSchnittstelle {
 			
 			try {
 				Thread.sleep(300);
-				//System.out.println("Warten...");
+				System.out.println("Warten...");
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

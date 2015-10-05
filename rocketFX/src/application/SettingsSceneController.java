@@ -69,7 +69,7 @@ public class SettingsSceneController implements  Initializable{
 				if(pushSchnittstelle){
 					reuse.createServer(KeyEdit.getText(), SecretEdit.getText(), zeit, spielerwahl);
 				}else{
-					reuse.createServer(spielerwahl, PfadEdit.getText(), zeit);
+					reuse.createServer(spielerwahl, EditPfad(PfadEdit.getText()), zeit);
 				}
 				reuse.setNewScene("GameScene.fxml");
 			}
@@ -162,6 +162,11 @@ public class SettingsSceneController implements  Initializable{
 		      }
 		    });		
 		
+	}
+	
+	private String EditPfad(String pfad){
+		pfad = pfad.replaceAll("/", "//");
+		return pfad += "//";
 	}
 	
 	
