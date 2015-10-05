@@ -30,7 +30,7 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 	private PrivateChannel privateChannel;
 	private PusherOptions opt = new PusherOptions();
 	
-	public PushSchnittstelle(String apiKey, String apiSecret, int centisekunden){
+	public PushSchnittstelle(String apiKey, String apiSecret, int centisekunden, String spielerwahl){
 		this.apiKey = apiKey;
 		this.apiSecret = apiSecret;
 		this.centisekunden = centisekunden;
