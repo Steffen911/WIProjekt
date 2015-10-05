@@ -1,5 +1,10 @@
 package application;
 	
+
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -16,7 +21,8 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			primStage = primaryStage;
-			//primStage.getIcons().add(new Image("rocketFX/pictures/rocket_icon.png"));
+			InputStream icon = new BufferedInputStream(new FileInputStream("../rocketFX/pictures/rocket_icon.png"));
+			primStage.getIcons().add(new Image(icon));
 			primStage.setTitle("Team rocket - 4 Gewinnt");
 			// Lade FXML Datei "StartScene" als erstes Fenster
 			Pane root = (Pane) FXMLLoader.load(getClass().getResource("StartScene.fxml"));
