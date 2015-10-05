@@ -69,7 +69,8 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 				pusher = new Pusher(apiKey, opt);
 				pusher.disconnect();
 				pusher.connect(this);
-						
+
+
 				// Channel abonnieren
 				privateChannel = pusher.subscribePrivate(apiChannel, new PrivateChannelEventListener() {
 
@@ -90,6 +91,7 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 					public void onEvent(String arg0, String arg1, String arg2) {
 					}
 				});
+
 	}
 	
 	//Writer sendet spielzug an Server
@@ -139,7 +141,7 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 						for(int i=0; i<returnString.length;i++){
 							returnString[i] = dataSplit[i];
 						}
-						
+									
 					}
 
 					@Override
@@ -157,18 +159,17 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 		//wait for event and break when server response is received;
 		while(true){
 			if (returnString[0] != null){
-				break;
+				return returnString;
 			}
 					
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(100);
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
 			
 		}//end of while
-		
-		return returnString;
+
 	}
 	
 	// Methoden
