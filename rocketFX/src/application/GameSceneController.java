@@ -101,13 +101,14 @@ public class GameSceneController implements  Initializable{
 		// Verknuepfung zu GUI: Zuege anzeigen
 		Point zugP;
 		zugP = ki.getGegnerPunkt();
-		if(zugP.x > 0){
+		if(zugP.x >= 0){
 			GameGrid.add(new Circle(14.0, Color.YELLOW), zugP.x, 5-zugP.y);
 		}
 		zugP = ki.getEigenerPunkt();
-		if(zugP.x > 0){
+		if(zugP.x >= 0){
 			GameGrid.add(new Circle(14.0, Color.RED), zugP.x, 5-zugP.y);
 		}
+		
 	}
 	
 
