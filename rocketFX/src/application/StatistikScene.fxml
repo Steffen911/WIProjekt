@@ -27,25 +27,37 @@
                   <Image url="@../../pictures/rocket_ohne.png" />
                </image>
             </ImageView>
-            <Label layoutX="263.0" layoutY="62.0" text="Statistik" textFill="WHITE">
+            <Label layoutX="262.0" layoutY="63.0" text="Statistik" textFill="WHITE">
                <font>
-                  <Font size="45.0" />
+                  <Font name="Arial" size="45.0" />
                </font>
             </Label>
-            <TableView layoutX="56.0" layoutY="175.0" prefHeight="200.0" prefWidth="200.0">
+            <TableView layoutX="56.0" layoutY="175.0" prefHeight="220.0" prefWidth="270.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="C1" />
                 <TableColumn prefWidth="75.0" text="C2" />
               </columns>
             </TableView>
-            <TableView layoutX="430.0" layoutY="175.0" prefHeight="200.0" prefWidth="200.0">
+            <TableView layoutX="365.0" layoutY="175.0" prefHeight="220.0" prefWidth="270.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="C1" />
                 <TableColumn prefWidth="75.0" text="C2" />
               </columns>
             </TableView>
-            <Button layoutX="56.0" layoutY="388.0" mnemonicParsing="false" text="Ändern" />
-            <Button layoutX="430.0" layoutY="388.0" mnemonicParsing="false" text="Ändern" />
+            <Button layoutX="56.0" layoutY="411.0" mnemonicParsing="false" text="Ändern">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <effect>
+                  <Reflection />
+               </effect></Button>
+            <Button layoutX="365.0" layoutY="411.0" mnemonicParsing="false" text="Ändern">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <effect>
+                  <Reflection />
+               </effect></Button>
             <ImageView fx:id="playBtn" fitHeight="62.0" fitWidth="33.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../pictures/play.png" />

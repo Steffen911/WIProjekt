@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -28,9 +29,9 @@
                   <Image url="@../../pictures/rocket_ohne.png" />
                </image>
             </ImageView>
-            <Button fx:id="spielStartenBtn" layoutX="241.0" layoutY="197.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="199.0" text="Spiel starten" textAlignment="CENTER">
+            <Button fx:id="spielStartenBtn" layoutX="228.0" layoutY="197.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="220.0" text="Spiel starten" textAlignment="CENTER">
                <font>
-                  <Font name="Calibri" size="30.0" />
+                  <Font name="Arial" size="30.0" />
                </font>
                <effect>
                   <Lighting diffuseConstant="0.98" specularConstant="0.18" specularExponent="34.42" surfaceScale="4.18">
@@ -38,14 +39,14 @@
                         <Shadow />
                      </bumpInput>
                      <light>
-                        <Light.Distant azimuth="309.77" color="#ff2e2efd" elevation="57.56" />
+                        <Light.Distant azimuth="309.77" color="#ff3939fc" elevation="57.56" />
                      </light>
                   </Lighting>
                </effect>
             </Button>
-            <Label layoutX="190.0" layoutY="58.0" text="Willkommen bei" textFill="WHITE">
+            <Label layoutX="182.0" layoutY="63.0" text="Willkommen bei" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font size="42.0" />
+                  <Font name="Arial" size="45.0" />
                </font>
             </Label>
             <ImageView fx:id="statistikBtn" fitHeight="62.0" fitWidth="33.0" layoutX="57.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">

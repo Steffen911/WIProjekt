@@ -29,64 +29,70 @@
             </ImageView>
             <RadioButton fx:id="radioBtnX" layoutX="106.0" layoutY="400.0" mnemonicParsing="false" text="X" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Bold" size="18.0" />
                </font>
             </RadioButton>
             <RadioButton fx:id="radioBtnO" layoutX="106.0" layoutY="375.0" mnemonicParsing="false" selected="true" text="O" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Bold" size="18.0" />
                </font>
             </RadioButton>
-            <Label layoutX="217.0" layoutY="58.0" text="Einstellungen" textFill="WHITE">
+            <Label layoutX="214.0" layoutY="65.0" text="Einstellungen" textFill="WHITE">
                <font>
-                  <Font size="42.0" />
+                  <Font name="Arial" size="42.0" />
                </font>
             </Label>
             <Label layoutX="102.0" layoutY="348.0" text="Symbolwahl" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
             <Slider fx:id="zeitslider" blockIncrement="0.1" layoutX="106.0" layoutY="179.0" max="10.0" min="0.5" orientation="VERTICAL" value="2.0" />
-            <Label layoutX="101.0" layoutY="151.0" text="Zeiteinstellung" textFill="WHITE">
+            <Label layoutX="82.0" layoutY="151.0" text="Zugzeit" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
             <Label fx:id="zeitlabel" layoutX="150.0" layoutY="235.0" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="playBtn" layoutX="544.0" layoutY="432.0" mnemonicParsing="false" text="Speichern &amp; Spielen" />
+            <Button fx:id="playBtn" layoutX="516.0" layoutY="411.0" mnemonicParsing="false" text="Speichern &amp; Spielen">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <effect>
+                  <Reflection />
+               </effect></Button>
             <RadioButton fx:id="radioBtnPush" layoutX="381.0" layoutY="179.0" mnemonicParsing="false" selected="true" text="Push" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Bold" size="18.0" />
                </font>
             </RadioButton>
             <RadioButton fx:id="radioBtnFile" layoutX="381.0" layoutY="204.0" mnemonicParsing="false" text="File" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Bold" size="18.0" />
                </font>
             </RadioButton>
             <Label layoutX="376.0" layoutY="151.0" text="Schnittstelle" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Bold" size="18.0" />
                </font></Label>
             <Label fx:id="PfadKeyLabel" layoutX="374.0" layoutY="262.0" text="Key" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Bold" size="18.0" />
                </font></Label>
             <TextField fx:id="KeyEdit" layoutX="455.0" layoutY="263.0" />
             <TextField fx:id="SecretEdit" layoutX="455.0" layoutY="307.0" />
             <Label fx:id="SecretLabel" layoutX="373.0" layoutY="306.0" text="Secret" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Bold" size="18.0" />
                </font></Label>
             <TextField fx:id="GegnerEdit" layoutX="454.0" layoutY="349.0" />
             <Label layoutX="372.0" layoutY="348.0" text="Gegner: " textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Bold" size="18.0" />
                </font></Label>
             <ImageView fx:id="helpBtn" fitHeight="33.0" fitWidth="49.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -94,7 +100,13 @@
                </image>
             </ImageView>
             <Button fx:id="chooserBtn" layoutX="603.0" layoutY="263.0" mnemonicParsing="false" text="..." visible="false" />
-            <Button fx:id="saveBtn" layoutX="412.0" layoutY="432.0" mnemonicParsing="false" text="Speichern &amp; Zurück" />
+            <Button fx:id="saveBtn" layoutX="353.0" layoutY="411.0" mnemonicParsing="false" text="Speichern &amp; Zurück">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <effect>
+                  <Reflection />
+               </effect></Button>
             <TextField fx:id="PfadEdit" layoutX="455.0" layoutY="263.0" visible="false" />
          </children>
       </Pane>

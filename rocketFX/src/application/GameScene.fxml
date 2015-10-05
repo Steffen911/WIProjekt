@@ -32,24 +32,30 @@
                   <Image url="@../../pictures/4gewinnt.png" />
                </image>
             </ImageView>
-            <Label layoutX="489.0" layoutY="219.0" prefHeight="33.0" prefWidth="83.0" text="Spielstand" textFill="WHITE">
+            <Label layoutX="489.0" layoutY="219.0" prefHeight="33.0" prefWidth="100.0" text="Spielstand" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="489.0" layoutY="252.0" prefHeight="17.0" prefWidth="38.0" text="X : O" textFill="WHITE">
+            <Label layoutX="489.0" layoutY="252.0" prefHeight="21.0" prefWidth="53.0" text="X : O" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Arial" size="18.0" />
                </font></Label>
-            <Label layoutX="127.0" layoutY="156.0" prefHeight="46.0" prefWidth="164.0" text="warten / spielen" textFill="WHITE">
+            <Label layoutX="126.0" layoutY="141.0" prefHeight="46.0" prefWidth="178.0" text="warten / spielen" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font size="23.0" />
+                  <Font name="Arial" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="saveBtn" layoutX="507.0" layoutY="432.0" mnemonicParsing="false" text="Satz speichern / abbrechen" />
-            <Label layoutX="238.0" layoutY="62.0" text="4 Gewinnt - " textFill="WHITE">
+            <Button fx:id="saveBtn" layoutX="465.0" layoutY="411.0" mnemonicParsing="false" text="Satz speichern / abbrechen">
                <font>
-                  <Font size="45.0" />
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <effect>
+                  <Reflection />
+               </effect></Button>
+            <Label layoutX="239.0" layoutY="63.0" text="4 Gewinnt" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="45.0" />
                </font>
             </Label>
             <ImageView fx:id="helpBtn" fitHeight="33.0" fitWidth="49.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">

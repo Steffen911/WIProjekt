@@ -27,26 +27,38 @@
                   <Image url="@../../pictures/rocket_ohne.png" />
                </image>
             </ImageView>
-            <Button fx:id="deleteBtn" layoutX="597.0" layoutY="432.0" mnemonicParsing="false" text="Verwerfen" />
-            <Label layoutX="82.0" layoutY="56.0" text="4 Gewinnt speichern " textFill="WHITE">
+            <Button fx:id="deleteBtn" layoutX="579.0" layoutY="411.0" mnemonicParsing="false" text="Verwerfen">
                <font>
-                  <Font size="45.0" />
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <effect>
+                  <Reflection />
+               </effect></Button>
+            <Label layoutX="185.0" layoutY="63.0" text="Satz speichern " textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="45.0" />
                </font>
             </Label>
-            <Button fx:id="saveBtn" layoutX="512.0" layoutY="432.0" mnemonicParsing="false" text="Speichern" />
+            <Button fx:id="saveBtn" layoutX="473.0" layoutY="411.0" mnemonicParsing="false" text="Speichern">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <effect>
+                  <Reflection />
+               </effect></Button>
             <Label layoutX="90.0" layoutY="143.0" text="Gewinner:" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Arial Bold" size="20.0" />
                </font>
             </Label>
             <Label layoutX="90.0" layoutY="225.0" text="Spielstand:" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Arial Bold" size="20.0" />
                </font>
             </Label>
             <Label layoutX="90.0" layoutY="266.0" text="Züge:" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Arial Bold" size="20.0" />
                </font>
             </Label>
             <TextField fx:id="gewinnerEdit" layoutX="216.0" layoutY="146.0" />
@@ -55,7 +67,7 @@
             <TextField fx:id="starterEdit" layoutX="216.0" layoutY="188.0" />
             <Label layoutX="90.0" layoutY="185.0" text="Starter:" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Arial Bold" size="20.0" />
                </font>
             </Label>
             <ImageView fx:id="helpBtn" fitHeight="33.0" fitWidth="49.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
