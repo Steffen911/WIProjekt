@@ -17,7 +17,7 @@ public class ServerGuiKontakt {
 		// Konstruktor wenn PushSchnittstelle gewaehlt
 		fileSchnittstelle = false;
 		this.spielerwahl = spielerwahl;
-		pushS = new PushSchnittstelle(apiKey, apiSecret, centisekunden); //, spielerwahl); spielerwahl für Pusher nicht interessant
+		pushS = new PushSchnittstelle(apiKey, apiSecret, centisekunden, spielerwahl); // spielerwahl für Pusher nicht interessant
 		pushS.connect();
 	}
 	

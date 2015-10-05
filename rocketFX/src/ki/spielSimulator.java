@@ -11,11 +11,15 @@ public class spielSimulator {
 		KI ki = new KI(spielerwahl);
 		
 		//Fileschnittstelle (Einkommentieren fuer File)
-		FileSchnittstelle sst = new FileSchnittstelle(spielerwahl, "//Users//Steffen//Dropbox//Test//", 50);
+		//FileSchnittstelle sst = new FileSchnittstelle(spielerwahl, "//Users//Steffen//Dropbox//Test//", 50);
 		
 		//Pushschnittstelle (Einkommentieren fuer Push)
 		//Credentials steffen
+//<<<<<<< Updated upstream
 //		PushSchnittstelle sst = new PushSchnittstelle("c216d52b4b4db2df78b2", "54f848263f22144e49f4", 50);
+
+		PushSchnittstelle sst = new PushSchnittstelle("c216d52b4b4db2df78b2", "54f848263f22144e49f4", 50,spielerwahl);
+//>>>>>>> Stashed changes
 		//Credentials stefan
 		//PushSchnittstelle sst = new PushSchnittstelle("d7d48c4729507d0b320f", "b8130fe6eec5ae953e6a", 50);
 		
