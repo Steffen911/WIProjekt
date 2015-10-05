@@ -18,7 +18,7 @@ import ki.KI;
 import serverKommunikation.ServerGuiKontakt;
 
 public class GameSceneController implements  Initializable{
-	@FXML Button saveBtn;
+	@FXML Button saveBtn, spielBtn;
 	@FXML ImageView helpBtn;
 	@FXML GridPane GameGrid;
 	
@@ -45,10 +45,14 @@ public class GameSceneController implements  Initializable{
 		     }
 		});
 		
-		// starte das Spiel und spiele
-		startServerConnection();
-		playGame();
-		
+		spielBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		     @Override
+		     public void handle(MouseEvent event) {
+		    	 // starte das Spiel und spiele
+		    	 startServerConnection();
+		    	 playGame();
+		     }
+		});
 	}
 	
 	public void startServerConnection(){
@@ -68,24 +72,22 @@ public class GameSceneController implements  Initializable{
 		
 		while(!rueckgabe[1].equals("beendet")){
 			gegnerZug = Integer.parseInt(rueckgabe[2]);
-			// Gegnerzug in GUI anzeigen
-			showZug(true);
 			
 			//Berechne neuen Spielzug auf Grundlage des gegnerzugs
 			spielzug = ki.zugBerechnen(gegnerZug);
 			// Spielzug Anzeigen
-			showZug(false);
+			//Gib aktuelles Array aus
+			arrayAusgebenConsole(ki.arrayAusgabe());
+			showZug();
 			//Sende errechneten Spielzug an Server und warte auf XML
 			rueckgabe = server.sendZugAnServer(spielzug);
 			
-			
-			//Gib aktuelles Array aus
-			arrayAusgebenConsole(ki.arrayAusgabe());
 			//Starte von vorn
 		}
 		
 		System.out.println("Jemand hat gewonnen.");
 	}
+
 	private void arrayAusgebenConsole(String[][] ausgabe){
 		for(int i=5; i>=0; i--){	
 			for(int j=0; j<7; j++){			
@@ -93,21 +95,20 @@ public class GameSceneController implements  Initializable{
 			}
 			System.out.print("\n");
 		}
-	}
 	
-	private void showZug(boolean gegner){
+	}
+	private void showZug(){
 		// Verknuepfung zu GUI: Zuege anzeigen
 		Point zugP;
-		Circle circle = new Circle(14.0);
-		if(gegner){
-			zugP = ki.getGegnerPunkt();
-			circle.setFill(Color.YELLOW);
-		}else{
-			zugP = ki.getEigenerPunkt();
-			circle.setFill(Color.RED);
+		zugP = ki.getGegnerPunkt();
+		if(zugP.x > 0){
+			GameGrid.add(new Circle(14.0, Color.YELLOW), zugP.x, 5-zugP.y);
 		}
-		GameGrid.add(circle, zugP.x, zugP.y);
-
+		zugP = ki.getEigenerPunkt();
+		if(zugP.x > 0){
+			GameGrid.add(new Circle(14.0, Color.RED), zugP.x, 5-zugP.y);
+		}
 	}
+	
 
 }
