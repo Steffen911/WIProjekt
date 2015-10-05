@@ -125,7 +125,6 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 					public void onEvent(String channel, String event, String data) {
 						
 						//TODO: Es werden mehrfach Events empfangen
-						//TODO: Es wird -2 als Spielzug übergeben
 						ts.startTimer(centisekunden);
 						
 						//Cut the message part from string
@@ -157,6 +156,9 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 		
 		//wait for event and break when server response is received;
 		while(true){
+			if (returnString[0] != null){
+				break;
+			}
 					
 			try {
 				Thread.sleep(1000);
@@ -164,9 +166,6 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 				e1.printStackTrace();
 			}
 			
-			if (returnString[0] != null){
-				break;
-			}
 		}//end of while
 		
 		return returnString;

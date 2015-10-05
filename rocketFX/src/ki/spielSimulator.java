@@ -15,16 +15,13 @@ public class spielSimulator {
 		
 		//Pushschnittstelle (Einkommentieren fuer Push)
 		//Credentials steffen
-//<<<<<<< Updated upstream
 //		PushSchnittstelle sst = new PushSchnittstelle("c216d52b4b4db2df78b2", "54f848263f22144e49f4", 50);
-
-		PushSchnittstelle sst = new PushSchnittstelle("c216d52b4b4db2df78b2", "54f848263f22144e49f4", 50,spielerwahl);
-//>>>>>>> Stashed changes
+		PushSchnittstelle sst = new PushSchnittstelle("c216d52b4b4db2df78b2", "54f848263f22144e49f4", 50, spielerwahl);
 		//Credentials stefan
 		//PushSchnittstelle sst = new PushSchnittstelle("d7d48c4729507d0b320f", "b8130fe6eec5ae953e6a", 50);
 		
 		//Pusher connect
-//		sst.connect();
+		sst.connect();
 		
 		String[] rueckgabe = new String[4];
 		
@@ -37,9 +34,6 @@ public class spielSimulator {
 			//Berechne neuen Spielzug auf Grundlage des gegnerzugs
 			spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
 			
-			//Sende errechneten Spielzug an Server und warte auf XML
-			rueckgabe = sst.communicate(spielzug);
-			
 			//Gib aktuelles Array aus
 			String[][] ausgabe = ki.arrayAusgabe();
 			
@@ -49,6 +43,9 @@ public class spielSimulator {
 				}
 				System.out.print("\n");
 			}
+			
+			//Sende errechneten Spielzug an Server und warte auf XML
+			rueckgabe = sst.communicate(spielzug);		
 			
 			//Starte von vorn
 		}

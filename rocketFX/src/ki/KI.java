@@ -44,7 +44,7 @@ public class KI {
 		
 		int spielzug = -1;
 		
-		gegnerSteinSetzen(gegnerZug); 
+		setzeGegnerStein(gegnerZug); 
 		
 		//Siegmuster erkennen
 		spielzug = musterErkennung();
@@ -64,8 +64,8 @@ public class KI {
 		return spielzug;
 	} //end of zug berechnen
 	
-	public void setzeEigenenStein(int spielzug){
-		
+	//Setze den eigenen Stein ins spielfeld
+	public void setzeEigenenStein(int spielzug){		
 		//Setze eigenen Stein
 		for(int i=0; i<6; i++) {
 			if(spielfeld[spielzug][i] == "_"){
@@ -73,12 +73,11 @@ public class KI {
 				eigenerPunkt.setLocation(spielzug, i);
 				break;
 			}
-		}
-		
+		}	
 	}
 	
-	public void gegnerSteinSetzen(int gegnerZug){
-		
+	//Setze den gegnerischen Stein ins spielfeld
+	public void setzeGegnerStein(int gegnerZug){	
 		//Falls eigener Agent startet wird -1 uebergeben
 		if(gegnerZug >= 0){				
 			for(int i=0; i<6; i++) {
@@ -88,10 +87,11 @@ public class KI {
 					break;
 				} //end if
 			} //end for				
-		} 
-		
+		} 		
 	}
 	
+	//Prueft ob spieler in dieser runde gewinnen kann und setzt den siegstein
+	//Prueft im anschluss ob gegner in dieser runde gewinnen kann und verhindert sieg
 	public int musterErkennung() {
 		int spielzug = -1;
 		
@@ -106,7 +106,7 @@ public class KI {
 						if(spielfeld[i-3][j] == eigenerStein && spielfeld[i-2][j] == eigenerStein && spielfeld[i-1][j] == eigenerStein){
 							spielzug = i;
 							eigenerPunkt.setLocation(spielzug, j);
-							break;
+							return spielzug;
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -115,7 +115,7 @@ public class KI {
 						if(spielfeld[i-2][j] == eigenerStein && spielfeld[i-1][j] == eigenerStein && spielfeld[i+1][j] == eigenerStein){
 							spielzug = i;
 							eigenerPunkt.setLocation(spielzug, j);
-							break;
+							return spielzug;
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -124,7 +124,7 @@ public class KI {
 						if(spielfeld[i-1][j] == eigenerStein && spielfeld[i+1][j] == eigenerStein && spielfeld[i+2][j] == eigenerStein){
 							spielzug = i;
 							eigenerPunkt.setLocation(spielzug, j);
-							break;
+							return spielzug;
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -133,7 +133,7 @@ public class KI {
 						if(spielfeld[i+1][j] == eigenerStein && spielfeld[i+2][j] == eigenerStein && spielfeld[i+3][j] == eigenerStein){
 							spielzug = i;
 							eigenerPunkt.setLocation(spielzug, j);
-							break;
+							return spielzug;
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -142,7 +142,7 @@ public class KI {
 						if(spielfeld[i][j-1] == eigenerStein && spielfeld[i][j-2] == eigenerStein && spielfeld[i][j-3] == eigenerStein){
 							spielzug = i;
 							eigenerPunkt.setLocation(spielzug, j);
-							break;
+							return spielzug;
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -151,7 +151,7 @@ public class KI {
 						if(spielfeld[i-3][j-3] == eigenerStein && spielfeld[i-2][j-2] == eigenerStein && spielfeld[i-1][j-1] == eigenerStein){
 							spielzug = i;
 							eigenerPunkt.setLocation(spielzug, j);
-							break;
+							return spielzug;
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -160,7 +160,7 @@ public class KI {
 						if(spielfeld[i-2][j-2] == eigenerStein && spielfeld[i-1][j-1] == eigenerStein && spielfeld[i+1][j+1] == eigenerStein){
 							spielzug = i;
 							eigenerPunkt.setLocation(spielzug, j);
-							break;
+							return spielzug;
 						}
 					}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -169,7 +169,7 @@ public class KI {
 								if(spielfeld[i-1][j-1] == eigenerStein && spielfeld[i+1][j+1] == eigenerStein && spielfeld[i+2][j+2] == eigenerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -178,7 +178,7 @@ public class KI {
 								if(spielfeld[i+1][j+1] == eigenerStein && spielfeld[i+2][j+2] == eigenerStein && spielfeld[i+3][j+3] == eigenerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -187,7 +187,7 @@ public class KI {
 								if(spielfeld[i+3][j-3] == eigenerStein && spielfeld[i+2][j-2] == eigenerStein && spielfeld[i+1][j-1] == eigenerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -196,7 +196,7 @@ public class KI {
 								if(spielfeld[i+2][j-2] == eigenerStein && spielfeld[i+1][j-1] == eigenerStein && spielfeld[i-1][j+1] == eigenerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -205,7 +205,7 @@ public class KI {
 								if(spielfeld[i+1][j-1] == eigenerStein && spielfeld[i-1][j+1] == eigenerStein && spielfeld[i-2][j+2] == eigenerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -214,7 +214,7 @@ public class KI {
 								if(spielfeld[i-1][j+1] == eigenerStein && spielfeld[i-2][j+2] == eigenerStein && spielfeld[i-3][j+3] == eigenerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -226,7 +226,7 @@ public class KI {
 								if(spielfeld[i-3][j] == gegnerStein && spielfeld[i-2][j] == gegnerStein && spielfeld[i-1][j] == gegnerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -235,7 +235,7 @@ public class KI {
 								if(spielfeld[i-2][j] == gegnerStein && spielfeld[i-1][j] == gegnerStein && spielfeld[i+1][j] == gegnerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -244,7 +244,7 @@ public class KI {
 								if(spielfeld[i-1][j] == gegnerStein && spielfeld[i+1][j] == gegnerStein && spielfeld[i+2][j] == gegnerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -253,7 +253,7 @@ public class KI {
 								if(spielfeld[i+1][j] == gegnerStein && spielfeld[i+2][j] == gegnerStein && spielfeld[i+3][j] == gegnerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -262,7 +262,7 @@ public class KI {
 								if(spielfeld[i][j-1] == gegnerStein && spielfeld[i][j-2] == gegnerStein && spielfeld[i][j-3] == gegnerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -271,7 +271,7 @@ public class KI {
 								if(spielfeld[i-3][j-3] == gegnerStein && spielfeld[i-2][j-2] == gegnerStein && spielfeld[i-1][j-1] == gegnerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -280,7 +280,7 @@ public class KI {
 								if(spielfeld[i-2][j-2] == gegnerStein && spielfeld[i-1][j-1] == gegnerStein && spielfeld[i+1][j+1] == gegnerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -289,7 +289,7 @@ public class KI {
 								if(spielfeld[i-1][j-1] == gegnerStein && spielfeld[i+1][j+1] == gegnerStein && spielfeld[i+2][j+2] == gegnerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -298,7 +298,7 @@ public class KI {
 								if(spielfeld[i+1][j+1] == gegnerStein && spielfeld[i+2][j+2] == gegnerStein && spielfeld[i+3][j+3] == gegnerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -307,7 +307,7 @@ public class KI {
 								if(spielfeld[i+3][j-3] == gegnerStein && spielfeld[i+2][j-2] == gegnerStein && spielfeld[i+1][j-1] == gegnerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -316,7 +316,7 @@ public class KI {
 								if(spielfeld[i+2][j-2] == gegnerStein && spielfeld[i+1][j-1] == gegnerStein && spielfeld[i-1][j+1] == gegnerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -325,7 +325,7 @@ public class KI {
 								if(spielfeld[i+1][j-1] == gegnerStein && spielfeld[i-1][j+1] == gegnerStein && spielfeld[i-2][j+2] == gegnerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 							
@@ -334,7 +334,7 @@ public class KI {
 								if(spielfeld[i-1][j+1] == gegnerStein && spielfeld[i-2][j+2] == gegnerStein && spielfeld[i-3][j+3] == gegnerStein){
 									spielzug = i;
 									eigenerPunkt.setLocation(spielzug, j);
-									break;
+									return spielzug;
 								}
 							}catch(ArrayIndexOutOfBoundsException e){}
 						} //end if
