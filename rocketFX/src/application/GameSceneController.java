@@ -73,7 +73,7 @@ public class GameSceneController implements  Initializable{
 				
 				ki = new KI(server.getSpielerwahl());
 				rueckgabe = server.leseVomServer();
-				{					
+				while(!rueckgabe[1].equals("beendet")){					
 					//Berechne neuen Spielzug auf Grundlage des gegnerzugs
 					spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
 
@@ -90,8 +90,10 @@ public class GameSceneController implements  Initializable{
 					rueckgabe = server.sendZugAnServer(spielzug);
 					
 					//Starte von vorn
-				}while(!rueckgabe[1].equals("beendet"));
+				}
 	
+				showZug(ki.getGegnerPunkt(), ki.getEigenerPunkt());
+				 
 				System.out.println("Jemand hat gewonnen.");
 				
 			}
