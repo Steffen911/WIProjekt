@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -76,33 +75,42 @@ public class GameSceneController implements  Initializable{
 //	};
 	
 	public void playGame(){
-		int spielzug;
 		
-		String[] rueckgabe = new String[4];
-		
-		ki = new KI(server.getSpielerwahl());
-		rueckgabe = server.leseVomServer();
-		while(!rueckgabe[1].equals("beendet")){
+		new Thread( new Runnable() {
 			
-			//Berechne neuen Spielzug auf Grundlage des gegnerzugs
-			spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
+			@Override
+			public void run() {
+				int spielzug;
+				
+				String[] rueckgabe = new String[4];
+				
+				ki = new KI(server.getSpielerwahl());
+				rueckgabe = server.leseVomServer();
+				while(!rueckgabe[1].equals("beendet")){
+					
+					//Berechne neuen Spielzug auf Grundlage des gegnerzugs
+					spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
 
-			// Spielzug Anzeigen
-			//Gib aktuelles Array aus
-			arrayAusgebenConsole(ki.arrayAusgabe());
-			//showZug();
-			Platform.runLater(new Runnable() {
-	            @Override public void run() {
-	                showZug();
-	            }
-	        });
-			//guiTh.start();
-			
-			//Sende errechneten Spielzug an Server und warte auf XML
-			rueckgabe = server.sendZugAnServer(spielzug);
-			
-			//Starte von vorn
-		}		
+					// Spielzug Anzeigen
+					//Gib aktuelles Array aus
+					arrayAusgebenConsole(ki.arrayAusgabe());
+					//showZug();
+					Platform.runLater(new Runnable() {
+			            @Override public void run() {
+			                showZug(ki.getGegnerPunkt(), ki.getEigenerPunkt());
+			            }
+			        });
+					//guiTh.start();
+					
+					//Sende errechneten Spielzug an Server und warte auf XML
+					rueckgabe = server.sendZugAnServer(spielzug);
+					
+					//Starte von vorn
+				}	
+				
+			}
+		}).start();
+	
 		
 		System.out.println("Jemand hat gewonnen.");
 	}
@@ -116,17 +124,23 @@ public class GameSceneController implements  Initializable{
 		}
 	
 	}
-	private void showZug(){
+	private void showZug(Point gegner, Point wir){
 		// Verknuepfung zu GUI: Zuege anzeigen
-		Point zugP;
-		zugP = ki.getGegnerPunkt();
-		if(zugP.x >= 0){
-			GameGrid.add(new Circle(14.0, Color.YELLOW), zugP.x, 5-zugP.y);
+		if(wir.x >= 0){
+		  GameGrid.add(new Circle(14.0, Color.YELLOW), wir.x, 5-wir.y);
 		}
-		zugP = ki.getEigenerPunkt();
-		if(zugP.x >= 0){
-			GameGrid.add(new Circle(14.0, Color.RED), zugP.x, 5-zugP.y);
+		if(gegner.x >= 0){
+		  GameGrid.add(new Circle(14.0, Color.RED), gegner.x, 5-gegner.y);
 		}
+//		Point zugP;
+//		zugP = ki.getGegnerPunkt();
+//		if(zugP.x >= 0){
+//			GameGrid.add(new Circle(14.0, Color.YELLOW), zugP.x, 5-zugP.y);
+//		}
+//		zugP = ki.getEigenerPunkt();
+//		if(zugP.x >= 0){
+//			GameGrid.add(new Circle(14.0, Color.RED), zugP.x, 5-zugP.y);
+//		}
 		
 	}
 	
