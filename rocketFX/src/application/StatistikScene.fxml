@@ -73,6 +73,14 @@
                   <Image url="@../../pictures/settings.png" />
                </image>
             </ImageView>
+            <Button layoutX="201.0" layoutY="411.0" mnemonicParsing="false" text="Spiel fortsetzen">
+               <effect>
+                  <Reflection />
+               </effect>
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

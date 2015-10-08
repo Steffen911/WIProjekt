@@ -84,7 +84,7 @@
                <children>
                </children>
             </GridPane>
-            <Button fx:id="spielBtn" layoutX="463.0" layoutY="210.0" mnemonicParsing="false" text="Spiel starten">
+            <Button fx:id="spielBtn" layoutX="463.0" layoutY="210.0" mnemonicParsing="false" text="Los!">
                <effect>
                   <Reflection />
                </effect>
