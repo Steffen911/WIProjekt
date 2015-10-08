@@ -1,6 +1,10 @@
 /*C6*/SET SCHEMA PUBLIC
 <<<<<<< HEAD
+<<<<<<< HEAD
 INSERT INTO SPIELE VALUES(37,'stefan','',0)
+=======
+INSERT INTO SPIELE VALUES(41,'stefan','',0)
+>>>>>>> master
 =======
 INSERT INTO SPIELE VALUES(41,'stefan','',0)
 >>>>>>> master

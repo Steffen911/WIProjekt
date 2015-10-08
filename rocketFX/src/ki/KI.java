@@ -45,7 +45,7 @@ public class KI {
 		return -1;
 
 	} //end of zug berechnen
-	
+/*	
 	//MinMax Wikipedia Pseudocode
 	public void hauptProgramm(){
 		int gespeicherterZug = -1;
@@ -58,7 +58,7 @@ public class KI {
 			//gespeicherterZug ausfuehren
 		}
 	}
-
+*/
 /*
 	public int max(int spieler, int tiefe){
 		
@@ -84,13 +84,16 @@ public class KI {
 		return maxWert;
 	}
 */	
-	
+/*	
 	public int min(int spieler, int tiefe){
 		if(tiefe == 0 or keineZuegeMehr(spieler)){
-			
+			return bewerten();
 		}
+		int minWert = -100;
+		generiereMoeglicheZuege(spieler);
+		
 	}
-	
+*/	
 	
 	
 	
