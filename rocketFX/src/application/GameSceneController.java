@@ -60,25 +60,21 @@ public class GameSceneController implements  Initializable{
 	}
 	
 	public void playGame(){
-		int spielzug, gegnerZug;
+		int spielzug;
 		String[] rueckgabe = new String[4];
 		ki = new KI(server.getSpielerwahl());
-		
-		// ToDo: mit Steffen abgleichen, ob das so passt; Reader erster Spielzug, Beginn??!
-		/*ToDo: Ki Methode getGegner y, Rueckgabe bei eigenenm Zug Position 
-		 * => Ki gibt x,y Position der Steine zurueck, sodass GUI nicht auch noch rechnet (Point oder array)*/
 		
 		rueckgabe = server.leseVomServer();
 		
 		while(!rueckgabe[1].equals("beendet")){
-			gegnerZug = Integer.parseInt(rueckgabe[2]);
-			
-			//Berechne neuen Spielzug auf Grundlage des gegnerzugs
-			spielzug = ki.zugBerechnen(gegnerZug);
+			//Berechne neuen Spielzug auf Grundlage des Gegnerzugs
+			spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
+
 			// Spielzug Anzeigen
 			//Gib aktuelles Array aus
 			arrayAusgebenConsole(ki.arrayAusgabe());
 			showZug();
+			
 			//Sende errechneten Spielzug an Server und warte auf XML
 			rueckgabe = server.sendZugAnServer(spielzug);
 			
