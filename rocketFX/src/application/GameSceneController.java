@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -76,33 +75,42 @@ public class GameSceneController implements  Initializable{
 //	};
 	
 	public void playGame(){
-		int spielzug;
 		
-		String[] rueckgabe = new String[4];
-		
-		ki = new KI(server.getSpielerwahl());
-		rueckgabe = server.leseVomServer();
-		while(!rueckgabe[1].equals("beendet")){
+		new Thread( new Runnable() {
 			
-			//Berechne neuen Spielzug auf Grundlage des gegnerzugs
-			spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
+			@Override
+			public void run() {
+				int spielzug;
+				
+				String[] rueckgabe = new String[4];
+				
+				ki = new KI(server.getSpielerwahl());
+				rueckgabe = server.leseVomServer();
+				while(!rueckgabe[1].equals("beendet")){
+					
+					//Berechne neuen Spielzug auf Grundlage des gegnerzugs
+					spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
 
-			// Spielzug Anzeigen
-			//Gib aktuelles Array aus
-			arrayAusgebenConsole(ki.arrayAusgabe());
-			//showZug();
-			Platform.runLater(new Runnable() {
-	            @Override public void run() {
-	                showZug(ki.getGegnerPunkt(), ki.getEigenerPunkt());
-	            }
-	        });
-			//guiTh.start();
-			
-			//Sende errechneten Spielzug an Server und warte auf XML
-			rueckgabe = server.sendZugAnServer(spielzug);
-			
-			//Starte von vorn
-		}		
+					// Spielzug Anzeigen
+					//Gib aktuelles Array aus
+					arrayAusgebenConsole(ki.arrayAusgabe());
+					//showZug();
+					Platform.runLater(new Runnable() {
+			            @Override public void run() {
+			                showZug(ki.getGegnerPunkt(), ki.getEigenerPunkt());
+			            }
+			        });
+					//guiTh.start();
+					
+					//Sende errechneten Spielzug an Server und warte auf XML
+					rueckgabe = server.sendZugAnServer(spielzug);
+					
+					//Starte von vorn
+				}	
+				
+			}
+		}).start();
+	
 		
 		System.out.println("Jemand hat gewonnen.");
 	}
