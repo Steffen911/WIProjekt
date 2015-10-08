@@ -107,12 +107,12 @@ public class GameSceneController implements  Initializable{
 					
 					//Starte von vorn
 				}	
+				System.out.println("Jemand hat gewonnen.");
 				
 			}
 		}).start();
 	
 		
-		System.out.println("Jemand hat gewonnen.");
 	}
 
 	private void arrayAusgebenConsole(String[][] ausgabe){
