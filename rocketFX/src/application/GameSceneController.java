@@ -67,20 +67,23 @@ public class GameSceneController implements  Initializable{
 	
 	Task<Integer> kiServerTask = new Task<Integer>() {
 	    @Override protected Integer call() throws Exception {
-			int spielzug, gegnerZug;
+			int spielzug;
+			
 			String[] rueckgabe = new String[4];
+			
 			ki = new KI(server.getSpielerwahl());
 			rueckgabe = server.leseVomServer();
 			while(!rueckgabe[1].equals("beendet")){
-				gegnerZug = Integer.parseInt(rueckgabe[2]);
 				
 				//Berechne neuen Spielzug auf Grundlage des gegnerzugs
-				spielzug = ki.zugBerechnen(gegnerZug);
+				spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
+
 				// Spielzug Anzeigen
 				//Gib aktuelles Array aus
 				arrayAusgebenConsole(ki.arrayAusgabe());
 				//showZug();
 				guiTh.start();
+				
 				//Sende errechneten Spielzug an Server und warte auf XML
 				rueckgabe = server.sendZugAnServer(spielzug);
 				
@@ -101,48 +104,8 @@ public class GameSceneController implements  Initializable{
 	};
 	
 	public void playGame(){
-		int spielzug;
-		String[] rueckgabe = new String[4];
-//		ki = new KI(server.getSpielerwahl());
-		
-<<<<<<< Updated upstream
-		rueckgabe = server.leseVomServer();
-		
-		while(!rueckgabe[1].equals("beendet")){
-			//Berechne neuen Spielzug auf Grundlage des Gegnerzugs
-			spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
-
-			// Spielzug Anzeigen
-			//Gib aktuelles Array aus
-			arrayAusgebenConsole(ki.arrayAusgabe());
-			showZug();
-			
-			//Sende errechneten Spielzug an Server und warte auf XML
-			rueckgabe = server.sendZugAnServer(spielzug);
-			
-			//Starte von vorn
-		}
-=======
-		
-//		rueckgabe = server.leseVomServer();
-		
-//		while(!rueckgabe[1].equals("beendet")){
-//			gegnerZug = Integer.parseInt(rueckgabe[2]);
-//			
-//			//Berechne neuen Spielzug auf Grundlage des gegnerzugs
-//			spielzug = ki.zugBerechnen(gegnerZug);
-//			// Spielzug Anzeigen
-//			//Gib aktuelles Array aus
-//			arrayAusgebenConsole(ki.arrayAusgabe());
-//			showZug();
-//			//Sende errechneten Spielzug an Server und warte auf XML
-//			rueckgabe = server.sendZugAnServer(spielzug);
-//			
-//			//Starte von vorn
-//		}
 		
 		kiServerTh.start();
->>>>>>> Stashed changes
 		
 		System.out.println("Jemand hat gewonnen.");
 	}
