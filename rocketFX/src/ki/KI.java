@@ -42,27 +42,58 @@ public class KI {
 	//Gibt einen integer mit dem eigenen Spielzug zurueck
 	public int zugBerechnen(int gegnerZug) {
 		
-		int spielzug = -1;
+		return -1;
+
+	} //end of zug berechnen
+	
+	//MinMax Wikipedia Pseudocode
+	public void hauptProgramm(){
+		int gespeicherterZug = -1;
+		int gewuenschteTiefe = 2;
 		
-		setzeGegnerStein(gegnerZug); 
+		int bewertung = max(1, gewuenschteTiefe);
+		if (gespeicherterZug == -1) {
+			//Es gab keine weiteren Zuege mehr
+		} else {
+			//gespeicherterZug ausfuehren
+		}
+	}
+
+/*
+	public int max(int spieler, int tiefe){
 		
-		//Siegmuster erkennen
-		spielzug = musterErkennung();
+		if(tiefe == -1 or keineZuegeMehr(spieler)){
+			return bewerten();
+		}
+		int maxWert = -100;
 		
-		//Spalte ist voll Erkennung
-		while(true){
-			if(spielzug == -1){
-				spielzug = (int)(Math.random() * 7);				
+		generiereMoeglicheZuege(spieler);
+		while(nochZugDa){
+			fuehreNaechstenZugAus();
+			int wert = min(-spieler, tiefe-1);
+			macheZugRueckgaengig();
+			
+			if(wert > maxWert){
+				maxWert = wert;
+				if(tiefe == gewuenschteTiefe){
+					gespeicherterZug = zug;
+				}
 			}
-			if (spielfeld[spielzug][5] == "_"){
-				break;
-			} 
 		}
 		
-		setzeEigenenStein(spielzug);
-		
-		return spielzug;
-	} //end of zug berechnen
+		return maxWert;
+	}
+*/	
+	
+	public int min(int spieler, int tiefe){
+		if(tiefe == 0 or keineZuegeMehr(spieler)){
+			
+		}
+	}
+	
+	
+	
+	
 	
 	//Setze den eigenen Stein ins spielfeld
 	public void setzeEigenenStein(int spielzug){		

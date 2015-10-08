@@ -26,14 +26,11 @@ public class GameSceneController implements  Initializable{
 	private ReusableControllerFunctions reuse;
 	private ServerGuiKontakt server;
 	private KI ki;
-	private Thread guiTh;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	
 		reuse = new ReusableControllerFunctions();
-//		guiTh = new Thread(guiTask);
-//		guiTh.setDaemon(true);
 		
 		saveBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
@@ -63,17 +60,7 @@ public class GameSceneController implements  Initializable{
 		server = reuse.getServer();
 	}
 	
-	
-//	Task<Void> guiTask = new Task<Void>() {
-//
-//		@Override
-//		protected Void call() throws Exception {
-//			showZug();
-//			return null;
-//		}
-//		
-//	};
-	
+		
 	public void playGame(){
 		
 		new Thread( new Runnable() {
@@ -86,27 +73,27 @@ public class GameSceneController implements  Initializable{
 				
 				ki = new KI(server.getSpielerwahl());
 				rueckgabe = server.leseVomServer();
-				while(!rueckgabe[1].equals("beendet")){
-					
+				while(!rueckgabe[1].equals("beendet")){					
 					//Berechne neuen Spielzug auf Grundlage des gegnerzugs
 					spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
 
 					// Spielzug Anzeigen
 					//Gib aktuelles Array aus
 					arrayAusgebenConsole(ki.arrayAusgabe());
-					//showZug();
 					Platform.runLater(new Runnable() {
 			            @Override public void run() {
 			                showZug(ki.getGegnerPunkt(), ki.getEigenerPunkt());
 			            }
 			        });
-					//guiTh.start();
-					
+
 					//Sende errechneten Spielzug an Server und warte auf XML
 					rueckgabe = server.sendZugAnServer(spielzug);
 					
 					//Starte von vorn
-				}	
+				}
+	
+				showZug(ki.getGegnerPunkt(), ki.getEigenerPunkt());
+				 
 				System.out.println("Jemand hat gewonnen.");
 				
 			}
@@ -132,16 +119,6 @@ public class GameSceneController implements  Initializable{
 		if(gegner.x >= 0){
 		  GameGrid.add(new Circle(14.0, Color.RED), gegner.x, 5-gegner.y);
 		}
-//		Point zugP;
-//		zugP = ki.getGegnerPunkt();
-//		if(zugP.x >= 0){
-//			GameGrid.add(new Circle(14.0, Color.YELLOW), zugP.x, 5-zugP.y);
-//		}
-//		zugP = ki.getEigenerPunkt();
-//		if(zugP.x >= 0){
-//			GameGrid.add(new Circle(14.0, Color.RED), zugP.x, 5-zugP.y);
-//		}
-		
 	}
 	
 
