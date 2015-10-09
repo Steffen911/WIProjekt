@@ -15,6 +15,9 @@ public class KI {
 	//Spielfeld anlegen
 	private String[][] spielfeld = new String[7][6];
 	
+	//Geplanten Spielzug hinterlegen
+	private int gespeicherterZug;
+	
 	//Konstruktor fuer KI, legt Spielsteine fest, inititalisiert den spielfeldarray
 	public KI(String spielerwahl){
 		eigenerStein = spielerwahl;
@@ -42,27 +45,33 @@ public class KI {
 	//Gibt einen integer mit dem eigenen Spielzug zurueck
 	public int zugBerechnen(int gegnerZug) {
 		
+		if (gegnerZug == -1){
+			return 3;
+		}
+		
 		return -1;
 
 	} //end of zug berechnen
-/*	
+	
 	//MinMax Wikipedia Pseudocode
-	public void hauptProgramm(){
-		int gespeicherterZug = -1;
-		int gewuenschteTiefe = 2;
+	public void hauptProgramm(int gewuenschteTiefe){
+		gespeicherterZug = -1;
+		gewuenschteTiefe = 2; //zuweisung entfernen, sobald methode wirklich aufgerufen wird
 		
-		int bewertung = max(1, gewuenschteTiefe);
+		int bewertung = max(eigenerStein, gewuenschteTiefe);
 		if (gespeicherterZug == -1) {
 			//Es gab keine weiteren Zuege mehr
+			System.out.println("Das Spiel ist beendet.");
 		} else {
 			//gespeicherterZug ausfuehren
+			System.out.println("Der Stein wurde in Spalte " + gespeicherterZug + " geworfen.");
+			setzeEigenenStein(gespeicherterZug);
 		}
 	}
-*/
-/*
-	public int max(int spieler, int tiefe){
+
+	public int max(String spieler, int tiefe){
 		
-		if(tiefe == -1 or keineZuegeMehr(spieler)){
+		if(tiefe == 0 || keineZuegeMehr()){ //TODO: abfrage ob jemand gewonnen hat hinzufuegen (optional)
 			return bewerten();
 		}
 		int maxWert = -100;
@@ -70,7 +79,7 @@ public class KI {
 		generiereMoeglicheZuege(spieler);
 		while(nochZugDa){
 			fuehreNaechstenZugAus();
-			int wert = min(-spieler, tiefe-1);
+			int wert = min(gegnerStein, tiefe-1);
 			macheZugRueckgaengig();
 			
 			if(wert > maxWert){
@@ -83,20 +92,35 @@ public class KI {
 		
 		return maxWert;
 	}
-*/	
-/*	
-	public int min(int spieler, int tiefe){
-		if(tiefe == 0 or keineZuegeMehr(spieler)){
+
+
+	public int min(String spieler, int tiefe){
+		if(tiefe == 0 || keineZuegeMehr()){
 			return bewerten();
 		}
-		int minWert = -100;
+		int minWert = +100;
 		generiereMoeglicheZuege(spieler);
-		
+		while(nochZugDa){
+			fuehreNaechstenZugAus();
+			int wert = max(eigenerStein, tiefe-1);
+			macheZugRueckgaengig();
+			if(wert < minWert){
+				minWert = wert;
+			}
+		}
+		return minWert;
 	}
-*/	
 	
-	
-	
+	//prueft ob noch ein spielzug moeglich ist
+	public boolean keineZuegeMehr(){
+		boolean nochEinZugMoeglich = false;
+		for(int i = 0; i<7; i++){
+			if(spielfeld[i][5] == "_"){
+				return true;
+			}
+		}		
+		return nochEinZugMoeglich;
+	}	
 	
 	//Setze den eigenen Stein ins spielfeld
 	public void setzeEigenenStein(int spielzug){		
