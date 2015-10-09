@@ -25,7 +25,7 @@ public class ServerGuiKontakt {
 	private FileSchnittstelle fileS;
 	private PushSchnittstelle pushS;
 	private String spielerwahl = "o";
-	private String pfad = "//Users//Steffen//Dropbox//Test//"; //TODO: Definiere den Pfad fuer die server.ini
+	//private String pfad = "..//"; //TODO: Definiere den Pfad fuer die server.ini
 	
 	//variablen fuer die infos aus der server.ini
 	private String dateipfad = "//Users//Steffen//Dropbox//Test//";
@@ -118,7 +118,7 @@ public class ServerGuiKontakt {
 			e.printStackTrace();
 		}
 		DOMSource source = new DOMSource(document);
-		StreamResult result = new StreamResult(new File(pfad + "server.ini"));
+		StreamResult result = new StreamResult(new File("server.ini"));
 		
 		try {
 			transformer.transform(source, result);
@@ -154,7 +154,7 @@ public class ServerGuiKontakt {
 				
 				try {
 					//Dokument wird ausgelesen vom Ordnerpfad
-				    Document document = builder.parse(new FileInputStream(pfad + "server.ini"));
+				    Document document = builder.parse(new FileInputStream("server.ini"));
 	    
 				    //root-Element wird ausgelesen
 				    Element element = document.getDocumentElement();
