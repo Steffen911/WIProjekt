@@ -77,6 +77,9 @@ public class GameSceneController implements  Initializable{
 					//Berechne neuen Spielzug auf Grundlage des gegnerzugs
 					spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
 
+					System.out.println("GegnerZug ist " + rueckgabe[2]);
+					System.out.println("EigenerZug ist " + spielzug);
+					
 					// Spielzug Anzeigen
 					//Gib aktuelles Array aus
 					arrayAusgebenConsole(ki.arrayAusgabe());
@@ -88,6 +91,7 @@ public class GameSceneController implements  Initializable{
 
 					//Sende errechneten Spielzug an Server und warte auf XML
 					rueckgabe = server.sendZugAnServer(spielzug);
+					
 					
 					//Starte von vorn
 				}
