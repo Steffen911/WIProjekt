@@ -71,6 +71,39 @@ public class DBConnector {
 				e.printStackTrace();
 			}
 	}
+	
+	public ResultSet getAllSpiele(){
+		try {
+			  Statement stmt = con.createStatement(); 
+			  String sql = "select * from SPIELE";
+			  ResultSet rs = stmt.executeQuery(sql);  
+			  
+		      // Statement schliessen
+		      stmt.close(); 
+		      return rs;
+
+			}catch(SQLException e){
+				e.printStackTrace();
+				return null;
+			}
+	}
+	
+	public ResultSet getSaetzeOfSpiel(String SpielID){
+		try {
+			  Statement stmt = con.createStatement(); 
+			  String sql = "select * from SAETZE where SPIELID = "+SpielID;
+			  ResultSet rs = stmt.executeQuery(sql);  
+			  
+		      // Statement schliessen
+		      stmt.close(); 
+		      return rs;
+
+			}catch(SQLException e){
+				e.printStackTrace();
+				return null;
+			}
+	}
+	
 //	public void testNewSpiel(){
 //		try {
 //			  Statement stmt = con.createStatement(); 

@@ -24,7 +24,8 @@ public class SavingSceneController implements  Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-	
+	// TODO: Steffen: getWinner, getStarter
+		//TODO: letzten Zug anzeigen geloest?
 		reuse = new ReusableControllerFunctions();
 		// Edits vorbelegen
 		Satz satz = (reuse.getSpiel()).getCurrentSatz();
@@ -46,13 +47,13 @@ public class SavingSceneController implements  Initializable{
 				satz.setZUEGEGEGNER(zuege); 
 				// in DB speichern
 				satz.saveSatzInDB();
-				reuse.setNewScene("GameScene.fxml");
+				reuse.setNewScene("SettingsScene.fxml"); // fuer neuen Satz
 			}
 		});	
 		
 		deleteBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
-				reuse.setNewScene("GameScene.fxml");
+				reuse.setNewScene("SettingsScene.fxml"); // fuer neuen Satz
 			}
 		});	
 		

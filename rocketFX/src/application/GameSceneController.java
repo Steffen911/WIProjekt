@@ -84,7 +84,13 @@ public class GameSceneController implements  Initializable{
 					arrayAusgebenConsole(ki.arrayAusgabe());
 					Platform.runLater(new Runnable() {
 			            @Override public void run() {
-			                showZug(ki.getGegnerPunkt(), ki.getEigenerPunkt());
+			            	Point gegnerP, wirP;
+			            	gegnerP = ki.getGegnerPunkt();
+			            	wirP = ki.getEigenerPunkt();
+			                showZug(gegnerP,wirP);
+			                Satz satz = reuse.getSpiel().getCurrentSatz();
+			                satz.addZugGEGNER(gegnerP);
+			                satz.addZugIch(wirP);
 			            }
 			        });
 
