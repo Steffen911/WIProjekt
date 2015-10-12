@@ -32,7 +32,7 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="radioBtnO" layoutX="106.0" layoutY="375.0" mnemonicParsing="false" selected="true" text="O" textFill="WHITE">
+            <RadioButton fx:id="radioBtnO" layoutX="107.0" layoutY="375.0" mnemonicParsing="false" selected="true" text="O" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
@@ -79,13 +79,13 @@
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font></Label>
-            <Label fx:id="PfadKeyLabel" layoutX="374.0" layoutY="262.0" text="Key" textFill="WHITE">
+            <Label fx:id="PfadKeyLabel" layoutX="374.0" layoutY="262.0" text="Key:" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font></Label>
             <TextField fx:id="KeyEdit" layoutX="455.0" layoutY="263.0" />
             <TextField fx:id="SecretEdit" layoutX="455.0" layoutY="307.0" />
-            <Label fx:id="SecretLabel" layoutX="373.0" layoutY="306.0" text="Secret" textFill="WHITE">
+            <Label fx:id="SecretLabel" layoutX="373.0" layoutY="306.0" text="Secret:" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font></Label>
@@ -99,7 +99,7 @@
                   <Image url="@../../pictures/fragezeichen.png" />
                </image>
             </ImageView>
-            <Button fx:id="chooserBtn" layoutX="603.0" layoutY="263.0" mnemonicParsing="false" text="..." visible="false" />
+            <Button fx:id="chooserBtn" layoutX="624.0" layoutY="263.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="3.0" text="..." visible="false" />
             <Button fx:id="saveBtn" layoutX="353.0" layoutY="411.0" mnemonicParsing="false" text="Speichern &amp; Zurück">
                <font>
                   <Font name="Arial Bold" size="14.0" />

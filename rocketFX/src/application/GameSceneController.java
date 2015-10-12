@@ -10,6 +10,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -22,6 +23,7 @@ public class GameSceneController implements  Initializable{
 	@FXML Button saveBtn, spielBtn;
 	@FXML ImageView helpBtn;
 	@FXML GridPane GameGrid;
+	@FXML Label GegnerGameScene;
 	
 	private ReusableControllerFunctions reuse;
 	private ServerGuiKontakt server;
@@ -31,6 +33,8 @@ public class GameSceneController implements  Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 	
 		reuse = new ReusableControllerFunctions();
+		
+		GegnerGameScene.setText(reuse.getSpiel().getGEGNER());
 		
 		saveBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {

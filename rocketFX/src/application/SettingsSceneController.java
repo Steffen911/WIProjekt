@@ -98,7 +98,7 @@ public class SettingsSceneController implements  Initializable{
 		
 		radioBtnPush.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
-				PfadKeyLabel.setText("Key");
+				PfadKeyLabel.setText("Key:");
 				SecretEdit.setVisible(true);
 				SecretLabel.setVisible(true);
 				chooserBtn.setVisible(false);
@@ -109,7 +109,7 @@ public class SettingsSceneController implements  Initializable{
 		});
 		radioBtnFile.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
-				PfadKeyLabel.setText("Pfad");
+				PfadKeyLabel.setText("Pfad:");
 				SecretEdit.setVisible(false);
 				SecretLabel.setVisible(false);
 				chooserBtn.setVisible(true);
