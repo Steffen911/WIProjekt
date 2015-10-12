@@ -74,64 +74,85 @@ public class FileSchnittstelle {
 		while(true){
 			
 			File f = new File(dateipfad + "server2spieler" + spielerwahl + ".xml");
-			if(f.exists() && !f.isDirectory()) { break; }
+			if(f.exists() && !f.isDirectory()) { System.out.println("File found."); return xmlExtraction();}
 			
 			try {
 				Thread.sleep(300);
-				//System.out.println("Warten...");
+				System.out.println("Warten...");
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			
 		}
 		
+		
+	}
+	
+	public String[] xmlExtraction(){
+		String returnString[] = new String[4];
 		//Bereitet die Extraktion des XML-Files vor
 		DocumentBuilderFactory builderFactory =
-		        DocumentBuilderFactory.newInstance();
+				DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = null;
 		try {
-		    builder = builderFactory.newDocumentBuilder();
+			builder = builderFactory.newDocumentBuilder();
 		} catch (ParserConfigurationException e) {
-		    e.printStackTrace();  
+			e.printStackTrace();  
 		}
-		
 		try {
 			//Dokument wird ausgelesen vom Ordnerpfad
-		    Document document = builder.parse(
-		        new FileInputStream(dateipfad + "server2spieler" + spielerwahl + ".xml"));
-		    
-		    //Startet den Timer, der die Spielzugzeit bestimmt und gibt nach Ablauf eine Meldung in der Konsole aus
-		    ts.startTimer(centisekunden);
-		    
-		    //root-Element wird ausgelesen
-		    Element element = document.getDocumentElement();
-		    
-		    //alle Kinder des root-Elements werden gelesen
-		    NodeList nodes = element.getChildNodes();
-
-		    int j = 0; //Zaehler fuer die 4 zu lesenden Attribute im returnstring
-		    
-		    for(int i=0; i<nodes.getLength(); i++){
-		      Node node = nodes.item(i);
-
-		      if(node instanceof Element){
-		        //a child element to process
-		        Element child = (Element) node;
-		        
-		        //Fuegt dem returnString den Inhalt des aktuellen Kinds des root-Elements hinzu
-		        returnString[j] = child.getTextContent();
-		        j++;
-		      }
-		    }   
+			FileInputStream fs = 
+					new FileInputStream(dateipfad + "server2spieler" + spielerwahl + ".xml");
+			Document document = builder.parse(fs);
+			
+			fs.close();
+			
+			//TODO: Warum loest das unser problem mit den mehrfachen auslesen der Server datei?
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			//Loeschen der XML nach Gebrauch
+			File f = new File(dateipfad + "server2spieler" + spielerwahl + ".xml");
+			Boolean fileDeleted = f.delete();
+			
+			System.out.println("File wurde geloescht: " + fileDeleted);
+			
+			//Startet den Timer, der die Spielzugzeit bestimmt und gibt nach Ablauf eine Meldung in der Konsole aus
+			ts.startTimer(centisekunden);
+			
+			//root-Element wird ausgelesen
+			Element element = document.getDocumentElement();
+			
+			//alle Kinder des root-Elements werden gelesen
+			NodeList nodes = element.getChildNodes();
+			
+			int j = 0; //Zaehler fuer die 4 zu lesenden Attribute im returnstring
+			
+			for(int i=0; i<nodes.getLength(); i++){
+				Node node = nodes.item(i);
+				
+				if(node instanceof Element){
+					//a child element to process
+					Element child = (Element) node;
+					
+					//Fuegt dem returnString den Inhalt des aktuellen Kinds des root-Elements hinzu
+					returnString[j] = child.getTextContent();
+					j++;
+				}
+			}   
 		} catch (SAXException e) {
-		    e.printStackTrace();
+			e.printStackTrace();
 		} catch (IOException e) {
-		    e.printStackTrace();
+			e.printStackTrace();
 		}
 		
 		//Loeschen der XML nach Gebrauch
-		File f = new File(dateipfad + "server2spieler" + spielerwahl + ".xml");
-		f.delete();
+//		File f = new File(dateipfad + "server2spieler" + spielerwahl + ".xml");
+//		f.delete();
 		
 		//Rueckgabe des returnString
 		return returnString;
