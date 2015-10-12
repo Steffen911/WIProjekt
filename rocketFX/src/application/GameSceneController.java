@@ -68,7 +68,6 @@ public class GameSceneController implements  Initializable{
 			@Override
 			public void run() {
 				int spielzug;
-				
 				String[] rueckgabe = new String[4];
 				
 				ki = new KI(server.getSpielerwahl());

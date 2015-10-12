@@ -76,7 +76,7 @@ public class KI {
 		}
 		int maxWert = -100;
 		
-		generiereMoeglicheZuege(spieler);
+		generiereMoeglicheZuege();
 		while(nochZugDa){
 			fuehreNaechstenZugAus();
 			int wert = min(gegnerStein, tiefe-1);
@@ -93,13 +93,12 @@ public class KI {
 		return maxWert;
 	}
 
-
 	public int min(String spieler, int tiefe){
 		if(tiefe == 0 || keineZuegeMehr()){
 			return bewerten();
 		}
 		int minWert = +100;
-		generiereMoeglicheZuege(spieler);
+		generiereMoeglicheZuege();
 		while(nochZugDa){
 			fuehreNaechstenZugAus();
 			int wert = max(eigenerStein, tiefe-1);
