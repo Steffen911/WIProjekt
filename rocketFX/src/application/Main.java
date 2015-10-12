@@ -21,7 +21,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			primStage = primaryStage;
-			InputStream icon = new BufferedInputStream(new FileInputStream("../rocketFX/pictures/rocket_icon.png"));
+			InputStream icon = new BufferedInputStream(new FileInputStream("pictures/rocket_icon.png"));
 			primStage.getIcons().add(new Image(icon));
 			primStage.setTitle("Team rocket - 4 Gewinnt");
 			// Lade FXML Datei "StartScene" als erstes Fenster

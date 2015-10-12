@@ -1,6 +1,0 @@
-<<<<<<< HEAD
-=======
-/*C6*/SET SCHEMA PUBLIC
-INSERT INTO SPIELE VALUES(56,'stefan','',0)
-COMMIT
->>>>>>> master
