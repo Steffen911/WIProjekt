@@ -35,6 +35,7 @@ public class StatistikSceneController implements  Initializable{
 	
 	private DBConnector dbConn;
 	private ReusableControllerFunctions reuse;
+	private String selectedStr = "";
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -61,6 +62,10 @@ public class StatistikSceneController implements  Initializable{
 		     @Override
 		     public void handle(MouseEvent event) {
 		    	 //TODO: Spiel aus Zeile in SpielObjekt laden, in SettingsScene neuen Satz starten
+		    	 String id = selectedStr.substring(1,selectedStr.indexOf(","));
+		    	 String gegner = selectedStr.substring(selectedStr.indexOf(","), selectedStr.indexOf(",", 5));
+		    	 reuse.SpielFortsetzen(Integer.parseInt(id), gegner);
+		    	 reuse.setNewScene("SettingsScene.fxml");
 		     }
 		});
 
@@ -91,8 +96,8 @@ public class StatistikSceneController implements  Initializable{
 		    	 //TODO: Show Satz
 		    	 // Welcher Zeile wurde geklickt?
 		    	 TableView table = (TableView) event.getSource();
-		    	 String selected =  table.getSelectionModel().getSelectedItems().get(0).toString();
-		    	 String id = selected.substring(1,3);
+		    	 selectedStr =  table.getSelectionModel().getSelectedItems().get(0).toString();
+		    	 String id = selectedStr.substring(1,selectedStr.indexOf(","));
 		    	 System.out.println(id + " geklickt");
 		    	 // Saetze von Spiel in DB suchen
 		    	 ResultSet rs = dbConn.getSaetzeOfSpiel(id);

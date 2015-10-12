@@ -14,8 +14,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import ki.KI;
 import serverKommunikation.ServerGuiKontakt;
 
@@ -125,14 +127,31 @@ public class GameSceneController implements  Initializable{
 	
 	}
 	private void showZug(Point gegner, Point wir){
-		// Verknuepfung zu GUI: Zuege anzeigen
-		if(wir.x >= 0){
-		  GameGrid.add(new Circle(14.0, Color.YELLOW), wir.x, 5-wir.y);
+		
+		Circle yellowCircle = new Circle(14.0, Color.YELLOW);
+		Circle redCircle = new Circle(14.0, Color.RED);
+		
+		Text oText = new Text("o");
+		Text xText = new Text("x");
+		
+		StackPane yellowStack = new StackPane();
+		StackPane redStack = new StackPane();
+		
+		if(server.getSpielerwahl() == "o"){
+			yellowStack.getChildren().addAll(yellowCircle, oText);
+			redStack.getChildren().addAll(redCircle, xText);
+		}else{
+			yellowStack.getChildren().addAll(yellowCircle, xText);
+			redStack.getChildren().addAll(redCircle, oText);
 		}
-		if(gegner.x >= 0){
-		  GameGrid.add(new Circle(14.0, Color.RED), gegner.x, 5-gegner.y);
-		}
+		
+			// Verknuepfung zu GUI: Zuege anzeigen
+			if(wir.x >= 0){
+				GameGrid.add(yellowStack, wir.x, 5-wir.y);
+			}
+			if(gegner.x >= 0){
+				GameGrid.add(redStack, gegner.x, 5-gegner.y);
+			}
 	}
-	
 
 }
