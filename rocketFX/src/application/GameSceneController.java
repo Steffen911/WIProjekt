@@ -121,14 +121,24 @@ public class GameSceneController implements  Initializable{
 	
 	}
 	private void showZug(Point gegner, Point wir){
-		// Verknuepfung zu GUI: Zuege anzeigen
-		if(wir.x >= 0){
-		  GameGrid.add(new Circle(14.0, Color.YELLOW), wir.x, 5-wir.y);
-		}
-		if(gegner.x >= 0){
-		  GameGrid.add(new Circle(14.0, Color.RED), gegner.x, 5-gegner.y);
+		
+		if(server.getSpielerwahl() == "o"){
+			// Verknuepfung zu GUI: Zuege anzeigen
+			if(wir.x >= 0){
+				GameGrid.add(new Circle(14.0, Color.YELLOW), wir.x, 5-wir.y);
+			}
+			if(gegner.x >= 0){
+				GameGrid.add(new Circle(14.0, Color.RED), gegner.x, 5-gegner.y);
+			}
+		}else{
+			// Verknuepfung zu GUI: Zuege anzeigen
+			if(wir.x >= 0){
+				GameGrid.add(new Circle(14.0, Color.RED), wir.x, 5-wir.y);
+			}
+			if(gegner.x >= 0){
+				GameGrid.add(new Circle(14.0, Color.YELLOW), gegner.x, 5-gegner.y);
+			}
 		}
 	}
-	
 
 }
