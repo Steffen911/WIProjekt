@@ -28,6 +28,12 @@ public class ReusableControllerFunctions {
 		spiel = new Spiel();
 	}
 	
+	public void SpielFortsetzen(int SpielID,  String gegner){
+		spiel = new Spiel();
+		spiel.setID(SpielID);
+		spiel.setGEGNER(gegner);
+	}
+	
 	public Spiel getSpiel(){
 		return spiel;
 	}

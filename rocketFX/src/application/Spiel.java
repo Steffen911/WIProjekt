@@ -28,6 +28,7 @@ public class Spiel {
 	public void addNewSatz(){
 		satzList.add(new Satz(ID,satzList.size()));
 		currentSatzIndex = satzList.size() -1;
+		System.out.println("New Satz "+ currentSatzIndex);
 	}
 	
 	public Satz getCurrentSatz(){
@@ -35,8 +36,10 @@ public class Spiel {
 	}
 	
 	public void saveSpielInDB(){
-		int id = db.insertNewSpiel(GEGNER, SIEGER, PUNKTE);
-		ID = id;
+		if(ID != 0){ // bei Spiel Fortsetzen ist ID schon gesetzt
+			int id = db.insertNewSpiel(GEGNER, SIEGER, PUNKTE);
+			ID = id;
+		}
 	}
 	
 	public void updateSpielInDB(){
@@ -59,6 +62,9 @@ public class Spiel {
 	}
 	public int getID() {
 		return ID;
+	}
+	public void setID(int id){
+		ID = id;
 	}
 	public String getGEGNER() {
 		return GEGNER;

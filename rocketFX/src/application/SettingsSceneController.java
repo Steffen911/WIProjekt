@@ -49,6 +49,7 @@ public class SettingsSceneController implements  Initializable{
 	private String spielerwahl;
 	private boolean pushSchnittstelle;
 	private int zeit;
+	private Spiel spiel;
 	
 	private ReusableControllerFunctions reuse;
 	
@@ -57,11 +58,12 @@ public class SettingsSceneController implements  Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		reuse = new ReusableControllerFunctions();
+		spiel = reuse.getSpiel();
+		GegnerEdit.setText(spiel.getGEGNER()); // falls Spiel fortgesetzt wird, gibt es den schon
 // TODO: back Btn zum Spiel Starten Screen
 		playBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
 				// SpielObjekt
-				Spiel spiel = reuse.getSpiel();
 				spiel.setGEGNER(GegnerEdit.getText());
 				spiel.saveSpielInDB();
 				spiel.addNewSatz();
