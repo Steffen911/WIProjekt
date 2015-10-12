@@ -1,5 +1,8 @@
 package application;
 
+
+import java.awt.Point;
+
 import datenbank.DBConnector;
 
 public class Satz {
@@ -47,16 +50,16 @@ public class Satz {
 		return ZUEGEICH;
 	}
 
-	public void addZugIch(int zUEGEICH) {
-		ZUEGEICH += " "+ zUEGEICH;
+	public void addZugIch(Point zug) {
+		ZUEGEICH += " "+ zug.x+zug.y;
 	}
 
 	public String getZUEGEGEGNER() {
 		return ZUEGEGEGNER;
 	}
 
-	public void addZugGEGNER(int zUEGEGEGNER) {
-		ZUEGEGEGNER += " "+ zUEGEGEGNER;
+	public void addZugGEGNER(Point zug) {
+		ZUEGEGEGNER += " "+ zug.x +zug.y;
 	}
 
 	public int getSPIELID() {
