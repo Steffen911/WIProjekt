@@ -97,7 +97,7 @@ public class StatistikSceneController implements  Initializable{
 		    	 // Saetze von Spiel in DB suchen
 		    	 ResultSet rs = dbConn.getSaetzeOfSpiel(id);
 		    	 // Saetze anzeigen
-		    	 showSpielTable(rs);
+		    	 showSatzTable(rs);
 		     }
 		});
 
@@ -151,7 +151,7 @@ public class StatistikSceneController implements  Initializable{
 		}
 	}
 	
-	private void showSpielTable(ResultSet rs){
+	private void showSatzTable(ResultSet rs){
 		SatzSatzIDCol.setCellValueFactory(new Callback<CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){                    
             public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {                                                                                              
                 return new SimpleStringProperty(param.getValue().get(1).toString());                        
@@ -198,7 +198,7 @@ public class StatistikSceneController implements  Initializable{
 				    data.add(row);
 	
 				}
-				SpielTable.setItems(data);
+				SatzTable.setItems(data);
 			} catch (SQLException e) {
 				System.out.println("Dateneinsortieren fuer Tabelle hat nicht geklappt.");
 				e.printStackTrace();
