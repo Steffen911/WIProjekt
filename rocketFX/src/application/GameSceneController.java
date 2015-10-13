@@ -59,6 +59,7 @@ public class GameSceneController implements  Initializable{
 		    	 // starte das Spiel und spiele
 		    	 startServerConnection();
 		    	 playGame();
+		    	 spielBtn.setVisible(false);
 		     }
 		});
 	}
