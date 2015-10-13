@@ -58,6 +58,10 @@ public class ServerGuiKontakt {
 		}
 	}
 	
+	public void disconnect(){
+		pushS.disconnect();
+	}
+	
 	public String[] sendZugAnServer(int spielzug){
 		if (fileSchnittstelle){
 			return fileS.communicate(spielzug);

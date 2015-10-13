@@ -93,6 +93,10 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 				});
 
 	}
+
+	public void disconnect(){
+		pusher.disconnect();	
+	}
 	
 	//Writer sendet spielzug an Server
 	public void writer(int spielzug){

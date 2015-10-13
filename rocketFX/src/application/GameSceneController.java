@@ -40,6 +40,7 @@ public class GameSceneController implements  Initializable{
 		
 		saveBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
+				server.disconnect(); //Nach dem Spiel wird die Verbinudng zum Pusher beendet
 				reuse.setNewScene("SavingScene.fxml");
 			}
 		});	
@@ -85,6 +86,7 @@ public class GameSceneController implements  Initializable{
 					System.out.println("GegnerZug ist " + rueckgabe[2]);
 					System.out.println("EigenerZug ist " + spielzug);
 					
+					
 					// Spielzug Anzeigen
 					//Gib aktuelles Array aus
 					arrayAusgebenConsole(ki.arrayAusgabe());
@@ -99,11 +101,16 @@ public class GameSceneController implements  Initializable{
 			                satz.addZugIch(wirP);
 			            }
 			        });
-
+					
 					//Sende errechneten Spielzug an Server und warte auf XML
 					rueckgabe = server.sendZugAnServer(spielzug);
 					
-					
+					try {
+						Thread.sleep(50);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					//Starte von vorn
 				}
 	
