@@ -25,7 +25,6 @@ public class ServerGuiKontakt {
 	private FileSchnittstelle fileS;
 	private PushSchnittstelle pushS;
 	private String spielerwahl = "o";
-	//private String pfad = "..//"; //TODO: Definiere den Pfad fuer die server.ini
 	
 	//variablen fuer die infos aus der server.ini
 	private String dateipfad = "//Users//Steffen//Dropbox//Test//";
@@ -127,7 +126,6 @@ public class ServerGuiKontakt {
 		try {
 			transformer.transform(source, result);
 		} catch (TransformerException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

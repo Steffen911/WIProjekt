@@ -26,7 +26,7 @@ public class SavingSceneController implements  Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-	// TODO: Steffen: getWinner, getStarter
+		// TODO: Steffen: getWinner, getStarter
 		//TODO: letzten Zug anzeigen geloest?
 		reuse = new ReusableControllerFunctions();
 		// Edits vorbelegen

@@ -130,7 +130,7 @@ public class PushSchnittstelle implements ConnectionEventListener, PrivateChanne
 					@Override
 					public void onEvent(String channel, String event, String data) {
 						
-						//TODO: Es werden mehrfach Events empfangen
+						//TODO: Steffen: Es werden mehrfach Events empfangen
 						ts.startTimer(centisekunden);
 						
 						//Cut the message part from string
