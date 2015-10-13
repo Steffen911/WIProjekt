@@ -26,6 +26,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import serverKommunikation.ServerGuiKontakt;
 
 public class SettingsSceneController implements  Initializable{
 	@FXML Button playBtn;
@@ -52,14 +53,22 @@ public class SettingsSceneController implements  Initializable{
 	private Spiel spiel;
 	
 	private ReusableControllerFunctions reuse;
-	
+	private ServerGuiKontakt sgk;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		reuse = new ReusableControllerFunctions();
+		sgk = new ServerGuiKontakt("o","", 10);
+		// Vorbelegen
 		spiel = reuse.getSpiel();
+		spielerwahl = "o";
+		pushSchnittstelle = true;
 		GegnerEdit.setText(spiel.getGEGNER()); // falls Spiel fortgesetzt wird, gibt es den schon
+		SecretEdit.setText(sgk.getApiSecret());
+		KeyEdit.setText(sgk.getApiKey());
+		zeitslider.setValue(sgk.getCentisekunden()/10);
+		
 // TODO: back Btn zum Spiel Starten Screen
 		playBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
@@ -94,9 +103,6 @@ public class SettingsSceneController implements  Initializable{
 		radioBtnO.setToggleGroup(playerXOToggle);
 		radioBtnX.setToggleGroup(playerXOToggle);
 		
-		// Vorbelegung
-		spielerwahl = "o";
-		pushSchnittstelle = true;
 		
 		radioBtnPush.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
@@ -107,6 +113,8 @@ public class SettingsSceneController implements  Initializable{
 				pushSchnittstelle = true;
 				KeyEdit.setVisible(true);
 				PfadEdit.setVisible(false);
+				SecretEdit.setText(sgk.getApiSecret());
+				KeyEdit.setText(sgk.getApiKey());
 			}
 		});
 		radioBtnFile.setOnAction(new EventHandler<ActionEvent>() {
@@ -118,6 +126,7 @@ public class SettingsSceneController implements  Initializable{
 				pushSchnittstelle = false;
 				PfadEdit.setVisible(true);
 				KeyEdit.setVisible(false);
+				PfadEdit.setText(sgk.getDateipfad());
 			}
 		});
 		

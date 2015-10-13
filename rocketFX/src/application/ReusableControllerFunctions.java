@@ -8,16 +8,14 @@ import serverKommunikation.ServerGuiKontakt;
 
 public class ReusableControllerFunctions {
 
-	private static String lastSceneOnBack;
-	private static String newScene;
-	private static Spiel spiel;
+	private static String lastSceneOnBack = "";
+	private static String newScene = "StartScene.fxml";
+	private static Spiel spiel = new Spiel();
 	private static ServerGuiKontakt server;
 	
 	
 	public ReusableControllerFunctions() {
-		newScene = "StartScene.fxml";
-		lastSceneOnBack = "";
-		spiel = new Spiel();
+		
 	}
 
 	public String getLastScene(){
