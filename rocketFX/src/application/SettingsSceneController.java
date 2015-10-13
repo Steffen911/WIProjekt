@@ -26,6 +26,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import serverKommunikation.ServerGuiKontakt;
 
 public class SettingsSceneController implements  Initializable{
 	@FXML Button playBtn;
@@ -49,19 +50,29 @@ public class SettingsSceneController implements  Initializable{
 	private String spielerwahl;
 	private boolean pushSchnittstelle;
 	private int zeit;
+	private Spiel spiel;
 	
 	private ReusableControllerFunctions reuse;
-	
+	private ServerGuiKontakt sgk;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		reuse = new ReusableControllerFunctions();
-
+		sgk = new ServerGuiKontakt("o","", 10);
+		// Vorbelegen
+		spiel = reuse.getSpiel();
+		spielerwahl = "o";
+		pushSchnittstelle = true;
+		GegnerEdit.setText(spiel.getGEGNER()); // falls Spiel fortgesetzt wird, gibt es den schon
+		SecretEdit.setText(sgk.getApiSecret());
+		KeyEdit.setText(sgk.getApiKey());
+		zeitslider.setValue(sgk.getCentisekunden()/10);
+		
+// TODO: back Btn zum Spiel Starten Screen
 		playBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
 				// SpielObjekt
-				Spiel spiel = reuse.getSpiel();
 				spiel.setGEGNER(GegnerEdit.getText());
 				spiel.saveSpielInDB();
 				spiel.addNewSatz();
@@ -92,30 +103,30 @@ public class SettingsSceneController implements  Initializable{
 		radioBtnO.setToggleGroup(playerXOToggle);
 		radioBtnX.setToggleGroup(playerXOToggle);
 		
-		// Vorbelegung
-		spielerwahl = "o";
-		pushSchnittstelle = true;
 		
 		radioBtnPush.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
-				PfadKeyLabel.setText("Key");
+				PfadKeyLabel.setText("Key:");
 				SecretEdit.setVisible(true);
 				SecretLabel.setVisible(true);
 				chooserBtn.setVisible(false);
 				pushSchnittstelle = true;
 				KeyEdit.setVisible(true);
 				PfadEdit.setVisible(false);
+				SecretEdit.setText(sgk.getApiSecret());
+				KeyEdit.setText(sgk.getApiKey());
 			}
 		});
 		radioBtnFile.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
-				PfadKeyLabel.setText("Pfad");
+				PfadKeyLabel.setText("Pfad:");
 				SecretEdit.setVisible(false);
 				SecretLabel.setVisible(false);
 				chooserBtn.setVisible(true);
 				pushSchnittstelle = false;
 				PfadEdit.setVisible(true);
 				KeyEdit.setVisible(false);
+				PfadEdit.setText(sgk.getDateipfad());
 			}
 		});
 		

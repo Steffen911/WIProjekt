@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*C6*/SET SCHEMA PUBLIC
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -21,3 +22,5 @@ INSERT INTO SPIELE VALUES(47,'stefan','',0)
 INSERT INTO SPIELE VALUES(56,'stefan','',0)
 >>>>>>> master
 COMMIT
+=======
+>>>>>>> master

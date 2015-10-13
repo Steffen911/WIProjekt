@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -17,20 +18,22 @@ public class SavingSceneController implements  Initializable{
 	@FXML Button saveBtn;
 	@FXML ImageView helpBtn;
 	@FXML Button deleteBtn;
-	@FXML TextField gewinnerEdit, starterEdit, zuegeEdit;
+	@FXML TextField gewinnerEdit, starterEdit;
+	@FXML TextArea zuegeArea;
 	
 	private DBConnector dbConn;
 	private ReusableControllerFunctions reuse;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-	
+	// TODO: Steffen: getWinner, getStarter
+		//TODO: letzten Zug anzeigen geloest?
 		reuse = new ReusableControllerFunctions();
 		// Edits vorbelegen
 		Satz satz = (reuse.getSpiel()).getCurrentSatz();
 		gewinnerEdit.setText(satz.getSIEGER());
 		starterEdit.setText(satz.getSTARTER());
-		zuegeEdit.setText("rocket: "+ satz.getZUEGEICH()+"\n"+
+		zuegeArea.setText("rocket: "+ satz.getZUEGEICH()+"\n"+
 						"Gegner: "+ satz.getZUEGEGEGNER());
 		
 		saveBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -39,20 +42,20 @@ public class SavingSceneController implements  Initializable{
 				satz.setSIEGER(gewinnerEdit.getText());
 				satz.setSTARTER(starterEdit.getText());
 				//ToDo: Zuege speichern (String schneiden)
-				String zuege = zuegeEdit.getText().substring(zuegeEdit.getText().indexOf(" ")+1);
+				String zuege = zuegeArea.getText().substring(zuegeArea.getText().indexOf(" ")+1);
 				zuege = zuege.substring(0, zuege.indexOf("\n"));
 				satz.setZUEGEICH(zuege);
-				zuege = zuegeEdit.getText().substring(zuegeEdit.getText().indexOf("Gegner: ")+1);
+				zuege = zuegeArea.getText().substring(zuegeArea.getText().indexOf("Gegner: ")+1);
 				satz.setZUEGEGEGNER(zuege); 
 				// in DB speichern
 				satz.saveSatzInDB();
-				reuse.setNewScene("GameScene.fxml");
+				reuse.setNewScene("SettingsScene.fxml"); // fuer neuen Satz
 			}
 		});	
 		
 		deleteBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
-				reuse.setNewScene("GameScene.fxml");
+				reuse.setNewScene("SettingsScene.fxml"); // fuer neuen Satz
 			}
 		});	
 		
