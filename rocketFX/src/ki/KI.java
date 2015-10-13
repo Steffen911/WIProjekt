@@ -72,14 +72,14 @@ public class KI {
 	public int max(String spieler, int tiefe){
 		
 		if(tiefe == 0 || keineZuegeMehr()){ //TODO: Steffen: abfrage ob jemand gewonnen hat hinzufuegen (optional)
-			return bewerten();
+			return bewerten(spieler);
 		}
 		int maxWert = -100;
 		
 		generiereMoeglicheZuege();
 		while(nochZugDa){
 			fuehreNaechstenZugAus();
-			int wert = min(gegnerStein, tiefe-1);
+			int wert = min(gegnerStein, tiefe-1); //wert hat einen wert von 1 bis 4. 4 ist ideal
 			macheZugRueckgaengig();
 			
 			if(wert > maxWert){
@@ -95,19 +95,41 @@ public class KI {
 
 	public int min(String spieler, int tiefe){
 		if(tiefe == 0 || keineZuegeMehr()){
-			return bewerten();
+			return bewerten(spieler);
 		}
 		int minWert = +100;
 		generiereMoeglicheZuege();
 		while(nochZugDa){
 			fuehreNaechstenZugAus();
-			int wert = max(eigenerStein, tiefe-1);
+			int wert = max(eigenerStein, tiefe-1); //wert hat einen wert von 1 bis 4. 4 ist ideal
 			macheZugRueckgaengig();
 			if(wert < minWert){
 				minWert = wert;
 			}
 		}
 		return minWert;
+	}
+	
+	//bewerte die aktuelle Situation des spielers
+	//4 entspricht 4 in einer reihe
+	//3 entspricht 3 in einer reihe
+	//2 entspricht 2 in einer reihe
+	public int bewerten(String spieler){
+		reihenPruefen pruefen = new reihenPruefen();
+		
+		if (pruefen.viererReihe(spielfeld, spieler)){
+			return 4;
+		}
+		
+		if (pruefen.dreierReihe(spielfeld, spieler)){
+			return 3;
+		}
+		
+		if (pruefen.zweierReihe(spielfeld, spieler)){
+			return 2;
+		}
+		
+		return 1;
 	}
 	
 	//prueft ob noch ein spielzug moeglich ist
@@ -145,6 +167,22 @@ public class KI {
 				} //end if
 			} //end for				
 		} 		
+	}
+	
+	//Gibt an ob und wer gewonnen hat
+	//null falls noch niemand gewonnen hat
+	public String getWinner(){
+		reihenPruefen pruefen = new reihenPruefen();
+		
+		if(pruefen.viererReihe(spielfeld, eigenerStein)){
+			return eigenerStein;
+		}
+		if(pruefen.viererReihe(spielfeld, gegnerStein)){
+			return gegnerStein;
+		}
+		
+		return null;
+	
 	}
 	
 	//Gibt das aktuelle Spielfeld aus
