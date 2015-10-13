@@ -94,7 +94,7 @@
                   <Font name="Arial Bold" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="GegnerGameScene" layoutX="97.0" layoutY="116.0" prefHeight="33.0" prefWidth="107.0" text="Gegner" textFill="WHITE">
+            <Label fx:id="GegnerGameScene" layoutX="99.0" layoutY="116.0" prefHeight="33.0" prefWidth="107.0" text="Gegner" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
