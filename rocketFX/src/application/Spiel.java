@@ -20,6 +20,7 @@ public class Spiel {
 		GEGNER = "";
 		SIEGER = "";
 		PUNKTE = 0;
+		ID = 0;
 		currentSatzIndex = 0;
 		db = new DBConnector();
 	}
@@ -36,7 +37,7 @@ public class Spiel {
 	}
 	
 	public void saveSpielInDB(){
-		if(ID != 0){ // bei Spiel Fortsetzen ist ID schon gesetzt
+		if(ID == 0){ // bei Spiel Fortsetzen ist ID schon gesetzt
 			int id = db.insertNewSpiel(GEGNER, SIEGER, PUNKTE);
 			ID = id;
 		}

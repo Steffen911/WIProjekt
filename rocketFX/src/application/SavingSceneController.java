@@ -45,7 +45,7 @@ public class SavingSceneController implements  Initializable{
 				String zuege = zuegeArea.getText().substring(zuegeArea.getText().indexOf(" ")+1);
 				zuege = zuege.substring(0, zuege.indexOf("\n"));
 				satz.setZUEGEICH(zuege);
-				zuege = zuegeArea.getText().substring(zuegeArea.getText().indexOf("Gegner: ")+1);
+				zuege = zuegeArea.getText().substring(zuegeArea.getText().indexOf("Gegner: ")+8);
 				satz.setZUEGEGEGNER(zuege); 
 				// in DB speichern
 				satz.saveSatzInDB();

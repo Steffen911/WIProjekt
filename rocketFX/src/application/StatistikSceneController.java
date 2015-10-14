@@ -55,7 +55,7 @@ public class StatistikSceneController implements  Initializable{
 		SatzAendernBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 		     @Override
 		     public void handle(MouseEvent event) {
-		    	//TODO SatzTable.setEditable(true);
+		    	SatzTable.setEditable(true);
 		     }
 		});
 		SpielFortsetzenBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
@@ -63,8 +63,9 @@ public class StatistikSceneController implements  Initializable{
 		     public void handle(MouseEvent event) {
 		    	 //TODO: Spiel aus Zeile in SpielObjekt laden, in SettingsScene neuen Satz starten
 		    	 String id = selectedStr.substring(1,selectedStr.indexOf(","));
-		    	 String gegner = selectedStr.substring(selectedStr.indexOf(","), selectedStr.indexOf(",", 5));
+		    	 String gegner = selectedStr.substring(selectedStr.indexOf(",")+2, selectedStr.indexOf(",", 5));
 		    	 reuse.SpielFortsetzen(Integer.parseInt(id), gegner);
+		    	 System.out.println("Spiel "+id+" gegen "+gegner+" fortsetzen.");
 		    	 reuse.setNewScene("SettingsScene.fxml");
 		     }
 		});
@@ -191,11 +192,13 @@ public class StatistikSceneController implements  Initializable{
 		
 		if(rs != null){
 			ObservableList<ObservableList> data = FXCollections.observableArrayList();
+			data.clear();
 			// Add Data to Observable List
 			try {
 				while(rs.next()){
 				    //Iterate Row
 				    ObservableList<String> row = FXCollections.observableArrayList();
+				    row.clear();
 				    for(int i=1 ; i<=rs.getMetaData().getColumnCount(); i++){
 				        //Iterate Column
 				        row.add(rs.getString(i));
@@ -203,7 +206,14 @@ public class StatistikSceneController implements  Initializable{
 				    data.add(row);
 	
 				}
-				SatzTable.setItems(data);
+				try {
+					if(data != null){
+						SatzTable.setItems(data);
+					}else{ System.out.println("Keine Satzdaten.");}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			} catch (SQLException e) {
 				System.out.println("Dateneinsortieren fuer Tabelle hat nicht geklappt.");
 				e.printStackTrace();
