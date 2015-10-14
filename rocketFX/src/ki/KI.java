@@ -23,7 +23,7 @@ public class KI {
 	
 	//Array fuer moegliche Zuege
 	//Index fuer Spalte, Wert fuer Zeile, -1 falls Zeile voll ist
-	private int[] moeglicheZuege;
+	private int[] moeglicheZuege = new int[7];
 	
 	//Konstruktor fuer KI, legt Spielsteine fest, inititalisiert den spielfeldarray
 	public KI(String spielerwahl){
@@ -61,9 +61,7 @@ public class KI {
 			return 3;
 		}
 		
-		hauptProgramm(2);
-		
-		setzeEigenenStein(gespeicherterZug);
+		hauptProgramm(6);
 		
 		return gespeicherterZug;
 
@@ -72,7 +70,7 @@ public class KI {
 	//MinMax Wikipedia Pseudocode
 	public void hauptProgramm(int gewuenschteTiefe){
 		gespeicherterZug = -1;
-		this.gewuenschteTiefe = gewuenschteTiefe; // TODO: Steffen: zuweisung entfernen, sobald methode wirklich aufgerufen wird
+		this.gewuenschteTiefe = gewuenschteTiefe;
 		
 		max(eigenerStein, gewuenschteTiefe);
 		if (gespeicherterZug == -1) {
@@ -94,15 +92,17 @@ public class KI {
 		
 		//generiereMoeglicheZuege();
 		for(int i=0; i<7; i++){
-			if(moeglicheZuege[i] != -1){
-				fuehreNaechstenZugAus(moeglicheZuege[i], spieler);
+			int spalte = (i+3)%6;
+			if(moeglicheZuege[spalte] != -1){
+				int zeile = moeglicheZuege[spalte];
+				fuehreNaechstenZugAus(spalte, zeile, spieler);
 				int wert = min(gegnerStein, tiefe-1); //wert hat einen wert von 1 bis 4. 4 ist ideal
-				macheZugRueckgaengig(moeglicheZuege[i], spieler);
+				macheZugRueckgaengig(spalte, zeile, spieler);
 			
 				if(wert > maxWert){
 					maxWert = wert;
 					if(tiefe == gewuenschteTiefe){
-						gespeicherterZug = moeglicheZuege[i];
+						gespeicherterZug = spalte;
 					}
 				}	
 			}
@@ -121,9 +121,11 @@ public class KI {
 		//generiereMoeglicheZuege();
 		for(int i=0; i<7; i++){
 			if(moeglicheZuege[i] != -1){
-				fuehreNaechstenZugAus(moeglicheZuege[i], spieler);
+				int spalte = i;
+				int zeile = moeglicheZuege[i];
+				fuehreNaechstenZugAus(spalte, zeile, spieler);
 				int wert = max(eigenerStein, tiefe-1); //wert hat einen wert von 1 bis 4. 4 ist ideal
-				macheZugRueckgaengig(moeglicheZuege[i], spieler);
+				macheZugRueckgaengig(spalte, zeile, spieler);
 				if(wert < minWert){
 					minWert = wert;
 				}
@@ -138,53 +140,72 @@ public class KI {
 	//2 entspricht 2 in einer reihe
 	public int bewerten(String spieler){
 		reihenPruefen pruefen = new reihenPruefen();
+		String gegner;
+		
+		if(spieler == "o"){
+			gegner = "x";
+		}else{
+			gegner = "o";
+		}
 		
 		if (pruefen.viererReihe(spielfeld, spieler)){
 			return 4;
+		}
+		
+		if (pruefen.viererReihe(spielfeld, gegner)){
+			return -4;
 		}
 		
 		if (pruefen.dreierReihe(spielfeld, spieler)){
 			return 3;
 		}
 		
+		if (pruefen.dreierReihe(spielfeld, gegner)){
+			return -3;
+		}
+		
 		if (pruefen.zweierReihe(spielfeld, spieler)){
 			return 2;
 		}
+			
+		if (pruefen.zweierReihe(spielfeld, gegner)){
+			return -2;
+		}
 		
-		return 1;
+		return 0;
 	}
 	
 	//prueft ob noch ein spielzug moeglich ist
 	public boolean keineZuegeMehr(){
-		boolean nochEinZugMoeglich = false;
+		boolean keinZugMoeglich = true;
 		
 		for(int i=0; i<7; i++){
 			for(int j=0; j<6; j++){
 				if(spielfeld[i][j]=="_"){
 					moeglicheZuege[i] = j;
-					nochEinZugMoeglich = true;
+					keinZugMoeglich = false;
 					break;
 				}
 			}
 		}
 			
-		return nochEinZugMoeglich;
+		return keinZugMoeglich;
 	}
 	
 	//Setzt den uebergebenen Stein ins Spielfeld
-	public void fuehreNaechstenZugAus(int spielzug, String spieler){
+	public void fuehreNaechstenZugAus(int spalte, int zeile, String spieler){
 		
-		if(spielfeld[spielzug][moeglicheZuege[spielzug]] == "_"){
-			spielfeld[spielzug][moeglicheZuege[spielzug]] = spieler;
+		if(spielfeld[spalte][zeile] == "_"){
+			spielfeld[spalte][zeile] = spieler;
 		}
 		
 	}
 	
 	//Nimmt den uebergebenen Stein aus dem Spielfeld
-	public void macheZugRueckgaengig(int spielzug, String spieler){
+	public void macheZugRueckgaengig(int spalte, int zeile, String spieler){
 		
-		if(spielfeld[spielzug][moeglicheZuege[spielzug]] == spieler){
-			spielfeld[spielzug][moeglicheZuege[spielzug]] = "_";
+		if(spielfeld[spalte][zeile] == spieler){
+			spielfeld[spalte][zeile] = "_";
 		}
 			
 	}
