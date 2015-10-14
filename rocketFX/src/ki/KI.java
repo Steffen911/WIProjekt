@@ -21,6 +21,10 @@ public class KI {
 	//Tiefe fuer rekursion
 	private int gewuenschteTiefe;
 	
+	//Array fuer moegliche Zuege
+	//Index fuer Spalte, Wert fuer Zeile, -1 falls Zeile voll ist
+	private int[] moeglicheZuege;
+	
 	//Konstruktor fuer KI, legt Spielsteine fest, inititalisiert den spielfeldarray
 	public KI(String spielerwahl){
 		eigenerStein = spielerwahl;
@@ -37,22 +41,31 @@ public class KI {
 			break;
 		}
 		
-		for(int i=0; i<7; i++) {
+		for(int i=0; i<7; i++) { //initialisiert spielfeld
 			for(int j=0; j<6; j++){				
 				spielfeld[i][j] = "_";
 			}
+			moeglicheZuege[i] = -1; //initialisiert die moeglichen zuege
 		}
+		
 	}
 	
 	//Nimmt eine Spalte zwischen 0 und 6 entgegen
 	//Gibt einen integer mit dem eigenen Spielzug zurueck
 	public int zugBerechnen(int gegnerZug) {
 		
+		setzeGegnerStein(gegnerZug);
+		
 		if (gegnerZug == -1){
+			setzeEigenenStein(3);
 			return 3;
 		}
 		
-		return -1;
+		hauptProgramm(2);
+		
+		setzeEigenenStein(gespeicherterZug);
+		
+		return gespeicherterZug;
 
 	} //end of zug berechnen
 	
@@ -61,7 +74,7 @@ public class KI {
 		gespeicherterZug = -1;
 		this.gewuenschteTiefe = gewuenschteTiefe; // TODO: Steffen: zuweisung entfernen, sobald methode wirklich aufgerufen wird
 		
-		int bewertung = max(eigenerStein, gewuenschteTiefe);
+		max(eigenerStein, gewuenschteTiefe);
 		if (gespeicherterZug == -1) {
 			//Es gab keine weiteren Zuege mehr
 			System.out.println("Das Spiel ist beendet.");
@@ -79,17 +92,19 @@ public class KI {
 		}
 		int maxWert = -100;
 		
-		generiereMoeglicheZuege();
-		while(nochZugDa){
-			fuehreNaechstenZugAus(zug, spieler);
-			int wert = min(gegnerStein, tiefe-1); //wert hat einen wert von 1 bis 4. 4 ist ideal
-			macheZugRueckgaengig(zug, spieler);
+		//generiereMoeglicheZuege();
+		for(int i=0; i<7; i++){
+			if(moeglicheZuege[i] != -1){
+				fuehreNaechstenZugAus(moeglicheZuege[i], spieler);
+				int wert = min(gegnerStein, tiefe-1); //wert hat einen wert von 1 bis 4. 4 ist ideal
+				macheZugRueckgaengig(moeglicheZuege[i], spieler);
 			
-			if(wert > maxWert){
-				maxWert = wert;
-				if(tiefe == gewuenschteTiefe){
-					gespeicherterZug = zug;
-				}
+				if(wert > maxWert){
+					maxWert = wert;
+					if(tiefe == gewuenschteTiefe){
+						gespeicherterZug = moeglicheZuege[i];
+					}
+				}	
 			}
 		}
 		
@@ -103,13 +118,15 @@ public class KI {
 		}
 		int minWert = +100;
 		
-		generiereMoeglicheZuege();
-		while(nochZugDa){
-			fuehreNaechstenZugAus(zug, spieler);
-			int wert = max(eigenerStein, tiefe-1); //wert hat einen wert von 1 bis 4. 4 ist ideal
-			macheZugRueckgaengig(zug, spieler);
-			if(wert < minWert){
-				minWert = wert;
+		//generiereMoeglicheZuege();
+		for(int i=0; i<7; i++){
+			if(moeglicheZuege[i] != -1){
+				fuehreNaechstenZugAus(moeglicheZuege[i], spieler);
+				int wert = max(eigenerStein, tiefe-1); //wert hat einen wert von 1 bis 4. 4 ist ideal
+				macheZugRueckgaengig(moeglicheZuege[i], spieler);
+				if(wert < minWert){
+					minWert = wert;
+				}
 			}
 		}
 		return minWert;
@@ -140,32 +157,36 @@ public class KI {
 	//prueft ob noch ein spielzug moeglich ist
 	public boolean keineZuegeMehr(){
 		boolean nochEinZugMoeglich = false;
-		for(int i = 0; i<7; i++){
-			if(spielfeld[i][5] == "_"){
-				return true;
+		
+		for(int i=0; i<7; i++){
+			for(int j=0; j<6; j++){
+				if(spielfeld[i][j]=="_"){
+					moeglicheZuege[i] = j;
+					nochEinZugMoeglich = true;
+					break;
+				}
 			}
-		}		
+		}
+			
 		return nochEinZugMoeglich;
 	}
 	
 	//Setzt den uebergebenen Stein ins Spielfeld
 	public void fuehreNaechstenZugAus(int spielzug, String spieler){
-		for(int i=0; i<6; i++) {
-			if(spielfeld[spielzug][i] == "_"){
-				spielfeld[spielzug][i] = spieler;
-				break;
-			}
+		
+		if(spielfeld[spielzug][moeglicheZuege[spielzug]] == "_"){
+			spielfeld[spielzug][moeglicheZuege[spielzug]] = spieler;
 		}
+		
 	}
 	
 	//Nimmt den uebergebenen Stein aus dem Spielfeld
 	public void macheZugRueckgaengig(int spielzug, String spieler){
-		for(int i=0; i<6; i++) {
-			if(spielfeld[spielzug][i] == spieler){
-				spielfeld[spielzug][i] = "_";
-				break;
-			}
-		}	
+		
+		if(spielfeld[spielzug][moeglicheZuege[spielzug]] == spieler){
+			spielfeld[spielzug][moeglicheZuege[spielzug]] = "_";
+		}
+			
 	}
 	
 	//Setze den eigenen Stein ins spielfeld
