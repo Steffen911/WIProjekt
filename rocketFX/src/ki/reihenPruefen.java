@@ -57,7 +57,62 @@ public class reihenPruefen {
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
-					// TODO: Steffen: Pruefe diagonal vierer
+					//Pruefe diagonal vierer
+						//Pruefe diagonal links runter -3
+						try{
+							if(spielfeld[i-3][j-3] == spieler && spielfeld[i-2][j-2] == spieler && spielfeld[i-1][j-1] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+						//Pruefe diagonal links runter -2
+						try{
+							if(spielfeld[i-2][j-2] == spieler && spielfeld[i-1][j-1] == spieler && spielfeld[i+1][j+1] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+						//Pruefe diagonal links runter -1
+						try{
+							if(spielfeld[i-1][j-1] == spieler && spielfeld[i+1][j+1] == spieler && spielfeld[i+2][j+2] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+						//Pruefe diagonal rechts hoch
+						try{
+							if(spielfeld[i+1][j+1] == spieler && spielfeld[i+2][j+2] == spieler && spielfeld[i+3][j+3] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+						//Pruefe diagonal rechts runter -3
+						try{
+							if(spielfeld[i+3][j-3] == spieler && spielfeld[i+2][j-2] == spieler && spielfeld[i+1][j-1] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+						//Pruefe diagonal rechts runter -2
+						try{
+							if(spielfeld[i+2][j-2] == spieler && spielfeld[i+1][j-1] == spieler && spielfeld[i-1][j+1] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+						//Pruefe diagonal rechts runter -1
+						try{
+							if(spielfeld[i+1][j-1] == spieler && spielfeld[i-1][j+1] == spieler && spielfeld[i-2][j+2] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+						//Pruefe diagonal rechts links hoch
+						try{
+							if(spielfeld[i-3][j+3] == spieler && spielfeld[i-2][j+2] == spieler && spielfeld[i-1][j+1] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
 					}			
 					
 				}//end zeilen for
@@ -114,7 +169,49 @@ public class reihenPruefen {
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 								
-					// TODO: Steffen: Pruefe diagonal dreier
+					//Pruefe diagonal dreier
+						
+						//Pruefe diagonal links runter -2
+						try{
+							if(spielfeld[i-2][j-2] == spieler && spielfeld[i-1][j-1] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+						//Pruefe diagonal links runter -1
+						try{
+							if(spielfeld[i-1][j-1] == spieler && spielfeld[i+1][j+1] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+						//Pruefe diagonal rechts hoch
+						try{
+							if(spielfeld[i+1][j+1] == spieler && spielfeld[i+2][j+2] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+						//Pruefe diagonal rechts runter -2
+						try{
+							if(spielfeld[i+2][j-2] == spieler && spielfeld[i+1][j-1] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+						//Pruefe diagonal rechts runter -1
+						try{
+							if(spielfeld[i+1][j-1] == spieler && spielfeld[i-1][j+1] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+						//Pruefe diagonal rechts links hoch
+						try{
+							if(spielfeld[i-2][j+2] == spieler && spielfeld[i-1][j+1] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
 					}			
 							
 				}//end zeilen for
@@ -164,7 +261,35 @@ public class reihenPruefen {
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 										
-					// TODO: Steffen: Pruefe diagonal zweier
+					//Pruefe diagonal zweier
+						//Pruefe links unten
+						try{
+							if(spielfeld[i-1][j-1] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+						//Pruefe rechts unten
+						try{
+							if(spielfeld[i+1][j-1] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+						//Pruefe links oben
+						try{
+							if(spielfeld[i-1][j+1] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+						//Pruefe rechts oben
+						try{
+							if(spielfeld[i+1][j+1] == spieler){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
 					}			
 									
 				}//end zeilen for
