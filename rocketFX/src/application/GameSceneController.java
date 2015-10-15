@@ -106,10 +106,10 @@ public class GameSceneController implements  Initializable{
 					//Sende errechneten Spielzug an Server und warte auf XML
 					rueckgabe = server.sendZugAnServer(spielzug);
 					
+					//TODO: Steffen: Loeschen und pruefen ob es noch immer klappt
 					try {
 						Thread.sleep(50);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					//Starte von vorn

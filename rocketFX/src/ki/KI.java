@@ -15,6 +15,16 @@ public class KI {
 	//Spielfeld anlegen
 	private String[][] spielfeld = new String[7][6];
 	
+	//Geplanten Spielzug hinterlegen
+	private int gespeicherterZug;
+	
+	//Tiefe fuer rekursion
+	private int gewuenschteTiefe;
+	
+	//Array fuer moegliche Zuege
+	//Index fuer Spalte, Wert fuer Zeile, -1 falls Zeile voll ist
+	private int[] moeglicheZuege = new int[7];
+	
 	//Konstruktor fuer KI, legt Spielsteine fest, inititalisiert den spielfeldarray
 	public KI(String spielerwahl){
 		eigenerStein = spielerwahl;
@@ -31,38 +41,174 @@ public class KI {
 			break;
 		}
 		
-		for(int i=0; i<7; i++) {
+		for(int i=0; i<7; i++) { //initialisiert spielfeld
 			for(int j=0; j<6; j++){				
 				spielfeld[i][j] = "_";
 			}
+			moeglicheZuege[i] = -1; //initialisiert die moeglichen zuege
 		}
+		
 	}
 	
 	//Nimmt eine Spalte zwischen 0 und 6 entgegen
 	//Gibt einen integer mit dem eigenen Spielzug zurueck
 	public int zugBerechnen(int gegnerZug) {
 		
-		int spielzug = -1;
+		setzeGegnerStein(gegnerZug);
 		
-		setzeGegnerStein(gegnerZug); 
-		
-		//Siegmuster erkennen
-		spielzug = musterErkennung();
-		
-		//Spalte ist voll Erkennung
-		while(true){
-			if(spielzug == -1){
-				spielzug = (int)(Math.random() * 7);				
-			}
-			if (spielfeld[spielzug][5] == "_"){
-				break;
-			} 
+		if (gegnerZug == -1){
+			setzeEigenenStein(3);
+			return 3;
 		}
 		
-		setzeEigenenStein(spielzug);
+		hauptProgramm(6);
 		
-		return spielzug;
+		return gespeicherterZug;
+
 	} //end of zug berechnen
+	
+	//MinMax Wikipedia Pseudocode
+	public void hauptProgramm(int gewuenschteTiefe){
+		gespeicherterZug = -1;
+		this.gewuenschteTiefe = gewuenschteTiefe;
+		
+		max(eigenerStein, gewuenschteTiefe);
+		if (gespeicherterZug == -1) {
+			//Es gab keine weiteren Zuege mehr
+			System.out.println("Das Spiel ist beendet.");
+		} else {
+			//gespeicherterZug ausfuehren
+			System.out.println("Der Stein wird in Spalte " + gespeicherterZug + " geworfen.");
+			setzeEigenenStein(gespeicherterZug);
+		}
+	}
+
+	public int max(String spieler, int tiefe){
+		
+		if(tiefe == 0 || keineZuegeMehr() || getWinner()!=null){ 
+			return bewerten(spieler);
+		}
+		int maxWert = -100;
+		
+		//generiereMoeglicheZuege();
+		for(int i=0; i<7; i++){
+			int spalte = (i+3)%6;
+			if(moeglicheZuege[spalte] != -1){
+				int zeile = moeglicheZuege[spalte];
+				fuehreNaechstenZugAus(spalte, zeile, spieler);
+				int wert = min(gegnerStein, tiefe-1); //wert hat einen wert von 1 bis 4. 4 ist ideal
+				macheZugRueckgaengig(spalte, zeile, spieler);
+			
+				if(wert > maxWert){
+					maxWert = wert;
+					if(tiefe == gewuenschteTiefe){
+						gespeicherterZug = spalte;
+					}
+				}	
+			}
+		}
+		
+		return maxWert;
+	}
+
+	public int min(String spieler, int tiefe){
+		
+		if(tiefe == 0 || keineZuegeMehr() || getWinner()!=null){
+			return bewerten(spieler);
+		}
+		int minWert = +100;
+		
+		//generiereMoeglicheZuege();
+		for(int i=0; i<7; i++){
+			if(moeglicheZuege[i] != -1){
+				int spalte = i;
+				int zeile = moeglicheZuege[i];
+				fuehreNaechstenZugAus(spalte, zeile, spieler);
+				int wert = max(eigenerStein, tiefe-1); //wert hat einen wert von 1 bis 4. 4 ist ideal
+				macheZugRueckgaengig(spalte, zeile, spieler);
+				if(wert < minWert){
+					minWert = wert;
+				}
+			}
+		}
+		return minWert;
+	}
+	
+	//bewerte die aktuelle Situation des spielers
+	//4 entspricht 4 in einer reihe
+	//3 entspricht 3 in einer reihe
+	//2 entspricht 2 in einer reihe
+	public int bewerten(String spieler){
+		reihenPruefen pruefen = new reihenPruefen();
+		String gegner;
+		
+		if(spieler == "o"){
+			gegner = "x";
+		}else{
+			gegner = "o";
+		}
+		
+		if (pruefen.viererReihe(spielfeld, spieler)){
+			return 4;
+		}
+		
+		if (pruefen.viererReihe(spielfeld, gegner)){
+			return -4;
+		}
+		
+		if (pruefen.dreierReihe(spielfeld, spieler)){
+			return 3;
+		}
+		
+		if (pruefen.dreierReihe(spielfeld, gegner)){
+			return -3;
+		}
+		
+		if (pruefen.zweierReihe(spielfeld, spieler)){
+			return 2;
+		}
+			
+		if (pruefen.zweierReihe(spielfeld, gegner)){
+			return -2;
+		}
+		
+		return 0;
+	}
+	
+	//prueft ob noch ein spielzug moeglich ist
+	public boolean keineZuegeMehr(){
+		boolean keinZugMoeglich = true;
+		
+		for(int i=0; i<7; i++){
+			for(int j=0; j<6; j++){
+				if(spielfeld[i][j]=="_"){
+					moeglicheZuege[i] = j;
+					keinZugMoeglich = false;
+					break;
+				}
+			}
+		}
+			
+		return keinZugMoeglich;
+	}
+	
+	//Setzt den uebergebenen Stein ins Spielfeld
+	public void fuehreNaechstenZugAus(int spalte, int zeile, String spieler){
+		
+		if(spielfeld[spalte][zeile] == "_"){
+			spielfeld[spalte][zeile] = spieler;
+		}
+		
+	}
+	
+	//Nimmt den uebergebenen Stein aus dem Spielfeld
+	public void macheZugRueckgaengig(int spalte, int zeile, String spieler){
+		
+		if(spielfeld[spalte][zeile] == spieler){
+			spielfeld[spalte][zeile] = "_";
+		}
+			
+	}
 	
 	//Setze den eigenen Stein ins spielfeld
 	public void setzeEigenenStein(int spielzug){		
@@ -90,260 +236,21 @@ public class KI {
 		} 		
 	}
 	
-	//Prueft ob spieler in dieser runde gewinnen kann und setzt den siegstein
-	//Prueft im anschluss ob gegner in dieser runde gewinnen kann und verhindert sieg
-	public int musterErkennung() {
-		int spielzug = -1;
+	//Gibt an ob und wer gewonnen hat
+	//null falls noch niemand gewonnen hat
+	public String getWinner(){
+		reihenPruefen pruefen = new reihenPruefen();
 		
-		//Siegmuster erkennen
-		for(int i=0; i<7;i++){
-			for(int j=0; j<6; j++) {
-				if(spielfeld[i][j] == "_"){
-						
-					//Pruefe ob Spieler gewinnen kann:
-					//Pruefe waagerecht links -3 
-					try{
-						if(spielfeld[i-3][j] == eigenerStein && spielfeld[i-2][j] == eigenerStein && spielfeld[i-1][j] == eigenerStein){
-							spielzug = i;
-							eigenerPunkt.setLocation(spielzug, j);
-							return spielzug;
-						}
-					}catch(ArrayIndexOutOfBoundsException e){}
-							
-					//Pruefe waagerecht links -2 und rechts +1
-					try{
-						if(spielfeld[i-2][j] == eigenerStein && spielfeld[i-1][j] == eigenerStein && spielfeld[i+1][j] == eigenerStein){
-							spielzug = i;
-							eigenerPunkt.setLocation(spielzug, j);
-							return spielzug;
-						}
-					}catch(ArrayIndexOutOfBoundsException e){}
-							
-					//Pruefe waagerecht links -1 und rechts +2
-					try{
-						if(spielfeld[i-1][j] == eigenerStein && spielfeld[i+1][j] == eigenerStein && spielfeld[i+2][j] == eigenerStein){
-							spielzug = i;
-							eigenerPunkt.setLocation(spielzug, j);
-							return spielzug;
-						}
-					}catch(ArrayIndexOutOfBoundsException e){}
-							
-					//Pruefe waagerecht rechts +3
-					try{
-						if(spielfeld[i+1][j] == eigenerStein && spielfeld[i+2][j] == eigenerStein && spielfeld[i+3][j] == eigenerStein){
-							spielzug = i;
-							eigenerPunkt.setLocation(spielzug, j);
-							return spielzug;
-						}
-					}catch(ArrayIndexOutOfBoundsException e){}
-							
-					//Pruefe senkrecht
-					try{
-						if(spielfeld[i][j-1] == eigenerStein && spielfeld[i][j-2] == eigenerStein && spielfeld[i][j-3] == eigenerStein){
-							spielzug = i;
-							eigenerPunkt.setLocation(spielzug, j);
-							return spielzug;
-						}
-					}catch(ArrayIndexOutOfBoundsException e){}
-							
-					//Pruefe diagonal links runter -3 
-					try{
-						if(spielfeld[i-3][j-3] == eigenerStein && spielfeld[i-2][j-2] == eigenerStein && spielfeld[i-1][j-1] == eigenerStein){
-							spielzug = i;
-							eigenerPunkt.setLocation(spielzug, j);
-							return spielzug;
-						}
-					}catch(ArrayIndexOutOfBoundsException e){}
-							
-					//Pruefe diagonal links runter -2
-					try{
-						if(spielfeld[i-2][j-2] == eigenerStein && spielfeld[i-1][j-1] == eigenerStein && spielfeld[i+1][j+1] == eigenerStein){
-							spielzug = i;
-							eigenerPunkt.setLocation(spielzug, j);
-							return spielzug;
-						}
-					}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe diagonal links runter -1
-							try{
-								if(spielfeld[i-1][j-1] == eigenerStein && spielfeld[i+1][j+1] == eigenerStein && spielfeld[i+2][j+2] == eigenerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe diagonal rechts hoch +3
-							try{
-								if(spielfeld[i+1][j+1] == eigenerStein && spielfeld[i+2][j+2] == eigenerStein && spielfeld[i+3][j+3] == eigenerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe diagonal rechts runter -3 
-							try{
-								if(spielfeld[i+3][j-3] == eigenerStein && spielfeld[i+2][j-2] == eigenerStein && spielfeld[i+1][j-1] == eigenerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe diagonal rechts runter -2
-							try{
-								if(spielfeld[i+2][j-2] == eigenerStein && spielfeld[i+1][j-1] == eigenerStein && spielfeld[i-1][j+1] == eigenerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe diagonal rechts runter -1
-							try{
-								if(spielfeld[i+1][j-1] == eigenerStein && spielfeld[i-1][j+1] == eigenerStein && spielfeld[i-2][j+2] == eigenerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe diagonal links hoch +3
-							try{
-								if(spielfeld[i-1][j+1] == eigenerStein && spielfeld[i-2][j+2] == eigenerStein && spielfeld[i-3][j+3] == eigenerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							
-							
-							//Pruefe ob Gegner gewinnen kann:
-							//Pruefe waagerecht links -3 
-							try{
-								if(spielfeld[i-3][j] == gegnerStein && spielfeld[i-2][j] == gegnerStein && spielfeld[i-1][j] == gegnerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe waagerecht links -2 und rechts +1
-							try{
-								if(spielfeld[i-2][j] == gegnerStein && spielfeld[i-1][j] == gegnerStein && spielfeld[i+1][j] == gegnerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe waagerecht links -1 und rechts +2
-							try{
-								if(spielfeld[i-1][j] == gegnerStein && spielfeld[i+1][j] == gegnerStein && spielfeld[i+2][j] == gegnerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe waagerecht rechts +3
-							try{
-								if(spielfeld[i+1][j] == gegnerStein && spielfeld[i+2][j] == gegnerStein && spielfeld[i+3][j] == gegnerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe senkrecht
-							try{
-								if(spielfeld[i][j-1] == gegnerStein && spielfeld[i][j-2] == gegnerStein && spielfeld[i][j-3] == gegnerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe diagonal links runter -3 
-							try{
-								if(spielfeld[i-3][j-3] == gegnerStein && spielfeld[i-2][j-2] == gegnerStein && spielfeld[i-1][j-1] == gegnerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe diagonal links runter -2
-							try{
-								if(spielfeld[i-2][j-2] == gegnerStein && spielfeld[i-1][j-1] == gegnerStein && spielfeld[i+1][j+1] == gegnerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe diagonal links runter -1
-							try{
-								if(spielfeld[i-1][j-1] == gegnerStein && spielfeld[i+1][j+1] == gegnerStein && spielfeld[i+2][j+2] == gegnerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe diagonal rechts hoch +3
-							try{
-								if(spielfeld[i+1][j+1] == gegnerStein && spielfeld[i+2][j+2] == gegnerStein && spielfeld[i+3][j+3] == gegnerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe diagonal rechts runter -3 
-							try{
-								if(spielfeld[i+3][j-3] == gegnerStein && spielfeld[i+2][j-2] == gegnerStein && spielfeld[i+1][j-1] == gegnerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe diagonal rechts runter -2
-							try{
-								if(spielfeld[i+2][j-2] == gegnerStein && spielfeld[i+1][j-1] == gegnerStein && spielfeld[i-1][j+1] == gegnerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe diagonal rechts runter -1
-							try{
-								if(spielfeld[i+1][j-1] == gegnerStein && spielfeld[i-1][j+1] == gegnerStein && spielfeld[i-2][j+2] == gegnerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-							
-							//Pruefe diagonal links hoch +3
-							try{
-								if(spielfeld[i-1][j+1] == gegnerStein && spielfeld[i-2][j+2] == gegnerStein && spielfeld[i-3][j+3] == gegnerStein){
-									spielzug = i;
-									eigenerPunkt.setLocation(spielzug, j);
-									return spielzug;
-								}
-							}catch(ArrayIndexOutOfBoundsException e){}
-						} //end if
-						
-					} //end for
-				} //end for
+		if(pruefen.viererReihe(spielfeld, eigenerStein)){
+			return eigenerStein;
+		}
+		if(pruefen.viererReihe(spielfeld, gegnerStein)){
+			return gegnerStein;
+		}
 		
-		return spielzug;
-	} //end of musterErkennung
+		return null;
+	
+	}
 	
 	//Gibt das aktuelle Spielfeld aus
 	public String[][] arrayAusgabe(){

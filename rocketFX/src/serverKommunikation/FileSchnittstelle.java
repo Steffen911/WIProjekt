@@ -107,11 +107,10 @@ public class FileSchnittstelle {
 			
 			fs.close();
 			
-			//TODO: Warum loest das unser problem mit den mehrfachen auslesen der Server datei?
+			//TODO: Steffen: Warum loest das unser problem mit den mehrfachen auslesen der Server datei?
 			try {
 				Thread.sleep(50);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
