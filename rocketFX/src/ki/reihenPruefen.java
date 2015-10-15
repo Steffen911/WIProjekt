@@ -172,4 +172,233 @@ public class reihenPruefen {
 							
 			return false;
 		} //end of zweierReihe
+		
+		//Prueft ob spieler in dieser runde gewinnen kann und setzt den siegstein
+		//Prueft im anschluss ob gegner in dieser runde gewinnen kann und verhindert sieg
+		public int siegMusterErkennung(String[][] spielfeld, String eigenerStein, String gegnerStein) {
+			int spielzug = -1;
+			
+			//Siegmuster erkennen
+			for(int i=0; i<7;i++){
+				for(int j=0; j<6; j++) {
+					if(spielfeld[i][j] == "_"){
+							
+						//Pruefe ob Spieler gewinnen kann:
+						//Pruefe waagerecht links -3 
+						try{
+							if(spielfeld[i-3][j] == eigenerStein && spielfeld[i-2][j] == eigenerStein && spielfeld[i-1][j] == eigenerStein){
+								spielzug = i;
+								return spielzug;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+								
+						//Pruefe waagerecht links -2 und rechts +1
+						try{
+							if(spielfeld[i-2][j] == eigenerStein && spielfeld[i-1][j] == eigenerStein && spielfeld[i+1][j] == eigenerStein){
+								spielzug = i;
+								return spielzug;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+								
+						//Pruefe waagerecht links -1 und rechts +2
+						try{
+							if(spielfeld[i-1][j] == eigenerStein && spielfeld[i+1][j] == eigenerStein && spielfeld[i+2][j] == eigenerStein){
+								spielzug = i;
+								return spielzug;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+								
+						//Pruefe waagerecht rechts +3
+						try{
+							if(spielfeld[i+1][j] == eigenerStein && spielfeld[i+2][j] == eigenerStein && spielfeld[i+3][j] == eigenerStein){
+								spielzug = i;
+								return spielzug;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+								
+						//Pruefe senkrecht
+						try{
+							if(spielfeld[i][j-1] == eigenerStein && spielfeld[i][j-2] == eigenerStein && spielfeld[i][j-3] == eigenerStein){
+								spielzug = i;
+								return spielzug;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+								
+						//Pruefe diagonal links runter -3 
+						try{
+							if(spielfeld[i-3][j-3] == eigenerStein && spielfeld[i-2][j-2] == eigenerStein && spielfeld[i-1][j-1] == eigenerStein){
+								spielzug = i;
+								return spielzug;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+								
+						//Pruefe diagonal links runter -2
+						try{
+							if(spielfeld[i-2][j-2] == eigenerStein && spielfeld[i-1][j-1] == eigenerStein && spielfeld[i+1][j+1] == eigenerStein){
+								spielzug = i;
+								return spielzug;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe diagonal links runter -1
+								try{
+									if(spielfeld[i-1][j-1] == eigenerStein && spielfeld[i+1][j+1] == eigenerStein && spielfeld[i+2][j+2] == eigenerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe diagonal rechts hoch +3
+								try{
+									if(spielfeld[i+1][j+1] == eigenerStein && spielfeld[i+2][j+2] == eigenerStein && spielfeld[i+3][j+3] == eigenerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe diagonal rechts runter -3 
+								try{
+									if(spielfeld[i+3][j-3] == eigenerStein && spielfeld[i+2][j-2] == eigenerStein && spielfeld[i+1][j-1] == eigenerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe diagonal rechts runter -2
+								try{
+									if(spielfeld[i+2][j-2] == eigenerStein && spielfeld[i+1][j-1] == eigenerStein && spielfeld[i-1][j+1] == eigenerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe diagonal rechts runter -1
+								try{
+									if(spielfeld[i+1][j-1] == eigenerStein && spielfeld[i-1][j+1] == eigenerStein && spielfeld[i-2][j+2] == eigenerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe diagonal links hoch +3
+								try{
+									if(spielfeld[i-1][j+1] == eigenerStein && spielfeld[i-2][j+2] == eigenerStein && spielfeld[i-3][j+3] == eigenerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								
+								
+								//Pruefe ob Gegner gewinnen kann:
+								//Pruefe waagerecht links -3 
+								try{
+									if(spielfeld[i-3][j] == gegnerStein && spielfeld[i-2][j] == gegnerStein && spielfeld[i-1][j] == gegnerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe waagerecht links -2 und rechts +1
+								try{
+									if(spielfeld[i-2][j] == gegnerStein && spielfeld[i-1][j] == gegnerStein && spielfeld[i+1][j] == gegnerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe waagerecht links -1 und rechts +2
+								try{
+									if(spielfeld[i-1][j] == gegnerStein && spielfeld[i+1][j] == gegnerStein && spielfeld[i+2][j] == gegnerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe waagerecht rechts +3
+								try{
+									if(spielfeld[i+1][j] == gegnerStein && spielfeld[i+2][j] == gegnerStein && spielfeld[i+3][j] == gegnerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe senkrecht
+								try{
+									if(spielfeld[i][j-1] == gegnerStein && spielfeld[i][j-2] == gegnerStein && spielfeld[i][j-3] == gegnerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe diagonal links runter -3 
+								try{
+									if(spielfeld[i-3][j-3] == gegnerStein && spielfeld[i-2][j-2] == gegnerStein && spielfeld[i-1][j-1] == gegnerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe diagonal links runter -2
+								try{
+									if(spielfeld[i-2][j-2] == gegnerStein && spielfeld[i-1][j-1] == gegnerStein && spielfeld[i+1][j+1] == gegnerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe diagonal links runter -1
+								try{
+									if(spielfeld[i-1][j-1] == gegnerStein && spielfeld[i+1][j+1] == gegnerStein && spielfeld[i+2][j+2] == gegnerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe diagonal rechts hoch +3
+								try{
+									if(spielfeld[i+1][j+1] == gegnerStein && spielfeld[i+2][j+2] == gegnerStein && spielfeld[i+3][j+3] == gegnerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe diagonal rechts runter -3 
+								try{
+									if(spielfeld[i+3][j-3] == gegnerStein && spielfeld[i+2][j-2] == gegnerStein && spielfeld[i+1][j-1] == gegnerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe diagonal rechts runter -2
+								try{
+									if(spielfeld[i+2][j-2] == gegnerStein && spielfeld[i+1][j-1] == gegnerStein && spielfeld[i-1][j+1] == gegnerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe diagonal rechts runter -1
+								try{
+									if(spielfeld[i+1][j-1] == gegnerStein && spielfeld[i-1][j+1] == gegnerStein && spielfeld[i-2][j+2] == gegnerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+								
+								//Pruefe diagonal links hoch +3
+								try{
+									if(spielfeld[i-1][j+1] == gegnerStein && spielfeld[i-2][j+2] == gegnerStein && spielfeld[i-3][j+3] == gegnerStein){
+										spielzug = i;
+										return spielzug;
+									}
+								}catch(ArrayIndexOutOfBoundsException e){}
+							} //end if
+							
+						} //end for
+					} //end for
+			
+			return spielzug;
+		} //end of musterErkennung
 }
