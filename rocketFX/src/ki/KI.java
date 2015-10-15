@@ -53,12 +53,20 @@ public class KI {
 	//Nimmt eine Spalte zwischen 0 und 6 entgegen
 	//Gibt einen integer mit dem eigenen Spielzug zurueck
 	public int zugBerechnen(int gegnerZug) {
+		reihenPruefen pruefen = new reihenPruefen();
 		
 		setzeGegnerStein(gegnerZug);
 		
 		if (gegnerZug == -1){
 			setzeEigenenStein(3);
 			return 3;
+		}
+		
+		gespeicherterZug = pruefen.siegMusterErkennung(spielfeld, eigenerStein, gegnerStein);
+		
+		if(gespeicherterZug != -1){
+			setzeEigenenStein(gespeicherterZug);
+			return gespeicherterZug;
 		}
 		
 		hauptProgramm(6);
@@ -79,6 +87,10 @@ public class KI {
 		} else {
 			//gespeicherterZug ausfuehren
 			System.out.println("Der Stein wird in Spalte " + gespeicherterZug + " geworfen.");
+			if(spielfeld[gespeicherterZug][5] != "_"){
+				System.out.println("Spalte ist eigentlich voll..."); //TODO: Steffen: Verhindern, dass dies ueberhaupt passiert
+				hauptProgramm(2);
+			}
 			setzeEigenenStein(gespeicherterZug);
 		}
 	}
