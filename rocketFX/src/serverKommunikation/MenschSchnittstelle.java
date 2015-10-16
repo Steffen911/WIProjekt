@@ -20,7 +20,7 @@ public class MenschSchnittstelle {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		if(spielzug <0 || spielzug>5){
+		if(spielzug <0 || spielzug>6){
 			System.out.println("Ungültige Eingabe.");
 			return reader();
 		}
