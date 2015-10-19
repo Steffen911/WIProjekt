@@ -20,6 +20,8 @@ public class Satz {
 		super();
 		SPIELID = sPIELID;
 		SATZID = sATZID;
+		ZUEGEGEGNER = "";
+		ZUEGEICH = "";
 		db = new DBConnector();
 	}
 	

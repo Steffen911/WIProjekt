@@ -111,9 +111,20 @@ public class GameSceneController implements  Initializable{
 				System.out.println("Gegnerzug: "+ki.getGegnerPunkt().x+ ki.getGegnerPunkt().y);
 				System.out.println("Eigener Zug: "+ki.getEigenerPunkt().x+ ki.getEigenerPunkt().y);
 				showZug(ki.getGegnerPunkt(), ki.getEigenerPunkt());
-				//TODO: wer hat gewonnen? settext:verlorens 
+				// Gewinner ausgeben
+				Satz satz = reuse.getSpiel().getCurrentSatz();
+				if(ki.getEigenerStein().equals(ki.getWinner())){
+					// wir haben gewonnen
+					satz.setSIEGER("rocket");
+					gewonnenLabel.setText("Gewonnen");
+					gewonnenLabel.setVisible(true);
+				}else{
+					// Gegner hat gewonnen
+					satz.setSIEGER(reuse.getSpiel().getGEGNER());
+					gewonnenLabel.setText("Verloren");
+					gewonnenLabel.setVisible(true);
+				} 
 				System.out.println("Jemand hat gewonnen.");
-				gewonnenLabel.setVisible(true);
 				
 			}
 		}).start();

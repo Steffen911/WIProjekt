@@ -280,4 +280,12 @@ public class KI {
 		return gegnerPunkt;
 	}
 
+	public String getEigenerStein() {
+		return eigenerStein;
+	}
+
+	public String getGegnerStein() {
+		return gegnerStein;
+	}
+
 }
