@@ -21,9 +21,10 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class ServerGuiKontakt {
-	private boolean fileSchnittstelle;
+	private String serverSchnittstelle;
 	private FileSchnittstelle fileS;
 	private PushSchnittstelle pushS;
+	private MenschSchnittstelle menschS;
 	private String spielerwahl = "o";
 	
 	//variablen fuer die infos aus der server.ini
@@ -33,27 +34,42 @@ public class ServerGuiKontakt {
 	private String apiSecret = "54f848263f22144e49f4";
 	private String schnittstelle = "file";
 	
+	public ServerGuiKontakt(String spielerwahl, int centisekunden){
+		serverSchnittstelle = "ms";
+		this.spielerwahl = spielerwahl;
+		menschS = new MenschSchnittstelle();
+	}
 	
 	public ServerGuiKontakt(String spielerwahl, String dateipfad, int centisekunden){
 		// Konstruktor wenn FileSchnittstelle gewaehlt
-		fileSchnittstelle = true;
+		serverSchnittstelle = "fs";
 		this.spielerwahl = spielerwahl;
 		fileS = new FileSchnittstelle(spielerwahl, dateipfad, centisekunden);
 	}
 	
 	public ServerGuiKontakt(String apiKey, String apiSecret, int centisekunden, String spielerwahl){
 		// Konstruktor wenn PushSchnittstelle gewaehlt
-		fileSchnittstelle = false;
+		serverSchnittstelle = "ps";
 		this.spielerwahl = spielerwahl;
 		pushS = new PushSchnittstelle(apiKey, apiSecret, centisekunden, spielerwahl);
 		pushS.connect();
 	}
 	
 	public String[] leseVomServer(){
-		if (fileSchnittstelle){
+		switch (serverSchnittstelle) {
+		case "fs":
 			return fileS.reader();
-		}else{
+		case "ps":
 			return pushS.reader();
+		case"ms":
+			String[] menschReturn = new String[4];
+			menschReturn[0] = "_";
+			menschReturn[1] = "_";
+			menschReturn[2] = Integer.toString(menschS.reader());
+			menschReturn[3] = "_";
+			return menschReturn;
+		default:
+			return null;
 		}
 	}
 	
@@ -62,11 +78,22 @@ public class ServerGuiKontakt {
 	}
 	
 	public String[] sendZugAnServer(int spielzug){
-		if (fileSchnittstelle){
+		switch (serverSchnittstelle) {
+		case "fs":
 			return fileS.communicate(spielzug);
-		}else{
+		case "ps":
 			return pushS.communicate(spielzug);
+		case "ms":
+			String[] menschReturn = new String[4];
+			menschReturn[0] = "_";
+			menschReturn[1] = "_";
+			menschReturn[2] = Integer.toString(menschS.reader());
+			menschReturn[3] = "_";
+			return menschReturn;
+		default:
+			return null;
 		}
+		
 	}
 	
 	public String getSpielerwahl(){
