@@ -74,7 +74,9 @@ public class ServerGuiKontakt {
 	}
 	
 	public void disconnect(){
-		pushS.disconnect();
+		if(pushS != null){
+			pushS.disconnect();
+		}
 	}
 	
 	public String[] sendZugAnServer(int spielzug){
