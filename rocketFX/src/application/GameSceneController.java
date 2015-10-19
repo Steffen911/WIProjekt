@@ -106,12 +106,6 @@ public class GameSceneController implements  Initializable{
 					//Sende errechneten Spielzug an Server und warte auf XML
 					rueckgabe = server.sendZugAnServer(spielzug);
 					
-					//TODO: Steffen: Loeschen und pruefen ob es noch immer klappt
-					try {
-						Thread.sleep(50);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
 					//Starte von vorn
 				}
 				System.out.println("Gegnerzug: "+ki.getGegnerPunkt().x+ ki.getGegnerPunkt().y);
