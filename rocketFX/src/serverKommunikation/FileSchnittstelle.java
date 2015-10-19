@@ -12,6 +12,11 @@ public class FileSchnittstelle {
 	//Muss folgendes Muster erfuellen: C:\\test\\
 	private String dateipfad;
 	
+	private String freigabe;
+	private String satzStatus;
+	private String gegnerZug;
+	private String sieger;
+	
 	//TimerMethode wird initialisiert
 	TimerStart ts = new TimerStart();
 	
@@ -64,32 +69,34 @@ public class FileSchnittstelle {
 	//Gibt ein String-Array zurueck
 	public String[] reader () {
 		
+		String[] returnString = new String[4];
 		//String[0] = freigabe
 		//String[1] = satzstatus
 		//String[2] = gegnerzug
 		//String[3] = sieger
-		String returnString[] = new String[4];
 		
 		//Prueft alle 300ms ob ein file vorhanden ist
 		while(true){
-			
-			File f = new File(dateipfad + "server2spieler" + spielerwahl + ".xml");
-			if(f.exists() && !f.isDirectory()) { System.out.println("File found."); return xmlExtraction();}
-			
-			try {
-				Thread.sleep(300);
-				System.out.println("Warten...");
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-		}
-		
-		
+				
+			if(xmlExtraction()){
+				returnString[0] = freigabe;
+				returnString[1] = satzStatus;
+				returnString[2] = gegnerZug;
+				returnString[3] = sieger;
+				return returnString;
+			}else{
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}	
+		}		
 	}
 	
-	public String[] xmlExtraction(){
-		String returnString[] = new String[4];
+	public boolean xmlExtraction(){
+		String[] returnString = new String[4];
+		
 		//Bereitet die Extraktion des XML-Files vor
 		DocumentBuilderFactory builderFactory =
 				DocumentBuilderFactory.newInstance();
@@ -100,18 +107,17 @@ public class FileSchnittstelle {
 			e.printStackTrace();  
 		}
 		try {
+			
+			Document document = null;
 			//Dokument wird ausgelesen vom Ordnerpfad
-			FileInputStream fs = 
+			try{
+				FileInputStream fs = 
 					new FileInputStream(dateipfad + "server2spieler" + spielerwahl + ".xml");
-			Document document = builder.parse(fs);
-			
-			fs.close();
-			
-			//TODO: Steffen: Warum loest das unser problem mit den mehrfachen auslesen der Server datei?
-			try {
-				Thread.sleep(50);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+				document = builder.parse(fs);
+				
+				fs.close();
+			}catch(FileNotFoundException e){
+				return false;
 			}
 			
 			//Loeschen der XML nach Gebrauch
@@ -149,11 +155,16 @@ public class FileSchnittstelle {
 			e.printStackTrace();
 		}
 		
+		freigabe = returnString[0];
+		satzStatus = returnString[1];
+		gegnerZug = returnString[2];
+		sieger = returnString[3];
+		
 		//Loeschen der XML nach Gebrauch
 //		File f = new File(dateipfad + "server2spieler" + spielerwahl + ".xml");
 //		f.delete();
 		
 		//Rueckgabe des returnString
-		return returnString;
+		return true;
 	}
 }

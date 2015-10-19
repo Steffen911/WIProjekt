@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 /*C11*/SET SCHEMA PUBLIC
 INSERT INTO SAETZE VALUES(73,1,'dfdsf','wir','null 30 31 32 33','null -1-1 10 50 40')
+=======
+/*C6*/SET SCHEMA PUBLIC
+INSERT INTO SPIELE VALUES(71,'','',0)
+>>>>>>> origin/master
 COMMIT
