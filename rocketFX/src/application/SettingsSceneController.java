@@ -82,14 +82,29 @@ public class SettingsSceneController implements  Initializable{
 				}else{
 					reuse.createServer(spielerwahl, EditPfad(PfadEdit.getText()), zeit);
 				}
+				// wieder in ini speichern
+				if(! PfadEdit.getText().equals("")){
+					sgk.setDateipfad(PfadEdit.getText());
+				}
+				if(! KeyEdit.getText().equals("")){
+					sgk.setApiKey(KeyEdit.getText());
+					sgk.setApiSecret(SecretEdit.getText());
+				}
 				reuse.setNewScene("GameScene.fxml");
 			}
 		});
 		
 		saveBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
-		//ToDO:saveBtn speichern und zurueck
-			reuse.setNewScene(reuse.getLastScene());
+				// wieder in ini speichern
+				if(! PfadEdit.getText().equals("")){
+					sgk.setDateipfad(PfadEdit.getText());
+				}
+				if(! KeyEdit.getText().equals("")){
+					sgk.setApiKey(KeyEdit.getText());
+					sgk.setApiSecret(SecretEdit.getText());
+				}
+			    reuse.setNewScene(reuse.getLastScene());
 			}
 		});
 		
