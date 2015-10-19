@@ -103,9 +103,11 @@ public class KI {
 		}
 		int maxWert = -100;
 		
+		int startSpalte = (int)(Math.random()*6);
+		
 		//generiereMoeglicheZuege();
 		for(int i=0; i<7; i++){
-			int spalte = (i+3)%6;
+			int spalte = (i+startSpalte)%6;
 			if(moeglicheZuege[spalte] != -1){
 				int zeile = moeglicheZuege[spalte];
 				fuehreNaechstenZugAus(spalte, zeile, spieler);
