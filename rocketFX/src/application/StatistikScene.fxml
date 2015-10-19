@@ -40,7 +40,7 @@
                   <TableColumn fx:id="SpielPunkteCol" text="Punkte" />
               </columns>
             </TableView>
-            <TableView layoutX="365.0" layoutY="175.0" prefHeight="220.0" prefWidth="270.0">
+            <TableView fx:id="SatzTable" layoutX="365.0" layoutY="175.0" prefHeight="220.0" prefWidth="270.0">
               <columns>
                 <TableColumn fx:id="SatzSpielIDCol" prefWidth="75.0" text="SpielID" />
                 <TableColumn fx:id="SatzSatzIDCol" prefWidth="75.0" text="SatzID" />

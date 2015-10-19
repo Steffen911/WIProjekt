@@ -25,7 +25,7 @@ public class GameSceneController implements  Initializable{
 	@FXML Button saveBtn, spielBtn;
 	@FXML ImageView helpBtn;
 	@FXML GridPane GameGrid;
-	@FXML Label GegnerGameScene;
+	@FXML Label GegnerGameScene, gewonnenLabel;
 	
 	private ReusableControllerFunctions reuse;
 	private ServerGuiKontakt server;
@@ -116,8 +116,9 @@ public class GameSceneController implements  Initializable{
 				}
 	
 				showZug(ki.getGegnerPunkt(), ki.getEigenerPunkt());
-				 
+				//TODO: wer hat gewonnen? settext:verlorens 
 				System.out.println("Jemand hat gewonnen.");
+				gewonnenLabel.setVisible(true);
 				
 			}
 		}).start();

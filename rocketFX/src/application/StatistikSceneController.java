@@ -29,7 +29,8 @@ public class StatistikSceneController implements  Initializable{
 	@FXML ImageView helpBtn;
 	@FXML ImageView settingsBtn;
 	@FXML Button SpielAendernBtn, SatzAendernBtn, SpielFortsetzenBtn;
-	@FXML TableView<ObservableList> SpielTable, SatzTable;
+	@FXML TableView<ObservableList> SpielTable;
+	@FXML TableView<ObservableList> SatzTable;
 	@FXML TableColumn<ObservableList, String> SpielGegnerCol,SpielIDCol,SpielSiegerCol,SpielPunkteCol;
 	@FXML TableColumn<ObservableList, String> SatzSpielIDCol, SatzSatzIDCol, SatzStarterCol,SatzSiegerCol,SatzZuegeIchCol,SatzZuegeGegnerCol;
 	
@@ -106,6 +107,7 @@ public class StatistikSceneController implements  Initializable{
 		    	 showSatzTable(rs);
 		     }
 		});
+		
 
 		fillSpielTable();
 		
@@ -158,14 +160,15 @@ public class StatistikSceneController implements  Initializable{
 	}
 	
 	private void showSatzTable(ResultSet rs){
-		SatzSatzIDCol.setCellValueFactory(new Callback<CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){                    
-            public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {                                                                                              
-                return new SimpleStringProperty(param.getValue().get(1).toString());                        
-            }                    
-        });
+		SatzTable.getItems().clear();
 		SatzSpielIDCol.setCellValueFactory(new Callback<CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){                    
             public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {                                                                                              
                 return new SimpleStringProperty(param.getValue().get(0).toString());                        
+            }                    
+        });
+		SatzSatzIDCol.setCellValueFactory(new Callback<CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){                    
+            public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {                                                                                              
+                return new SimpleStringProperty(param.getValue().get(1).toString());                        
             }                    
         });
 		SatzStarterCol.setCellValueFactory(new Callback<CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){                    
@@ -187,7 +190,7 @@ public class StatistikSceneController implements  Initializable{
             public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {                                                                                              
                 return new SimpleStringProperty(param.getValue().get(5).toString());                        
             }                    
-        });
+        }); 
 
 		
 		if(rs != null){
@@ -203,16 +206,17 @@ public class StatistikSceneController implements  Initializable{
 				        //Iterate Column
 				        row.add(rs.getString(i));
 				    }
-				    data.add(row);
-	
+				    if(row != null){
+				    	data.add(row);
+				    }
 				}
 				try {
 					if(data != null){
 						SatzTable.setItems(data);
 					}else{ System.out.println("Keine Satzdaten.");}
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
+					System.out.println("NullPointer Eception");
 				}
 			} catch (SQLException e) {
 				System.out.println("Dateneinsortieren fuer Tabelle hat nicht geklappt.");
