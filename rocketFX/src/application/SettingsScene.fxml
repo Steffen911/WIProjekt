@@ -58,7 +58,7 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="playBtn" layoutX="516.0" layoutY="411.0" mnemonicParsing="false" text="Speichern &amp; Spielen">
+            <Button fx:id="saveplayBtn" layoutX="516.0" layoutY="411.0" mnemonicParsing="false" text="Speichern &amp; Spielen">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
@@ -94,20 +94,18 @@
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font></Label>
-            <ImageView fx:id="helpBtn" fitHeight="33.0" fitWidth="49.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="helpBtn" fitHeight="33.0" fitWidth="49.0" layoutX="59.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../pictures/fragezeichen.png" />
                </image>
             </ImageView>
             <Button fx:id="chooserBtn" layoutX="624.0" layoutY="263.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="3.0" text="..." visible="false" />
-            <Button fx:id="saveBtn" layoutX="353.0" layoutY="411.0" mnemonicParsing="false" text="Speichern &amp; Zurück">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-               <effect>
-                  <Reflection />
-               </effect></Button>
             <TextField fx:id="PfadEdit" layoutX="455.0" layoutY="263.0" visible="false" />
+            <ImageView fx:id="playBtn" fitHeight="33.0" fitWidth="49.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../pictures/play.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

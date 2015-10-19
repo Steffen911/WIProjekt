@@ -29,7 +29,8 @@ import javafx.stage.Stage;
 import serverKommunikation.ServerGuiKontakt;
 
 public class SettingsSceneController implements  Initializable{
-	@FXML Button playBtn;
+	@FXML Button saveplayBtn;
+	@FXML ImageView playBtn;
 	@FXML ImageView helpBtn;
 	@FXML RadioButton radioBtnO;
 	@FXML RadioButton radioBtnX;
@@ -45,7 +46,7 @@ public class SettingsSceneController implements  Initializable{
 	@FXML Button chooserBtn;
 	@FXML Slider zeitslider;
 	@FXML Label zeitlabel;
-	@FXML Button saveBtn;
+
 	
 	private String spielerwahl;
 	private boolean pushSchnittstelle;
@@ -70,7 +71,7 @@ public class SettingsSceneController implements  Initializable{
 		zeitslider.setValue(sgk.getCentisekunden()/10);
 		
 // TODO: back Btn zum Spiel Starten Screen
-		playBtn.setOnAction(new EventHandler<ActionEvent>() {
+		saveplayBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override public void handle(ActionEvent event) {
 				// SpielObjekt
 				spiel.setGEGNER(GegnerEdit.getText());
@@ -93,22 +94,6 @@ public class SettingsSceneController implements  Initializable{
 				reuse.setNewScene("GameScene.fxml");
 			}
 		});
-		
-		saveBtn.setOnAction(new EventHandler<ActionEvent>() {
-			@Override public void handle(ActionEvent event) {
-				// wieder in ini speichern
-				if(! PfadEdit.getText().equals("")){
-					sgk.setDateipfad(PfadEdit.getText());
-				}
-				if(! KeyEdit.getText().equals("")){
-					sgk.setApiKey(KeyEdit.getText());
-					sgk.setApiSecret(SecretEdit.getText());
-				}
-			    reuse.setNewScene(reuse.getLastScene());
-			}
-		});
-		
-
 		
 		ToggleGroup pushFileToggle = new ToggleGroup();
 		radioBtnFile.setToggleGroup(pushFileToggle);
@@ -167,6 +152,13 @@ public class SettingsSceneController implements  Initializable{
 				}
 				PfadEdit.setText(selectedDirectory.getPath());
 			}
+		});
+		
+		playBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		     @Override
+		     public void handle(MouseEvent event) {
+		    	 reuse.setNewScene("StartScene.fxml");
+		     }
 		});
 		
 		helpBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

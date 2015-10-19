@@ -32,15 +32,6 @@
                   <Image url="@../../pictures/4gewinnt.png" />
                </image>
             </ImageView>
-            <Label layoutX="465.0" layoutY="290.0" prefHeight="33.0" prefWidth="100.0" text="Spielstand" textFill="WHITE">
-               <font>
-                  <Font name="Arial Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="465.0" layoutY="323.0" prefHeight="21.0" prefWidth="53.0" text="X : O" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="18.0" />
-               </font></Label>
             <Button fx:id="saveBtn" layoutX="465.0" layoutY="411.0" mnemonicParsing="false" text="Satz speichern / abbrechen">
                <font>
                   <Font name="Arial Bold" size="14.0" />
@@ -97,6 +88,11 @@
             <Label fx:id="GegnerGameScene" layoutX="99.0" layoutY="116.0" prefHeight="33.0" prefWidth="107.0" text="Gegner" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="gewonnenLabel" layoutX="463.0" layoutY="292.0" text="Gewonnen" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
                </font>
             </Label>
          </children>
