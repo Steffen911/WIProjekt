@@ -86,9 +86,10 @@ public class KI {
 			System.out.println("Das Spiel ist beendet.");
 		} else {
 			//gespeicherterZug ausfuehren
-			if(spielfeld[gespeicherterZug][5] != "_"){
+			if(spielfeld[gespeicherterZug][5] == "o" || spielfeld[gespeicherterZug][5] == "x"){
 				System.out.println("Spalte ist eigentlich voll..."); //TODO: Steffen: Verhindern, dass dies ueberhaupt passiert
 				hauptProgramm(2);
+				return;
 			}
 			System.out.println("Der Stein wird in Spalte " + gespeicherterZug + " geworfen.");
 			setzeEigenenStein(gespeicherterZug);
