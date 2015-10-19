@@ -75,7 +75,7 @@ public class FileSchnittstelle {
 		//String[2] = gegnerzug
 		//String[3] = sieger
 		
-		//Prueft alle 300ms ob ein file vorhanden ist
+		//Prueft alle 500ms ob ein file vorhanden ist
 		while(true){
 				
 			if(xmlExtraction()){
