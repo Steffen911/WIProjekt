@@ -28,7 +28,7 @@ public class ReusableControllerFunctions {
 	
 	public void SpielFortsetzen(int SpielID,  String gegner){
 		spiel = new Spiel();
-		spiel.setID(SpielID);
+		spiel.spielFortsetzen(SpielID);
 		spiel.setGEGNER(gegner);
 	}
 	

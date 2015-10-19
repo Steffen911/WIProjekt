@@ -114,7 +114,8 @@ public class GameSceneController implements  Initializable{
 					}
 					//Starte von vorn
 				}
-	
+				System.out.println("Gegnerzug: "+ki.getGegnerPunkt().x+ ki.getGegnerPunkt().y);
+				System.out.println("Eigener Zug: "+ki.getEigenerPunkt().x+ ki.getEigenerPunkt().y);
 				showZug(ki.getGegnerPunkt(), ki.getEigenerPunkt());
 				//TODO: wer hat gewonnen? settext:verlorens 
 				System.out.println("Jemand hat gewonnen.");
@@ -156,10 +157,20 @@ public class GameSceneController implements  Initializable{
 		
 			// Verknuepfung zu GUI: Zuege anzeigen
 			if(wir.x >= 0){
-				GameGrid.add(yellowStack, wir.x, 5-wir.y);
+				try {
+					GameGrid.add(yellowStack, wir.x, 5-wir.y);
+				} catch (Exception e) {
+					System.out.println("Eigener punkt exisitiert schon in GUI.");
+					//e.printStackTrace();
+				}
 			}
 			if(gegner.x >= 0){
-				GameGrid.add(redStack, gegner.x, 5-gegner.y);
+				try {
+					GameGrid.add(redStack, gegner.x, 5-gegner.y);
+				} catch (Exception e) {
+					System.out.println("Gegner Punkt existiert schon in GUI.");
+					//e.printStackTrace();
+				}
 			}
 	}
 

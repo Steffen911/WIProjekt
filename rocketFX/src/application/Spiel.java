@@ -1,5 +1,7 @@
 package application;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import datenbank.DBConnector;
@@ -47,6 +49,23 @@ public class Spiel {
 		db.updateSpiel(ID, SIEGER, PUNKTE);
 	}
 	
+	public void spielFortsetzen(int id){
+		// SpielID setzen
+		ID = id;
+		// Saetze in satzList speichern
+		ResultSet rs = db.getSaetzeOfSpiel(String.valueOf(ID));
+		if(rs != null){
+			try {
+				while(rs.next()){
+					satzList.add(new Satz(ID, rs.getInt("SATZID")));
+					System.out.println("Satz "+ rs.getInt("SATZID")+" ist Eintrag "+(satzList.size()-1));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	/*** Getter and Setter ***/
 	public String getSIEGER() {
@@ -63,9 +82,6 @@ public class Spiel {
 	}
 	public int getID() {
 		return ID;
-	}
-	public void setID(int id){
-		ID = id;
 	}
 	public String getGEGNER() {
 		return GEGNER;
