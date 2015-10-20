@@ -3,16 +3,16 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="ki.KI" project="rocketFX" file="/rocketFX/src/ki/KI.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="121" y="188"/>    
+    <position height="-1" width="-1" x="152" y="133"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="ki.StartKIForTesting" project="rocketFX" 
-    file="/rocketFX/src/ki/StartKIForTesting.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="288" y="98"/>    
+  <class id="2" language="java" name="ki.reihenPruefen" project="rocketFX" file="/rocketFX/src/ki/reihenPruefen.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="425" y="-46"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="ki.spielSimulator" project="rocketFX" file="/rocketFX/src/ki/spielSimulator.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="287" y="223"/>    
+    <position height="-1" width="-1" x="357" y="100"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
