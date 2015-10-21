@@ -13,6 +13,8 @@ public class reihenPruefen {
 				}
 			}
 			
+			// TODO: Steffen: Pruefen ob der Stein unter dem zu setzenden Stein schon geworfen wurde!
+			
 			//Laufe spalten entlang
 			for(int i=0; i<7; i++){
 				//Laufe zeilen hoch
@@ -23,28 +25,28 @@ public class reihenPruefen {
 					//Pruefe waagerecht
 						//Pruefe links -3
 						try{
-							if(spielfeld[i-3][j] == spieler && spielfeld[i-2][j] == spieler && spielfeld[i-1][j] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-3][j] == spieler && spielfeld[i-2][j] == spieler && spielfeld[i-1][j] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe links -2 rechts +1
 						try{
-							if(spielfeld[i-2][j] == spieler && spielfeld[i-1][j] == spieler && spielfeld[i+1][j] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-2][j] == spieler && spielfeld[i-1][j] == spieler && spielfeld[i+1][j] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe links -1 rechts +2
 						try{
-							if(spielfeld[i-1][j] == spieler && spielfeld[i+1][j] == spieler && spielfeld[i+2][j] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-1][j] == spieler && spielfeld[i+1][j] == spieler && spielfeld[i+2][j] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe rechts +3
 						try{
-							if(spielfeld[i+1][j] == spieler && spielfeld[i+2][j] == spieler && spielfeld[i+3][j] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i+1][j] == spieler && spielfeld[i+2][j] == spieler && spielfeld[i+3][j] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
@@ -60,56 +62,56 @@ public class reihenPruefen {
 					//Pruefe diagonal vierer
 						//Pruefe diagonal links runter -3
 						try{
-							if(spielfeld[i-3][j-3] == spieler && spielfeld[i-2][j-2] == spieler && spielfeld[i-1][j-1] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-3][j-3] == spieler && spielfeld[i-2][j-2] == spieler && spielfeld[i-1][j-1] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe diagonal links runter -2
 						try{
-							if(spielfeld[i-2][j-2] == spieler && spielfeld[i-1][j-1] == spieler && spielfeld[i+1][j+1] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-2][j-2] == spieler && spielfeld[i-1][j-1] == spieler && spielfeld[i+1][j+1] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe diagonal links runter -1
 						try{
-							if(spielfeld[i-1][j-1] == spieler && spielfeld[i+1][j+1] == spieler && spielfeld[i+2][j+2] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-1][j-1] == spieler && spielfeld[i+1][j+1] == spieler && spielfeld[i+2][j+2] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe diagonal rechts hoch
 						try{
-							if(spielfeld[i+1][j+1] == spieler && spielfeld[i+2][j+2] == spieler && spielfeld[i+3][j+3] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i+1][j+1] == spieler && spielfeld[i+2][j+2] == spieler && spielfeld[i+3][j+3] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe diagonal rechts runter -3
 						try{
-							if(spielfeld[i+3][j-3] == spieler && spielfeld[i+2][j-2] == spieler && spielfeld[i+1][j-1] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i+3][j-3] == spieler && spielfeld[i+2][j-2] == spieler && spielfeld[i+1][j-1] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe diagonal rechts runter -2
 						try{
-							if(spielfeld[i+2][j-2] == spieler && spielfeld[i+1][j-1] == spieler && spielfeld[i-1][j+1] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i+2][j-2] == spieler && spielfeld[i+1][j-1] == spieler && spielfeld[i-1][j+1] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe diagonal rechts runter -1
 						try{
-							if(spielfeld[i+1][j-1] == spieler && spielfeld[i-1][j+1] == spieler && spielfeld[i-2][j+2] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i+1][j-1] == spieler && spielfeld[i-1][j+1] == spieler && spielfeld[i-2][j+2] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe diagonal rechts links hoch
 						try{
-							if(spielfeld[i-3][j+3] == spieler && spielfeld[i-2][j+2] == spieler && spielfeld[i-1][j+1] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-3][j+3] == spieler && spielfeld[i-2][j+2] == spieler && spielfeld[i-1][j+1] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
@@ -142,21 +144,21 @@ public class reihenPruefen {
 					//Pruefe waagerecht
 						//Pruefe links -2
 						try{
-							if(spielfeld[i-2][j] == spieler && spielfeld[i-1][j] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-2][j] == spieler && spielfeld[i-1][j] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 								
 						//Pruefe links -1 rechts +1
 						try{
-							if(spielfeld[i-1][j] == spieler && spielfeld[i+1][j] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-1][j] == spieler && spielfeld[i+1][j] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 								
 						//Pruefe rechts +2
 						try{
-							if(spielfeld[i+1][j] == spieler && spielfeld[i+2][j] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i+1][j] == spieler && spielfeld[i+2][j] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
@@ -164,7 +166,7 @@ public class reihenPruefen {
 					//Pruefe senkrecht
 						//Pruefe unten -2
 						try{
-							if(spielfeld[i][j-1] == spieler && spielfeld[i][j-2] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i][j-1] == spieler && spielfeld[i][j-2] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
@@ -173,42 +175,42 @@ public class reihenPruefen {
 						
 						//Pruefe diagonal links runter -2
 						try{
-							if(spielfeld[i-2][j-2] == spieler && spielfeld[i-1][j-1] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-2][j-2] == spieler && spielfeld[i-1][j-1] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe diagonal links runter -1
 						try{
-							if(spielfeld[i-1][j-1] == spieler && spielfeld[i+1][j+1] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-1][j-1] == spieler && spielfeld[i+1][j+1] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe diagonal rechts hoch
 						try{
-							if(spielfeld[i+1][j+1] == spieler && spielfeld[i+2][j+2] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i+1][j+1] == spieler && spielfeld[i+2][j+2] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe diagonal rechts runter -2
 						try{
-							if(spielfeld[i+2][j-2] == spieler && spielfeld[i+1][j-1] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i+2][j-2] == spieler && spielfeld[i+1][j-1] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe diagonal rechts runter -1
 						try{
-							if(spielfeld[i+1][j-1] == spieler && spielfeld[i-1][j+1] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i+1][j-1] == spieler && spielfeld[i-1][j+1] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe diagonal rechts links hoch
 						try{
-							if(spielfeld[i-2][j+2] == spieler && spielfeld[i-1][j+1] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-2][j+2] == spieler && spielfeld[i-1][j+1] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
@@ -241,14 +243,14 @@ public class reihenPruefen {
 					//Pruefe waagerecht
 						//Pruefe links -1
 						try{
-							if(spielfeld[i-1][j] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-1][j] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 										
 						//Pruefe rechts +1
 						try{
-							if(spielfeld[i+1][j] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i+1][j] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
@@ -256,7 +258,7 @@ public class reihenPruefen {
 					//Pruefe senkrecht
 						//Pruefe unten -1
 						try{
-							if(spielfeld[i][j-1] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i][j-1] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
@@ -264,28 +266,28 @@ public class reihenPruefen {
 					//Pruefe diagonal zweier
 						//Pruefe links unten
 						try{
-							if(spielfeld[i-1][j-1] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-1][j-1] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe rechts unten
 						try{
-							if(spielfeld[i+1][j-1] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i+1][j-1] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe links oben
 						try{
-							if(spielfeld[i-1][j+1] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-1][j+1] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 						//Pruefe rechts oben
 						try{
-							if(spielfeld[i+1][j+1] == spieler){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i+1][j+1] == spieler){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
@@ -311,7 +313,7 @@ public class reihenPruefen {
 						//Pruefe ob Spieler gewinnen kann:
 						//Pruefe waagerecht links -3 
 						try{
-							if(spielfeld[i-3][j] == eigenerStein && spielfeld[i-2][j] == eigenerStein && spielfeld[i-1][j] == eigenerStein){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-3][j] == eigenerStein && spielfeld[i-2][j] == eigenerStein && spielfeld[i-1][j] == eigenerStein){
 								spielzug = i;
 								return spielzug;
 							}
@@ -319,7 +321,7 @@ public class reihenPruefen {
 								
 						//Pruefe waagerecht links -2 und rechts +1
 						try{
-							if(spielfeld[i-2][j] == eigenerStein && spielfeld[i-1][j] == eigenerStein && spielfeld[i+1][j] == eigenerStein){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-2][j] == eigenerStein && spielfeld[i-1][j] == eigenerStein && spielfeld[i+1][j] == eigenerStein){
 								spielzug = i;
 								return spielzug;
 							}
@@ -327,7 +329,7 @@ public class reihenPruefen {
 								
 						//Pruefe waagerecht links -1 und rechts +2
 						try{
-							if(spielfeld[i-1][j] == eigenerStein && spielfeld[i+1][j] == eigenerStein && spielfeld[i+2][j] == eigenerStein){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-1][j] == eigenerStein && spielfeld[i+1][j] == eigenerStein && spielfeld[i+2][j] == eigenerStein){
 								spielzug = i;
 								return spielzug;
 							}
@@ -335,7 +337,7 @@ public class reihenPruefen {
 								
 						//Pruefe waagerecht rechts +3
 						try{
-							if(spielfeld[i+1][j] == eigenerStein && spielfeld[i+2][j] == eigenerStein && spielfeld[i+3][j] == eigenerStein){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i+1][j] == eigenerStein && spielfeld[i+2][j] == eigenerStein && spielfeld[i+3][j] == eigenerStein){
 								spielzug = i;
 								return spielzug;
 							}
@@ -343,7 +345,7 @@ public class reihenPruefen {
 								
 						//Pruefe senkrecht
 						try{
-							if(spielfeld[i][j-1] == eigenerStein && spielfeld[i][j-2] == eigenerStein && spielfeld[i][j-3] == eigenerStein){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i][j-1] == eigenerStein && spielfeld[i][j-2] == eigenerStein && spielfeld[i][j-3] == eigenerStein){
 								spielzug = i;
 								return spielzug;
 							}
@@ -351,7 +353,7 @@ public class reihenPruefen {
 								
 						//Pruefe diagonal links runter -3 
 						try{
-							if(spielfeld[i-3][j-3] == eigenerStein && spielfeld[i-2][j-2] == eigenerStein && spielfeld[i-1][j-1] == eigenerStein){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-3][j-3] == eigenerStein && spielfeld[i-2][j-2] == eigenerStein && spielfeld[i-1][j-1] == eigenerStein){
 								spielzug = i;
 								return spielzug;
 							}
@@ -359,7 +361,7 @@ public class reihenPruefen {
 								
 						//Pruefe diagonal links runter -2
 						try{
-							if(spielfeld[i-2][j-2] == eigenerStein && spielfeld[i-1][j-1] == eigenerStein && spielfeld[i+1][j+1] == eigenerStein){
+							if(spielfeld[i][j-1] != "_" && spielfeld[i-2][j-2] == eigenerStein && spielfeld[i-1][j-1] == eigenerStein && spielfeld[i+1][j+1] == eigenerStein){
 								spielzug = i;
 								return spielzug;
 							}
@@ -367,7 +369,7 @@ public class reihenPruefen {
 								
 								//Pruefe diagonal links runter -1
 								try{
-									if(spielfeld[i-1][j-1] == eigenerStein && spielfeld[i+1][j+1] == eigenerStein && spielfeld[i+2][j+2] == eigenerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i-1][j-1] == eigenerStein && spielfeld[i+1][j+1] == eigenerStein && spielfeld[i+2][j+2] == eigenerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -375,7 +377,7 @@ public class reihenPruefen {
 								
 								//Pruefe diagonal rechts hoch +3
 								try{
-									if(spielfeld[i+1][j+1] == eigenerStein && spielfeld[i+2][j+2] == eigenerStein && spielfeld[i+3][j+3] == eigenerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i+1][j+1] == eigenerStein && spielfeld[i+2][j+2] == eigenerStein && spielfeld[i+3][j+3] == eigenerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -383,7 +385,7 @@ public class reihenPruefen {
 								
 								//Pruefe diagonal rechts runter -3 
 								try{
-									if(spielfeld[i+3][j-3] == eigenerStein && spielfeld[i+2][j-2] == eigenerStein && spielfeld[i+1][j-1] == eigenerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i+3][j-3] == eigenerStein && spielfeld[i+2][j-2] == eigenerStein && spielfeld[i+1][j-1] == eigenerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -391,7 +393,7 @@ public class reihenPruefen {
 								
 								//Pruefe diagonal rechts runter -2
 								try{
-									if(spielfeld[i+2][j-2] == eigenerStein && spielfeld[i+1][j-1] == eigenerStein && spielfeld[i-1][j+1] == eigenerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i+2][j-2] == eigenerStein && spielfeld[i+1][j-1] == eigenerStein && spielfeld[i-1][j+1] == eigenerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -399,7 +401,7 @@ public class reihenPruefen {
 								
 								//Pruefe diagonal rechts runter -1
 								try{
-									if(spielfeld[i+1][j-1] == eigenerStein && spielfeld[i-1][j+1] == eigenerStein && spielfeld[i-2][j+2] == eigenerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i+1][j-1] == eigenerStein && spielfeld[i-1][j+1] == eigenerStein && spielfeld[i-2][j+2] == eigenerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -407,7 +409,7 @@ public class reihenPruefen {
 								
 								//Pruefe diagonal links hoch +3
 								try{
-									if(spielfeld[i-1][j+1] == eigenerStein && spielfeld[i-2][j+2] == eigenerStein && spielfeld[i-3][j+3] == eigenerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i-1][j+1] == eigenerStein && spielfeld[i-2][j+2] == eigenerStein && spielfeld[i-3][j+3] == eigenerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -418,7 +420,7 @@ public class reihenPruefen {
 								//Pruefe ob Gegner gewinnen kann:
 								//Pruefe waagerecht links -3 
 								try{
-									if(spielfeld[i-3][j] == gegnerStein && spielfeld[i-2][j] == gegnerStein && spielfeld[i-1][j] == gegnerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i-3][j] == gegnerStein && spielfeld[i-2][j] == gegnerStein && spielfeld[i-1][j] == gegnerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -426,7 +428,7 @@ public class reihenPruefen {
 								
 								//Pruefe waagerecht links -2 und rechts +1
 								try{
-									if(spielfeld[i-2][j] == gegnerStein && spielfeld[i-1][j] == gegnerStein && spielfeld[i+1][j] == gegnerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i-2][j] == gegnerStein && spielfeld[i-1][j] == gegnerStein && spielfeld[i+1][j] == gegnerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -434,7 +436,7 @@ public class reihenPruefen {
 								
 								//Pruefe waagerecht links -1 und rechts +2
 								try{
-									if(spielfeld[i-1][j] == gegnerStein && spielfeld[i+1][j] == gegnerStein && spielfeld[i+2][j] == gegnerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i-1][j] == gegnerStein && spielfeld[i+1][j] == gegnerStein && spielfeld[i+2][j] == gegnerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -442,7 +444,7 @@ public class reihenPruefen {
 								
 								//Pruefe waagerecht rechts +3
 								try{
-									if(spielfeld[i+1][j] == gegnerStein && spielfeld[i+2][j] == gegnerStein && spielfeld[i+3][j] == gegnerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i+1][j] == gegnerStein && spielfeld[i+2][j] == gegnerStein && spielfeld[i+3][j] == gegnerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -450,7 +452,7 @@ public class reihenPruefen {
 								
 								//Pruefe senkrecht
 								try{
-									if(spielfeld[i][j-1] == gegnerStein && spielfeld[i][j-2] == gegnerStein && spielfeld[i][j-3] == gegnerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i][j-1] == gegnerStein && spielfeld[i][j-2] == gegnerStein && spielfeld[i][j-3] == gegnerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -458,7 +460,7 @@ public class reihenPruefen {
 								
 								//Pruefe diagonal links runter -3 
 								try{
-									if(spielfeld[i-3][j-3] == gegnerStein && spielfeld[i-2][j-2] == gegnerStein && spielfeld[i-1][j-1] == gegnerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i-3][j-3] == gegnerStein && spielfeld[i-2][j-2] == gegnerStein && spielfeld[i-1][j-1] == gegnerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -466,7 +468,7 @@ public class reihenPruefen {
 								
 								//Pruefe diagonal links runter -2
 								try{
-									if(spielfeld[i-2][j-2] == gegnerStein && spielfeld[i-1][j-1] == gegnerStein && spielfeld[i+1][j+1] == gegnerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i-2][j-2] == gegnerStein && spielfeld[i-1][j-1] == gegnerStein && spielfeld[i+1][j+1] == gegnerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -474,7 +476,7 @@ public class reihenPruefen {
 								
 								//Pruefe diagonal links runter -1
 								try{
-									if(spielfeld[i-1][j-1] == gegnerStein && spielfeld[i+1][j+1] == gegnerStein && spielfeld[i+2][j+2] == gegnerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i-1][j-1] == gegnerStein && spielfeld[i+1][j+1] == gegnerStein && spielfeld[i+2][j+2] == gegnerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -482,7 +484,7 @@ public class reihenPruefen {
 								
 								//Pruefe diagonal rechts hoch +3
 								try{
-									if(spielfeld[i+1][j+1] == gegnerStein && spielfeld[i+2][j+2] == gegnerStein && spielfeld[i+3][j+3] == gegnerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i+1][j+1] == gegnerStein && spielfeld[i+2][j+2] == gegnerStein && spielfeld[i+3][j+3] == gegnerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -490,7 +492,7 @@ public class reihenPruefen {
 								
 								//Pruefe diagonal rechts runter -3 
 								try{
-									if(spielfeld[i+3][j-3] == gegnerStein && spielfeld[i+2][j-2] == gegnerStein && spielfeld[i+1][j-1] == gegnerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i+3][j-3] == gegnerStein && spielfeld[i+2][j-2] == gegnerStein && spielfeld[i+1][j-1] == gegnerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -498,7 +500,7 @@ public class reihenPruefen {
 								
 								//Pruefe diagonal rechts runter -2
 								try{
-									if(spielfeld[i+2][j-2] == gegnerStein && spielfeld[i+1][j-1] == gegnerStein && spielfeld[i-1][j+1] == gegnerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i+2][j-2] == gegnerStein && spielfeld[i+1][j-1] == gegnerStein && spielfeld[i-1][j+1] == gegnerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -506,7 +508,7 @@ public class reihenPruefen {
 								
 								//Pruefe diagonal rechts runter -1
 								try{
-									if(spielfeld[i+1][j-1] == gegnerStein && spielfeld[i-1][j+1] == gegnerStein && spielfeld[i-2][j+2] == gegnerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i+1][j-1] == gegnerStein && spielfeld[i-1][j+1] == gegnerStein && spielfeld[i-2][j+2] == gegnerStein){
 										spielzug = i;
 										return spielzug;
 									}
@@ -514,7 +516,7 @@ public class reihenPruefen {
 								
 								//Pruefe diagonal links hoch +3
 								try{
-									if(spielfeld[i-1][j+1] == gegnerStein && spielfeld[i-2][j+2] == gegnerStein && spielfeld[i-3][j+3] == gegnerStein){
+									if(spielfeld[i][j-1] != "_" && spielfeld[i-1][j+1] == gegnerStein && spielfeld[i-2][j+2] == gegnerStein && spielfeld[i-3][j+3] == gegnerStein){
 										spielzug = i;
 										return spielzug;
 									}
