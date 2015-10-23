@@ -58,7 +58,6 @@ public class KI {
 	//Nimmt eine Spalte zwischen 0 und 6 entgegen
 	//Gibt einen integer mit dem eigenen Spielzug zurueck
 	public int zugBerechnen(int gegnerZug){
-		int spielzug;
 		
 		setzeGegnerStein(gegnerZug);
 		
@@ -71,11 +70,20 @@ public class KI {
 		keineZuegeMehr();
 		
 		int spalte = (int)(Math.random()*6);
+		
+		for(int i=0; i < moeglicheZuege.length; i++){
+			spalte = (i+spalte)%6;
+			if(siegMuster(spalte, moeglicheZuege[spalte])){
+				setzeEigenenStein(spalte);
+				return spalte;
+			}
+		}
+		
 		for(int i = 0; i < moeglicheZuege.length; i++){
-			spalte = (i+spalte%6);
+			spalte = (i+spalte)%6;
 			if(moeglicheZuege[spalte] < 6){
-				setzeEigenenStein(moeglicheZuege[spalte]);
-				return moeglicheZuege[spalte];
+				setzeEigenenStein(spalte);
+				return spalte;
 			}
 		}
 		
@@ -324,6 +332,32 @@ public class KI {
 
 	public String getGegnerStein() {
 		return gegnerStein;
+	}
+	
+	public boolean siegMuster(int spalte, int zeile){
+	//Pruefe waagerecht
+		//Pruefe links -3
+		try{
+			if(spielfeld[spalte-3][zeile] == eigenerStein && spielfeld[spalte-2][zeile] == eigenerStein && spielfeld[spalte-1][zeile] == eigenerStein){
+				return true;
+			}
+		}catch(ArrayIndexOutOfBoundsException e){}
+		
+		//Pruefe links -2
+				try{
+					if(spielfeld[spalte-2][zeile] == eigenerStein && spielfeld[spalte-1][zeile] == eigenerStein && spielfeld[spalte+1][zeile] == eigenerStein){
+						return true;
+					}
+				}catch(ArrayIndexOutOfBoundsException e){}
+				
+	//Pruefe senkrecht
+		try{
+			if(spielfeld[spalte][zeile-3] == eigenerStein && spielfeld[spalte][zeile-2] == eigenerStein && spielfeld[spalte][zeile-1] == eigenerStein){
+				return true;
+			}
+		}catch(ArrayIndexOutOfBoundsException e){}		
+		
+		return false;
 	}
 
 }
