@@ -4,6 +4,9 @@ import java.awt.*;
 
 public class KI {
 	
+	//Starter
+	private String hatAngefangen;
+	
 	//Spielerwahl
 	private String eigenerStein;
 	private String gegnerStein;
@@ -41,6 +44,8 @@ public class KI {
 			break;
 		}
 		
+		hatAngefangen = gegnerStein;
+		
 		for(int i=0; i<7; i++) { //initialisiert spielfeld
 			for(int j=0; j<6; j++){				
 				spielfeld[i][j] = "_";
@@ -58,6 +63,7 @@ public class KI {
 		setzeGegnerStein(gegnerZug);
 		
 		if (gegnerZug == -1){
+			hatAngefangen = eigenerStein;
 			setzeEigenenStein(3);
 			return 3;
 		}
@@ -249,6 +255,11 @@ public class KI {
 				} //end if
 			} //end for				
 		} 		
+	}
+	
+	//Gibt an wer angefangen hat
+	public String getStarter(){
+		return hatAngefangen;
 	}
 	
 	//Gibt an ob und wer gewonnen hat
