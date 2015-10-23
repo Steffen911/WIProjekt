@@ -4,6 +4,9 @@ import java.awt.*;
 
 public class KI {
 	
+	//Starter
+	private String hatAngefangen;
+	
 	//Spielerwahl
 	private String eigenerStein;
 	private String gegnerStein;
@@ -58,8 +61,11 @@ public class KI {
 		setzeGegnerStein(gegnerZug);
 		
 		if (gegnerZug == -1){
+			hatAngefangen = eigenerStein;
 			setzeEigenenStein(3);
 			return 3;
+		} else {
+			hatAngefangen = gegnerStein;
 		}
 		
 		gespeicherterZug = pruefen.siegMusterErkennung(spielfeld, eigenerStein, gegnerStein);
@@ -249,6 +255,11 @@ public class KI {
 				} //end if
 			} //end for				
 		} 		
+	}
+	
+	//Gibt an, wer das Spiel begonnen hat ("x" oder "o")
+	public String getStarter(){
+		return hatAngefangen;
 	}
 	
 	//Gibt an ob und wer gewonnen hat
