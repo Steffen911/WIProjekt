@@ -126,12 +126,6 @@ public class KI {
 			//Es gab keine weiteren Zuege mehr
 			System.out.println("Das Spiel ist beendet.");
 		} else {
-			//gespeicherterZug ausfuehren
-			if(spielfeld[gespeicherterZug][5] == "o" || spielfeld[gespeicherterZug][5] == "x"){
-				System.out.println("Spalte ist eigentlich voll..."); //TODO: Steffen: Verhindern, dass dies ueberhaupt passiert
-				hauptProgramm(2);
-				return;
-			}
 			System.out.println("Der Stein wird in Spalte " + gespeicherterZug + " geworfen.");
 			setzeEigenenStein(gespeicherterZug);
 		}
@@ -149,7 +143,7 @@ public class KI {
 		//generiereMoeglicheZuege();
 		for(int i=0; i<7; i++){
 			int spalte = (i+startSpalte)%6;
-			if(moeglicheZuege[spalte] != -1){
+			if(moeglicheZuege[spalte] < 6){
 				int zeile = moeglicheZuege[spalte];
 				fuehreNaechstenZugAus(spalte, zeile, spieler);
 				int wert = min(gegnerStein, tiefe-1); //wert hat einen wert von 1 bis 4. 4 ist ideal
@@ -176,7 +170,7 @@ public class KI {
 		
 		//generiereMoeglicheZuege();
 		for(int i=0; i<7; i++){
-			if(moeglicheZuege[i] != -1){
+			if(moeglicheZuege[i] < 6){
 				int spalte = i;
 				int zeile = moeglicheZuege[i];
 				fuehreNaechstenZugAus(spalte, zeile, spieler);
@@ -350,12 +344,83 @@ public class KI {
 					}
 				}catch(ArrayIndexOutOfBoundsException e){}
 				
+		//Pruefe links -1
+		try{
+			if(spielfeld[spalte-1][zeile] == eigenerStein && spielfeld[spalte+1][zeile] == eigenerStein && spielfeld[spalte+2][zeile] == eigenerStein){
+				return true;
+			}
+		}catch(ArrayIndexOutOfBoundsException e){}
+				
+		//Pruefe rechts +3
+		try{
+			if(spielfeld[spalte+1][zeile] == eigenerStein && spielfeld[spalte+2][zeile] == eigenerStein && spielfeld[spalte+3][zeile] == eigenerStein){
+				return true;
+			}
+		}catch(ArrayIndexOutOfBoundsException e){}
+				
 	//Pruefe senkrecht
 		try{
 			if(spielfeld[spalte][zeile-3] == eigenerStein && spielfeld[spalte][zeile-2] == eigenerStein && spielfeld[spalte][zeile-1] == eigenerStein){
 				return true;
 			}
-		}catch(ArrayIndexOutOfBoundsException e){}		
+		}catch(ArrayIndexOutOfBoundsException e){}
+		
+	//Pruefe waagerecht
+		//Pruefe diagonal links -3
+		try{
+			if(spielfeld[spalte-3][zeile-3] == eigenerStein && spielfeld[spalte-2][zeile-2] == eigenerStein && spielfeld[spalte-1][zeile-1] == eigenerStein){
+				return true;
+			}
+		}catch(ArrayIndexOutOfBoundsException e){}
+		
+		//Pruefe diagonal links -2
+				try{
+					if(spielfeld[spalte-2][zeile-2] == eigenerStein && spielfeld[spalte-1][zeile-1] == eigenerStein && spielfeld[spalte+1][zeile+1] == eigenerStein){
+						return true;
+					}
+				}catch(ArrayIndexOutOfBoundsException e){}
+				
+		//Pruefe diagonal links -1
+				try{
+					if(spielfeld[spalte-1][zeile-1] == eigenerStein && spielfeld[spalte+1][zeile+1] == eigenerStein && spielfeld[spalte+2][zeile+2] == eigenerStein){
+						return true;
+					}
+				}catch(ArrayIndexOutOfBoundsException e){}
+				
+		//Pruefe diagonal rechts +3
+				try{
+					if(spielfeld[spalte+1][zeile+1] == eigenerStein && spielfeld[spalte+2][zeile+2] == eigenerStein && spielfeld[spalte+3][zeile+3] == eigenerStein){
+						return true;
+					}
+				}catch(ArrayIndexOutOfBoundsException e){}
+				
+		//Pruefe diagonal rechts +3 runter
+				try{
+					if(spielfeld[spalte+3][zeile-3] == eigenerStein && spielfeld[spalte+2][zeile-2] == eigenerStein && spielfeld[spalte+3][zeile-3] == eigenerStein){
+						return true;
+					}
+				}catch(ArrayIndexOutOfBoundsException e){}
+				
+		//Pruefe diagonal rechts +2 runter
+				try{
+					if(spielfeld[spalte+2][zeile-2] == eigenerStein && spielfeld[spalte+1][zeile-1] == eigenerStein && spielfeld[spalte-1][zeile+1] == eigenerStein){
+						return true;
+					}
+				}catch(ArrayIndexOutOfBoundsException e){}
+				
+		//Pruefe diagonal rechts +1 runter
+				try{
+					if(spielfeld[spalte+1][zeile-1] == eigenerStein && spielfeld[spalte-1][zeile+1] == eigenerStein && spielfeld[spalte-2][zeile+2] == eigenerStein){
+						return true;
+					}
+				}catch(ArrayIndexOutOfBoundsException e){}
+				
+		//Pruefe diagonal links hoch
+				try{
+					if(spielfeld[spalte-1][zeile+1] == eigenerStein && spielfeld[spalte-2][zeile+2] == eigenerStein && spielfeld[spalte-3][zeile+3] == eigenerStein){
+						return true;
+					}
+				}catch(ArrayIndexOutOfBoundsException e){}
 		
 		return false;
 	}
