@@ -57,7 +57,34 @@ public class KI {
 	
 	//Nimmt eine Spalte zwischen 0 und 6 entgegen
 	//Gibt einen integer mit dem eigenen Spielzug zurueck
-	public int zugBerechnen(int gegnerZug) {
+	public int zugBerechnen(int gegnerZug){
+		int spielzug;
+		
+		setzeGegnerStein(gegnerZug);
+		
+		if(gegnerZug == -1){
+			hatAngefangen = eigenerStein;
+			setzeEigenenStein(3);
+			return 3;
+		}
+		
+		keineZuegeMehr();
+		
+		int spalte = (int)(Math.random()*6);
+		for(int i = 0; i < moeglicheZuege.length; i++){
+			spalte = (i+spalte%6);
+			if(moeglicheZuege[spalte] < 6){
+				setzeEigenenStein(moeglicheZuege[spalte]);
+				return moeglicheZuege[spalte];
+			}
+		}
+		
+		return -1; //Kein Spielzug mehr moeglich
+	}
+	
+	//Nimmt eine Spalte zwischen 0 und 6 entgegen
+	//Gibt einen integer mit dem eigenen Spielzug zurueck
+	public int gutenZugBerechnen(int gegnerZug) {
 		reihenPruefen pruefen = new reihenPruefen();
 		
 		setzeGegnerStein(gegnerZug);
