@@ -81,10 +81,10 @@ public class GameSceneController implements  Initializable{
 				ki = new KI(server.getSpielerwahl());
 				rueckgabe = server.leseVomServer();
 				
-				//Berechne Spielzug auf Grundlage des gegnerzugs
-				spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
-				
-				while(!rueckgabe[1].equals("beendet")){					
+				while(!rueckgabe[1].equals("beendet")){		
+					
+					//Berechne neuen Spielzug auf Grundlage des gegnerzugs
+					spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
 
 					System.out.println("GegnerZug ist " + rueckgabe[2]);
 					System.out.println("EigenerZug ist " + spielzug);
@@ -111,17 +111,25 @@ public class GameSceneController implements  Initializable{
 						ki.setWinner(rueckgabe[3]);
 					}
 					
-					//Berechne neuen Spielzug auf Grundlage des gegnerzugs
-					spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
-					
 					//Starte von vorn
 				}
 /*
 				System.out.println("Gegnerzug: "+ki.getGegnerPunkt().x+ ki.getGegnerPunkt().y);
 				System.out.println("Eigener Zug: "+ki.getEigenerPunkt().x+ ki.getEigenerPunkt().y);
 */				
-				showZug(ki.getGegnerPunkt(), ki.getEigenerPunkt());
-					
+				arrayAusgebenConsole(ki.arrayAusgabe());
+				Platform.runLater(new Runnable() {
+					@Override public void run() {
+						Point gegnerP, wirP;
+						gegnerP = ki.getGegnerPunkt();
+						wirP = ki.getEigenerPunkt();
+						showZug(gegnerP,wirP);
+						Satz satz = reuse.getSpiel().getCurrentSatz();
+						satz.addZugGEGNER(gegnerP);
+						satz.addZugIch(wirP);
+					}
+				});
+			
 				// Gewinner ausgeben
 				Satz satz = reuse.getSpiel().getCurrentSatz();
 				if(ki.getEigenerStein().equals(ki.getWinner())){
@@ -135,7 +143,7 @@ public class GameSceneController implements  Initializable{
 					gewonnenLabel.setText("Verloren");
 					gewonnenLabel.setVisible(true);
 				} 
-				System.out.println("Jemand hat gewonnen.");
+
 				
 			}
 		}).start();
