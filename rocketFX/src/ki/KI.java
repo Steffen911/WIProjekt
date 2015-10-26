@@ -5,10 +5,10 @@ import java.awt.*;
 public class KI {
 	
 	//Starter
-	private String hatAngefangen;
+	private String hatAngefangen = "";
 	
 	//Gewinner
-	private String hatGewonnen;
+	private String hatGewonnen = "";
 	
 	//Spielerwahl
 	private String eigenerStein;
@@ -143,7 +143,7 @@ public class KI {
 
 	public int max(String spieler, int tiefe){
 		
-		if(tiefe == 0 || keineZuegeMehr() || getWinner()!=null){ 
+		if(tiefe == 0 || keineZuegeMehr() || getWinner().equals(eigenerPunkt) || getWinner().equals(gegnerPunkt)){ 
 			return bewerten(spieler);
 		}
 		int maxWert = -100;
@@ -173,7 +173,7 @@ public class KI {
 
 	public int min(String spieler, int tiefe){
 		
-		if(tiefe == 0 || keineZuegeMehr() || getWinner()!=null){
+		if(tiefe == 0 || keineZuegeMehr() || getWinner().equals(eigenerPunkt) || getWinner().equals(gegnerPunkt)){
 			return bewerten(spieler);
 		}
 		int minWert = +100;
@@ -317,7 +317,7 @@ public class KI {
 		case "Spieler X":
 			return "x";
 		default:
-			return null;
+			return "";
 		}
 	}
 	
