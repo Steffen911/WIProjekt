@@ -13,6 +13,7 @@ public class Satz {
 	private String SIEGER;
 	private String ZUEGEICH;
 	private String ZUEGEGEGNER;
+	private int PUNKTE;
 	private static DBConnector db;
 	
 	
@@ -22,11 +23,12 @@ public class Satz {
 		SATZID = sATZID;
 		ZUEGEGEGNER = "";
 		ZUEGEICH = "";
+		PUNKTE = 0;
 		db = new DBConnector();
 	}
 	
 	void saveSatzInDB(){
-		db.insertNewSatz(SPIELID, SATZID, STARTER, SIEGER, ZUEGEICH, ZUEGEGEGNER);
+		db.insertNewSatz(SPIELID, SATZID, STARTER, SIEGER, ZUEGEICH, ZUEGEGEGNER,PUNKTE);
 	}
 	
 	
@@ -46,6 +48,11 @@ public class Satz {
 
 	public void setSIEGER(String sIEGER) {
 		SIEGER = sIEGER;
+		if(SIEGER.equals("rocket")){
+			PUNKTE = 2;
+		}else  {
+			PUNKTE = 0;
+		}
 	}
 
 	public String getZUEGEICH() {
@@ -78,6 +85,14 @@ public class Satz {
 
 	public void setZUEGEGEGNER(String zUEGEGEGNER) {
 		ZUEGEGEGNER = zUEGEGEGNER;
+	}
+
+	int getPUNKTE() {
+		return PUNKTE;
+	}
+
+	void setPUNKTE(int pUNKTE) {
+		PUNKTE = pUNKTE;
 	}
 	
 }

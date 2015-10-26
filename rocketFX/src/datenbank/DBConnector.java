@@ -56,11 +56,11 @@ public class DBConnector {
 			}
 	}
 	
-	public void insertNewSatz(int spielID,int satzID,String starter, String sieger, String zuegeIch, String zuegeGegner){
+	public void insertNewSatz(int spielID,int satzID,String starter, String sieger, String zuegeIch, String zuegeGegner, int punkte){
 		try {
 			  Statement stmt = con.createStatement(); 
-			  String sql = "insert into SAETZE (SPIELID,SATZID,STARTER,SIEGER,ZUEGEICH,ZUEGEGEGNER)values("+
-					  		spielID+","+satzID+",'"+starter+"','"+sieger+"','"+zuegeIch+"','"+zuegeGegner+"'"+")";
+			  String sql = "insert into SAETZE (SPIELID,SATZID,STARTER,SIEGER,ZUEGEICH,ZUEGEGEGNER,PUNKTE)values("+
+					  		spielID+","+satzID+",'"+starter+"','"+sieger+"','"+zuegeIch+"','"+zuegeGegner+"',"+punkte+")";
 			  stmt.executeQuery(sql);  
 			  
 		      // Statement schliessen

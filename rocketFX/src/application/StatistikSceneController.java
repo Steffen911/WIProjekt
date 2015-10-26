@@ -20,6 +20,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
@@ -28,11 +29,11 @@ public class StatistikSceneController implements  Initializable{
 	@FXML ImageView playBtn;
 	@FXML ImageView helpBtn;
 	@FXML ImageView settingsBtn;
-	@FXML Button SpielAendernBtn, SatzAendernBtn, SpielFortsetzenBtn;
+	@FXML Button SpielFortsetzenBtn;
 	@FXML TableView<ObservableList> SpielTable;
 	@FXML TableView<ObservableList> SatzTable;
 	@FXML TableColumn<ObservableList, String> SpielGegnerCol,SpielIDCol,SpielSiegerCol,SpielPunkteCol;
-	@FXML TableColumn<ObservableList, String> SatzSpielIDCol, SatzSatzIDCol, SatzStarterCol,SatzSiegerCol,SatzZuegeIchCol,SatzZuegeGegnerCol;
+	@FXML TableColumn<ObservableList, String> SatzSpielIDCol, SatzSatzIDCol, SatzStarterCol,SatzSiegerCol,SatzZuegeIchCol,SatzZuegeGegnerCol,SatzPunkteCol;
 	
 	private DBConnector dbConn;
 	private ReusableControllerFunctions reuse;
@@ -44,25 +45,9 @@ public class StatistikSceneController implements  Initializable{
 		reuse = new ReusableControllerFunctions();
 		dbConn = new DBConnector();
 		
-		//TODO: Spiel ueberhaupt aenderbar wegen Aufwand in DB?
-		// TODO: SpeichernBtn fuer wenn man aendern gedrueckt hat :D
-		
-		SpielAendernBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-		     @Override
-		     public void handle(MouseEvent event) {
-		    	 SpielTable.setEditable(true);
-		     }
-		});
-		SatzAendernBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-		     @Override
-		     public void handle(MouseEvent event) {
-		    	SatzTable.setEditable(true);
-		     }
-		});
 		SpielFortsetzenBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 		     @Override
 		     public void handle(MouseEvent event) {
-		    	 //TODO: Spiel aus Zeile in SpielObjekt laden, in SettingsScene neuen Satz starten
 		    	 String id = selectedStr.substring(1,selectedStr.indexOf(","));
 		    	 String gegner = selectedStr.substring(selectedStr.indexOf(",")+2, selectedStr.indexOf(",", 5));
 		    	 reuse.SpielFortsetzen(Integer.parseInt(id), gegner);
@@ -191,7 +176,11 @@ public class StatistikSceneController implements  Initializable{
                 return new SimpleStringProperty(param.getValue().get(5).toString());                        
             }                    
         }); 
-
+		SatzPunkteCol.setCellValueFactory(new Callback<CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){                    
+            public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {                                                                                              
+                return new SimpleStringProperty(param.getValue().get(6).toString());                        
+            }                    
+        }); 
 		
 		if(rs != null){
 			ObservableList<ObservableList> data = FXCollections.observableArrayList();

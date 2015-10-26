@@ -18,7 +18,7 @@ public class SavingSceneController implements  Initializable{
 	@FXML Button saveBtn;
 	@FXML ImageView helpBtn;
 	@FXML Button deleteBtn;
-	@FXML TextField gewinnerEdit, starterEdit;
+	@FXML TextField gewinnerEdit, starterEdit, punkteEdit;
 	@FXML TextArea zuegeArea;
 	
 	private DBConnector dbConn;
@@ -33,6 +33,7 @@ public class SavingSceneController implements  Initializable{
 		Satz satz = (reuse.getSpiel()).getCurrentSatz();
 		gewinnerEdit.setText(satz.getSIEGER());
 		starterEdit.setText(satz.getSTARTER());
+		punkteEdit.setText(Integer.toString(satz.getPUNKTE()));
 		zuegeArea.setText("rocket: "+ satz.getZUEGEICH()+"\n"+
 						"Gegner: "+ satz.getZUEGEGEGNER());
 		
@@ -41,7 +42,7 @@ public class SavingSceneController implements  Initializable{
 				// Editeingaben uebernehmen
 				satz.setSIEGER(gewinnerEdit.getText());
 				satz.setSTARTER(starterEdit.getText());
-				//ToDo: Zuege speichern (String schneiden)
+				satz.setPUNKTE(Integer.parseInt(punkteEdit.getText()));// SetPunkte NACH Sieger aufrufen!
 				String zuege = zuegeArea.getText().substring(zuegeArea.getText().indexOf(" ")+1);
 				zuege = zuege.substring(0, zuege.indexOf("\n"));
 				satz.setZUEGEICH(zuege);

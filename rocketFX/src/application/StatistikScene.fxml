@@ -34,36 +34,23 @@
             </Label>
             <TableView fx:id="SpielTable" layoutX="56.0" layoutY="175.0" prefHeight="220.0" prefWidth="270.0">
               <columns>
-                <TableColumn fx:id="SpielIDCol" prefWidth="33.0" text="ID" />
+                <TableColumn fx:id="SpielIDCol" prefWidth="33.0" text="#" />
                 <TableColumn fx:id="SpielGegnerCol" prefWidth="69.0" text="Gegner" />
                   <TableColumn fx:id="SpielSiegerCol" prefWidth="92.0" text="Sieger" />
-                  <TableColumn fx:id="SpielPunkteCol" text="Punkte" />
+                  <TableColumn fx:id="SpielPunkteCol" text="Punkte  Rocket" />
               </columns>
             </TableView>
             <TableView fx:id="SatzTable" layoutX="365.0" layoutY="175.0" prefHeight="220.0" prefWidth="270.0">
               <columns>
-                <TableColumn fx:id="SatzSpielIDCol" prefWidth="75.0" text="SpielID" />
-                <TableColumn fx:id="SatzSatzIDCol" prefWidth="75.0" text="SatzID" />
+                <TableColumn fx:id="SatzSpielIDCol" prefWidth="75.0" text="Spiel" />
+                <TableColumn fx:id="SatzSatzIDCol" prefWidth="75.0" text="Satz" />
                   <TableColumn fx:id="SatzStarterCol" prefWidth="75.0" text="Starter" />
                   <TableColumn fx:id="SatzSiegerCol" prefWidth="75.0" text="Sieger" />
                   <TableColumn fx:id="SatzZuegeIchCol" prefWidth="75.0" text="ZuegeIch" />
                   <TableColumn fx:id="SatzZuegeGegnerCol" prefWidth="75.0" text="ZuegeGegner" />
+                  <TableColumn fx:id="SatzPunkteCol" prefWidth="75.0" text="Punkte Rocket" />
               </columns>
             </TableView>
-            <Button fx:id="SpielAendernBtn" layoutX="56.0" layoutY="411.0" mnemonicParsing="false" text="Ändern">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-               <effect>
-                  <Reflection />
-               </effect></Button>
-            <Button fx:id="SatzAendernBtn" layoutX="365.0" layoutY="411.0" mnemonicParsing="false" text="Ändern">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-               <effect>
-                  <Reflection />
-               </effect></Button>
             <ImageView fx:id="playBtn" fitHeight="62.0" fitWidth="33.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../pictures/play.png" />
