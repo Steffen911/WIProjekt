@@ -84,6 +84,7 @@ public class SettingsSceneController implements  Initializable{
 					reuse.createServer(spielerwahl, EditPfad(PfadEdit.getText()), zeit);
 				}
 				// wieder in ini speichern
+				sgk.setCentisekunden((int) zeitslider.getValue()*10);
 				if(! PfadEdit.getText().equals("")){
 					sgk.setDateipfad(PfadEdit.getText());
 				}
