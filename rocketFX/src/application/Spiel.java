@@ -47,9 +47,11 @@ public class Spiel {
 	
 	public void updateSpielInDB(){
 		// Punkte aus Sätzen aufaddieren
+		System.out.println("Punkte: "+PUNKTE);
 		PUNKTE = 0;
 		for (int i = 0; i < satzList.size()-1; i++) {
 			PUNKTE += satzList.get(i).getPUNKTE();
+			System.out.println("i: "+i+", Punkte: "+satzList.get(i).getPUNKTE()+", Gesamt: "+PUNKTE);
 		}
 		// Sieger ermitteln
 		if(satzList.size() < PUNKTE){
