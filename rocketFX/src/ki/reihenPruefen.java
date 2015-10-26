@@ -13,8 +13,6 @@ public class reihenPruefen {
 				}
 			}
 			
-			// TODO: Steffen: Pruefen ob der Stein unter dem zu setzenden Stein schon geworfen wurde!
-			
 			//Laufe spalten entlang
 			for(int i=0; i<7; i++){
 				//Laufe zeilen hoch

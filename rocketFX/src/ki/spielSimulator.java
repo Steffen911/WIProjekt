@@ -47,17 +47,13 @@ public class spielSimulator {
 				System.out.print("\n");
 			}
 			
-			if(ki.getWinner()!=null){
-				break;
-			}
-			
 			//Sende errechneten Spielzug an Server und warte auf XML
 //			rueckgabe = sst.communicate(spielzug);		
 			
 			//Starte von vorn
 		}
 		
-		System.out.println("Der Gewinner ist: " + ki.getWinner());
+//		System.out.println("Der Gewinner ist: " + ki.getWinner());
 	}
 
 }

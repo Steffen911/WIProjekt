@@ -18,7 +18,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
-import ki.KI;
+import ki.*;
 import serverKommunikation.ServerGuiKontakt;
 
 public class GameSceneController implements  Initializable{
@@ -80,41 +80,48 @@ public class GameSceneController implements  Initializable{
 				
 				ki = new KI(server.getSpielerwahl());
 				rueckgabe = server.leseVomServer();
+				
+				//Berechne Spielzug auf Grundlage des gegnerzugs
+				spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
+				
 				while(!rueckgabe[1].equals("beendet")){					
-					//Berechne neuen Spielzug auf Grundlage des gegnerzugs
-					spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
 
 					System.out.println("GegnerZug ist " + rueckgabe[2]);
 					System.out.println("EigenerZug ist " + spielzug);
-					
 					
 					// Spielzug Anzeigen
 					//Gib aktuelles Array aus
 					arrayAusgebenConsole(ki.arrayAusgabe());
 					Platform.runLater(new Runnable() {
-			            @Override public void run() {
-			            	Point gegnerP, wirP;
-			            	gegnerP = ki.getGegnerPunkt();
-			            	wirP = ki.getEigenerPunkt();
-			                showZug(gegnerP,wirP);
-			                Satz satz = reuse.getSpiel().getCurrentSatz();
-			                satz.addZugGEGNER(gegnerP);
-			                satz.addZugIch(wirP);
-			            }
-			        });
+						@Override public void run() {
+							Point gegnerP, wirP;
+							gegnerP = ki.getGegnerPunkt();
+							wirP = ki.getEigenerPunkt();
+							showZug(gegnerP,wirP);
+							Satz satz = reuse.getSpiel().getCurrentSatz();
+							satz.addZugGEGNER(gegnerP);
+							satz.addZugIch(wirP);
+						}
+					});
 					
 					//Sende errechneten Spielzug an Server und warte auf XML
 					rueckgabe = server.sendZugAnServer(spielzug);
 					
+					if(rueckgabe[3] != "offen"){
+						ki.setWinner(rueckgabe[3]);
+					}
+					
+					//Berechne neuen Spielzug auf Grundlage des gegnerzugs
+					spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
+					
 					//Starte von vorn
 				}
+/*
 				System.out.println("Gegnerzug: "+ki.getGegnerPunkt().x+ ki.getGegnerPunkt().y);
 				System.out.println("Eigener Zug: "+ki.getEigenerPunkt().x+ ki.getEigenerPunkt().y);
-				try {
-					showZug(ki.getGegnerPunkt(), ki.getEigenerPunkt());
-				} catch (Exception e) {
-					System.out.println("Letzten Stein auch noch anzeigen.");
-				}
+*/				
+				showZug(ki.getGegnerPunkt(), ki.getEigenerPunkt());
+					
 				// Gewinner ausgeben
 				Satz satz = reuse.getSpiel().getCurrentSatz();
 				if(ki.getEigenerStein().equals(ki.getWinner())){

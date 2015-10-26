@@ -7,6 +7,9 @@ public class KI {
 	//Starter
 	private String hatAngefangen;
 	
+	//Gewinner
+	private String hatGewonnen;
+	
 	//Spielerwahl
 	private String eigenerStein;
 	private String gegnerStein;
@@ -72,23 +75,23 @@ public class KI {
 		int spalte = (int)(Math.random()*6);
 		
 		for(int i=0; i < moeglicheZuege.length; i++){
-			spalte = (i+spalte)%6;
-			if(siegMuster(spalte, moeglicheZuege[spalte]) && moeglicheZuege[spalte] < 7){
+			spalte = (i+spalte)%7;
+			if(siegMuster(spalte, moeglicheZuege[spalte]) && moeglicheZuege[spalte] < 6){
 				setzeEigenenStein(spalte);
 				return spalte;
 			}
 		}
 		
 		for(int i=0; i < moeglicheZuege.length; i++){
-			spalte = (i+spalte)%6;
-			if(gegnerSiegMuster(spalte, moeglicheZuege[spalte]) && moeglicheZuege[spalte] < 7){
+			spalte = (i+spalte)%7;
+			if(gegnerSiegMuster(spalte, moeglicheZuege[spalte]) && moeglicheZuege[spalte] < 6){
 				setzeEigenenStein(spalte);
 				return spalte;
 			}
 		}
 		
 		for(int i = 0; i < moeglicheZuege.length; i++){
-			spalte = (i+spalte)%6;
+			spalte = (i+spalte)%7;
 			if(moeglicheZuege[spalte] < 6){
 				setzeEigenenStein(spalte);
 				return spalte;
@@ -243,6 +246,9 @@ public class KI {
 					keinZugMoeglich = false;
 					break;
 				}
+				if(spielfeld[i][j] != "_"){
+					moeglicheZuege[i] = 7;
+				}
 			}
 		}
 			
@@ -298,20 +304,21 @@ public class KI {
 		return hatAngefangen;
 	}
 	
+	public void setWinner(String winner){
+		hatGewonnen = winner;
+	}
+	
 	//Gibt an ob und wer gewonnen hat
 	//null falls noch niemand gewonnen hat
 	public String getWinner(){
-		reihenPruefen pruefen = new reihenPruefen();
-		
-		if(pruefen.viererReihe(spielfeld, eigenerStein)){
-			return eigenerStein;
+		switch (hatGewonnen) {
+		case "Spieler O":
+			return "o";
+		case "Spieler X":
+			return "x";
+		default:
+			return null;
 		}
-		if(pruefen.viererReihe(spielfeld, gegnerStein)){
-			return gegnerStein;
-		}
-		
-		return null;
-	
 	}
 	
 	//Gibt das aktuelle Spielfeld aus
