@@ -110,7 +110,11 @@ public class GameSceneController implements  Initializable{
 				}
 				System.out.println("Gegnerzug: "+ki.getGegnerPunkt().x+ ki.getGegnerPunkt().y);
 				System.out.println("Eigener Zug: "+ki.getEigenerPunkt().x+ ki.getEigenerPunkt().y);
-				showZug(ki.getGegnerPunkt(), ki.getEigenerPunkt());
+				try {
+					showZug(ki.getGegnerPunkt(), ki.getEigenerPunkt());
+				} catch (Exception e) {
+					System.out.println("Letzten Stein auch noch anzeigen.");
+				}
 				// Gewinner ausgeben
 				Satz satz = reuse.getSpiel().getCurrentSatz();
 				if(ki.getEigenerStein().equals(ki.getWinner())){
