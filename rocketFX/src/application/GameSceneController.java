@@ -132,6 +132,7 @@ public class GameSceneController implements  Initializable{
 			
 				// Gewinner ausgeben
 				Satz satz = reuse.getSpiel().getCurrentSatz();
+				satz.setSTARTER(ki.getStarter());
 				if(ki.getEigenerStein().equals(ki.getWinner())){
 					// wir haben gewonnen
 					satz.setSIEGER("rocket");

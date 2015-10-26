@@ -46,6 +46,19 @@ public class Spiel {
 	}
 	
 	public void updateSpielInDB(){
+		// Punkte aus Sätzen aufaddieren
+		PUNKTE = 0;
+		for (int i = 0; i < satzList.size()-1; i++) {
+			PUNKTE += satzList.get(i).getPUNKTE();
+		}
+		// Sieger ermitteln
+		if(satzList.size() < PUNKTE){
+			SIEGER = "rocket";
+		}else if(satzList.size() == PUNKTE){
+			SIEGER = "unentschieden";
+		}else{
+			SIEGER = getGEGNER();
+		}
 		db.updateSpiel(ID, SIEGER, PUNKTE);
 	}
 	

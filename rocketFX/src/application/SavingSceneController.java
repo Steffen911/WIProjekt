@@ -50,6 +50,7 @@ public class SavingSceneController implements  Initializable{
 				satz.setZUEGEGEGNER(zuege); 
 				// in DB speichern
 				satz.saveSatzInDB();
+				(reuse.getSpiel()).updateSpielInDB();
 				reuse.setNewScene("SettingsScene.fxml"); // fuer neuen Satz
 			}
 		});	
