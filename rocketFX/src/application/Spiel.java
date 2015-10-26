@@ -70,7 +70,9 @@ public class Spiel {
 		if(rs != null){
 			try {
 				while(rs.next()){
-					satzList.add(new Satz(ID, rs.getInt("SATZID")));
+					Satz satz = new Satz(ID, rs.getInt("SATZID"));
+					satz.setPUNKTE(rs.getInt("PUNKTE"));
+					satzList.add(satz);
 					System.out.println("Satz "+ rs.getInt("SATZID")+" ist Eintrag "+(satzList.size()-1));
 				}
 			} catch (SQLException e) {

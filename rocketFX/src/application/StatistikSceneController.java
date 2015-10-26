@@ -29,7 +29,7 @@ public class StatistikSceneController implements  Initializable{
 	@FXML ImageView playBtn;
 	@FXML ImageView helpBtn;
 	@FXML ImageView settingsBtn;
-	@FXML Button SpielFortsetzenBtn;
+	@FXML Button SpielFortsetzenBtn,SiegSpieleBtn;
 	@FXML TableView<ObservableList> SpielTable;
 	@FXML TableView<ObservableList> SatzTable;
 	@FXML TableColumn<ObservableList, String> SpielGegnerCol,SpielIDCol,SpielSiegerCol,SpielPunkteCol;
@@ -53,6 +53,13 @@ public class StatistikSceneController implements  Initializable{
 		    	 reuse.SpielFortsetzen(Integer.parseInt(id), gegner);
 		    	 System.out.println("Spiel "+id+" gegen "+gegner+" fortsetzen.");
 		    	 reuse.setNewScene("SettingsScene.fxml");
+		     }
+		});
+		
+		SiegSpieleBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+		     @Override
+		     public void handle(MouseEvent event) {
+		    	 //TODO: nur die gewonnenen Spiele Anzeigen
 		     }
 		});
 

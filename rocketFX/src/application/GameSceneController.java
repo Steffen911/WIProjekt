@@ -130,9 +130,14 @@ public class GameSceneController implements  Initializable{
 					}
 				});
 			
-				// Gewinner ausgeben
 				Satz satz = reuse.getSpiel().getCurrentSatz();
-				satz.setSTARTER(ki.getStarter());
+				// Starter speichern
+				if(ki.getEigenerStein().equals(ki.getStarter())){
+					satz.setSTARTER("rocket");
+				}else{
+					satz.setSTARTER(reuse.getSpiel().getGEGNER());
+				}
+				// Gewinner ausgeben
 				if(ki.getEigenerStein().equals(ki.getWinner())){
 					// wir haben gewonnen
 					satz.setSIEGER("rocket");

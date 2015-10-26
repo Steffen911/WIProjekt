@@ -87,11 +87,11 @@ public class Satz {
 		ZUEGEGEGNER = zUEGEGEGNER;
 	}
 
-	int getPUNKTE() {
+	public int getPUNKTE() {
 		return PUNKTE;
 	}
 
-	void setPUNKTE(int pUNKTE) {
+	public void setPUNKTE(int pUNKTE) {
 		PUNKTE = pUNKTE;
 	}
 	
