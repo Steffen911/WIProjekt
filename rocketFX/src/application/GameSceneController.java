@@ -107,7 +107,7 @@ public class GameSceneController implements  Initializable{
 					//Sende errechneten Spielzug an Server und warte auf XML
 					rueckgabe = server.sendZugAnServer(spielzug);
 					
-					if(rueckgabe[3] != "offen"){
+					if(rueckgabe[3] == "Spieler O" || rueckgabe[3] == "Spieler X"){
 						ki.setzeGegnerStein(Integer.parseInt(rueckgabe[2]));
 						ki.setWinner(rueckgabe[3]);
 					}
