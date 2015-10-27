@@ -108,6 +108,7 @@ public class GameSceneController implements  Initializable{
 					rueckgabe = server.sendZugAnServer(spielzug);
 					
 					if(rueckgabe[3] != "offen"){
+						ki.setzeGegnerStein(Integer.parseInt(rueckgabe[2]));
 						ki.setWinner(rueckgabe[3]);
 					}
 					
