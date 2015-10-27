@@ -122,6 +122,9 @@ public class KI {
 		
 		hauptProgramm(4);
 		
+		spalteVollAbfangen(gespeicherterZug);
+		
+		setzeEigenenStein(gespeicherterZug);
 		return gespeicherterZug;
 
 	} //end of zug berechnen
@@ -132,12 +135,12 @@ public class KI {
 		this.gewuenschteTiefe = gewuenschteTiefe;
 		
 		max(eigenerStein, gewuenschteTiefe);
+		
 		if (gespeicherterZug == -1) {
 			//Es gab keine weiteren Zuege mehr
 			System.out.println("Das Spiel ist beendet.");
 		} else {
 			System.out.println("Der Stein wird in Spalte " + gespeicherterZug + " geworfen.");
-			setzeEigenenStein(gespeicherterZug);
 		}
 	}
 
@@ -192,6 +195,13 @@ public class KI {
 			}
 		}
 		return minWert;
+	}
+	
+	public void spalteVollAbfangen(int gespeicherterZug){
+		if(spielfeld[gespeicherterZug][5] == eigenerStein || spielfeld[gespeicherterZug][5] == gegnerStein){
+			this.gespeicherterZug++;
+			spalteVollAbfangen(gespeicherterZug+1);
+		}
 	}
 	
 	//bewerte die aktuelle Situation des spielers
