@@ -147,8 +147,8 @@ public class GameSceneController implements  Initializable{
 				}else{
 					// Gegner hat gewonnen
 					satz.setSIEGER(reuse.getSpiel().getGEGNER());
-					gewonnenLabel.setText("Verloren");
-					gewonnenLabel.setVisible(true);
+					//gewonnenLabel.setText("Verloren");
+					//gewonnenLabel.setVisible(true);
 				} 
 
 				
