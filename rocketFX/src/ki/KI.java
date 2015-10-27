@@ -81,7 +81,7 @@ public class KI {
 				return spalte;
 			}
 		}
-		
+/*	
 		for(int i=0; i < moeglicheZuege.length; i++){
 			spalte = (i+spalte)%7;
 			if(gegnerSiegMuster(spalte, moeglicheZuege[spalte]) && moeglicheZuege[spalte] < 6){
@@ -89,7 +89,7 @@ public class KI {
 				return spalte;
 			}
 		}
-		
+*/		
 		for(int i = 0; i < moeglicheZuege.length; i++){
 			spalte = (i+spalte)%7;
 			if(moeglicheZuege[spalte] < 6){
@@ -341,104 +341,7 @@ public class KI {
 	public String getGegnerStein() {
 		return gegnerStein;
 	}
-	
-	public boolean gegnerSiegMuster(int spalte, int zeile){
-	//Pruefe waagerecht
-		//Pruefe links -3
-		try{
-			if(spielfeld[spalte-3][zeile] == gegnerStein && spielfeld[spalte-2][zeile] == gegnerStein && spielfeld[spalte-1][zeile] == gegnerStein){
-				return true;
-			}
-		}catch(ArrayIndexOutOfBoundsException e){}
-		
-		//Pruefe links -2
-				try{
-					if(spielfeld[spalte-2][zeile] == gegnerStein && spielfeld[spalte-1][zeile] == gegnerStein && spielfeld[spalte+1][zeile] == gegnerStein){
-						return true;
-					}
-				}catch(ArrayIndexOutOfBoundsException e){}
-				
-		//Pruefe links -1
-		try{
-			if(spielfeld[spalte-1][zeile] == gegnerStein && spielfeld[spalte+1][zeile] ==gegnerStein && spielfeld[spalte+2][zeile] == gegnerStein){
-				return true;
-			}
-		}catch(ArrayIndexOutOfBoundsException e){}
-				
-		//Pruefe rechts +3
-		try{
-			if(spielfeld[spalte+1][zeile] == gegnerStein && spielfeld[spalte+2][zeile] == gegnerStein && spielfeld[spalte+3][zeile] == gegnerStein){
-				return true;
-			}
-		}catch(ArrayIndexOutOfBoundsException e){}
-				
-	//Pruefe senkrecht
-		try{
-			if(spielfeld[spalte][zeile-3] == gegnerStein && spielfeld[spalte][zeile-2] == gegnerStein && spielfeld[spalte][zeile-1] == gegnerStein){
-				return true;
-			}
-		}catch(ArrayIndexOutOfBoundsException e){}
-		
-	//Pruefe waagerecht
-		//Pruefe diagonal links -3
-		try{
-			if(spielfeld[spalte-3][zeile-3] == gegnerStein && spielfeld[spalte-2][zeile-2] ==gegnerStein && spielfeld[spalte-1][zeile-1] == gegnerStein){
-				return true;
-			}
-		}catch(ArrayIndexOutOfBoundsException e){}
-		
-		//Pruefe diagonal links -2
-				try{
-					if(spielfeld[spalte-2][zeile-2] == gegnerStein && spielfeld[spalte-1][zeile-1] == gegnerStein && spielfeld[spalte+1][zeile+1] == gegnerStein){
-						return true;
-					}
-				}catch(ArrayIndexOutOfBoundsException e){}
-				
-		//Pruefe diagonal links -1
-				try{
-					if(spielfeld[spalte-1][zeile-1] == gegnerStein && spielfeld[spalte+1][zeile+1] == gegnerStein && spielfeld[spalte+2][zeile+2] == gegnerStein){
-						return true;
-					}
-				}catch(ArrayIndexOutOfBoundsException e){}
-				
-		//Pruefe diagonal rechts +3
-				try{
-					if(spielfeld[spalte+1][zeile+1] == gegnerStein && spielfeld[spalte+2][zeile+2] == gegnerStein && spielfeld[spalte+3][zeile+3] == gegnerStein){
-						return true;
-					}
-				}catch(ArrayIndexOutOfBoundsException e){}
-				
-		//Pruefe diagonal rechts +3 runter
-				try{
-					if(spielfeld[spalte+3][zeile-3] == gegnerStein && spielfeld[spalte+2][zeile-2] == gegnerStein && spielfeld[spalte+3][zeile-3] == gegnerStein){
-						return true;
-					}
-				}catch(ArrayIndexOutOfBoundsException e){}
-				
-		//Pruefe diagonal rechts +2 runter
-				try{
-					if(spielfeld[spalte+2][zeile-2] == gegnerStein && spielfeld[spalte+1][zeile-1] == gegnerStein && spielfeld[spalte-1][zeile+1] == gegnerStein){
-						return true;
-					}
-				}catch(ArrayIndexOutOfBoundsException e){}
-				
-		//Pruefe diagonal rechts +1 runter
-				try{
-					if(spielfeld[spalte+1][zeile-1] == gegnerStein && spielfeld[spalte-1][zeile+1] == gegnerStein && spielfeld[spalte-2][zeile+2] == gegnerStein){
-						return true;
-					}
-				}catch(ArrayIndexOutOfBoundsException e){}
-				
-		//Pruefe diagonal links hoch
-				try{
-					if(spielfeld[spalte-1][zeile+1] == gegnerStein && spielfeld[spalte-2][zeile+2] == gegnerStein && spielfeld[spalte-3][zeile+3] == gegnerStein){
-						return true;
-					}
-				}catch(ArrayIndexOutOfBoundsException e){}
-		
-		return false;
-	}
-	
+
 	public boolean siegMuster(int spalte, int zeile){
 	//Pruefe waagerecht
 		//Pruefe links -3
@@ -532,6 +435,100 @@ public class KI {
 						return true;
 					}
 				}catch(ArrayIndexOutOfBoundsException e){}
+				
+				
+				//Pruefe waagerecht
+				//Pruefe links -3
+				try{
+					if(spielfeld[spalte-3][zeile] == gegnerStein && spielfeld[spalte-2][zeile] == gegnerStein && spielfeld[spalte-1][zeile] == gegnerStein){
+						return true;
+					}
+				}catch(ArrayIndexOutOfBoundsException e){}
+				
+				//Pruefe links -2
+						try{
+							if(spielfeld[spalte-2][zeile] == gegnerStein && spielfeld[spalte-1][zeile] == gegnerStein && spielfeld[spalte+1][zeile] == gegnerStein){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+				//Pruefe links -1
+				try{
+					if(spielfeld[spalte-1][zeile] == gegnerStein && spielfeld[spalte+1][zeile] ==gegnerStein && spielfeld[spalte+2][zeile] == gegnerStein){
+						return true;
+					}
+				}catch(ArrayIndexOutOfBoundsException e){}
+						
+				//Pruefe rechts +3
+				try{
+					if(spielfeld[spalte+1][zeile] == gegnerStein && spielfeld[spalte+2][zeile] == gegnerStein && spielfeld[spalte+3][zeile] == gegnerStein){
+						return true;
+					}
+				}catch(ArrayIndexOutOfBoundsException e){}
+						
+			//Pruefe senkrecht
+				try{
+					if(spielfeld[spalte][zeile-3] == gegnerStein && spielfeld[spalte][zeile-2] == gegnerStein && spielfeld[spalte][zeile-1] == gegnerStein){
+						return true;
+					}
+				}catch(ArrayIndexOutOfBoundsException e){}
+				
+			//Pruefe waagerecht
+				//Pruefe diagonal links -3
+				try{
+					if(spielfeld[spalte-3][zeile-3] == gegnerStein && spielfeld[spalte-2][zeile-2] ==gegnerStein && spielfeld[spalte-1][zeile-1] == gegnerStein){
+						return true;
+					}
+				}catch(ArrayIndexOutOfBoundsException e){}
+				
+				//Pruefe diagonal links -2
+						try{
+							if(spielfeld[spalte-2][zeile-2] == gegnerStein && spielfeld[spalte-1][zeile-1] == gegnerStein && spielfeld[spalte+1][zeile+1] == gegnerStein){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+				//Pruefe diagonal links -1
+						try{
+							if(spielfeld[spalte-1][zeile-1] == gegnerStein && spielfeld[spalte+1][zeile+1] == gegnerStein && spielfeld[spalte+2][zeile+2] == gegnerStein){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+				//Pruefe diagonal rechts +3
+						try{
+							if(spielfeld[spalte+1][zeile+1] == gegnerStein && spielfeld[spalte+2][zeile+2] == gegnerStein && spielfeld[spalte+3][zeile+3] == gegnerStein){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+				//Pruefe diagonal rechts +3 runter
+						try{
+							if(spielfeld[spalte+3][zeile-3] == gegnerStein && spielfeld[spalte+2][zeile-2] == gegnerStein && spielfeld[spalte+3][zeile-3] == gegnerStein){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+				//Pruefe diagonal rechts +2 runter
+						try{
+							if(spielfeld[spalte+2][zeile-2] == gegnerStein && spielfeld[spalte+1][zeile-1] == gegnerStein && spielfeld[spalte-1][zeile+1] == gegnerStein){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+				//Pruefe diagonal rechts +1 runter
+						try{
+							if(spielfeld[spalte+1][zeile-1] == gegnerStein && spielfeld[spalte-1][zeile+1] == gegnerStein && spielfeld[spalte-2][zeile+2] == gegnerStein){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
+						
+				//Pruefe diagonal links hoch
+						try{
+							if(spielfeld[spalte-1][zeile+1] == gegnerStein && spielfeld[spalte-2][zeile+2] == gegnerStein && spielfeld[spalte-3][zeile+3] == gegnerStein){
+								return true;
+							}
+						}catch(ArrayIndexOutOfBoundsException e){}
 		
 		return false;
 	}
