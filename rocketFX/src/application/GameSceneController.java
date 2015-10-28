@@ -129,29 +129,17 @@ public class GameSceneController implements  Initializable{
 							showZug(gegnerP,wirP);
 							Satz satz = reuse.getSpiel().getCurrentSatz();
 							satz.addZugGEGNER(gegnerP);
+							satz.setSIEGER(reuse.getSpiel().getGEGNER());// Gegner gewonnen
 							System.out.println("Thread durch.");
 						}
 					});
+					
+					
 				}else{
 					System.out.println("Wir haben gewonnen.");
+					reuse.getSpiel().getCurrentSatz().setSIEGER("rocket");
 				}
-/*
-				System.out.println("Gegnerzug: "+ki.getGegnerPunkt().x+ ki.getGegnerPunkt().y);
-				System.out.println("Eigener Zug: "+ki.getEigenerPunkt().x+ ki.getEigenerPunkt().y);
-				
-				arrayAusgebenConsole(ki.arrayAusgabe());
-				Platform.runLater(new Runnable() {
-					@Override public void run() {
-						Point gegnerP, wirP;
-						gegnerP = ki.getGegnerPunkt();
-						wirP = ki.getEigenerPunkt();
-						showZug(gegnerP,wirP);
-						Satz satz = reuse.getSpiel().getCurrentSatz();
-						satz.addZugGEGNER(gegnerP);
-						satz.addZugIch(wirP);
-					}
-				});
-*/			
+		
 				Satz satz = reuse.getSpiel().getCurrentSatz();
 				// Starter speichern
 				if(ki.getEigenerStein().equals(ki.getStarter())){
@@ -159,20 +147,8 @@ public class GameSceneController implements  Initializable{
 				}else{
 					satz.setSTARTER(reuse.getSpiel().getGEGNER());
 				}
-				// Gewinner ausgeben
-				if(ki.getEigenerStein().equals(ki.getWinner())){
-					// wir haben gewonnen
-					satz.setSIEGER("rocket");
-					gewonnenLabel.setText("Gewonnen");
-					gewonnenLabel.setVisible(true);
-				}else{
-					// Gegner hat gewonnen
-					satz.setSIEGER(reuse.getSpiel().getGEGNER());
-					//gewonnenLabel.setText("Verloren");
-					//gewonnenLabel.setVisible(true);
-				} 
-
-				
+				gewonnenLabel.setText("Spiel beendet");
+				gewonnenLabel.setVisible(true);
 			}
 		}).start();
 	
