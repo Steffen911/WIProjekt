@@ -106,18 +106,39 @@ public class GameSceneController implements  Initializable{
 					
 					//Sende errechneten Spielzug an Server und warte auf XML
 					rueckgabe = server.sendZugAnServer(spielzug);
-					
-					if(rueckgabe[3] == "Spieler O" || rueckgabe[3] == "Spieler X"){
-						ki.setzeGegnerStein(Integer.parseInt(rueckgabe[2]));
-						ki.setWinner(rueckgabe[3]);
-					}
+//					
+//					if(rueckgabe[3] == "Spieler O" || rueckgabe[3] == "Spieler X"){
+//						ki.setzeGegnerStein(Integer.parseInt(rueckgabe[2]));
+//						ki.setWinner(rueckgabe[3]);
+//					}
 					
 					//Starte von vorn
+				}
+				System.out.println("letzer zug: "+rueckgabe[2]);
+				
+				if(!rueckgabe[2].equals("-1")){
+					ki.setzeGegnerStein(Integer.parseInt(rueckgabe[2]));
+					// Spielzug Anzeigen
+					//Gib aktuelles Array aus
+					arrayAusgebenConsole(ki.arrayAusgabe());
+					Platform.runLater(new Runnable() {
+						@Override public void run() {
+							Point gegnerP, wirP;
+							gegnerP = ki.getGegnerPunkt();
+							wirP = ki.getEigenerPunkt();
+							showZug(gegnerP,wirP);
+							Satz satz = reuse.getSpiel().getCurrentSatz();
+							satz.addZugGEGNER(gegnerP);
+							System.out.println("Thread durch.");
+						}
+					});
+				}else{
+					System.out.println("Wir haben gewonnen.");
 				}
 /*
 				System.out.println("Gegnerzug: "+ki.getGegnerPunkt().x+ ki.getGegnerPunkt().y);
 				System.out.println("Eigener Zug: "+ki.getEigenerPunkt().x+ ki.getEigenerPunkt().y);
-*/				
+				
 				arrayAusgebenConsole(ki.arrayAusgabe());
 				Platform.runLater(new Runnable() {
 					@Override public void run() {
@@ -130,7 +151,7 @@ public class GameSceneController implements  Initializable{
 						satz.addZugIch(wirP);
 					}
 				});
-			
+*/			
 				Satz satz = reuse.getSpiel().getCurrentSatz();
 				// Starter speichern
 				if(ki.getEigenerStein().equals(ki.getStarter())){
