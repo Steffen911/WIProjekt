@@ -19,12 +19,12 @@
          <children>
             <ImageView fitHeight="554.0" fitWidth="782.0" layoutX="-11.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../pictures/background_stars.gif" />
+                  <Image url="@pictures/background_stars.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="517.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../pictures/rocket_ohne.png" />
+                  <Image url="@pictures/rocket_ohne.png" />
                </image>
             </ImageView>
             <Label layoutX="262.0" layoutY="63.0" text="Statistik" textFill="WHITE">
@@ -53,17 +53,17 @@
             </TableView>
             <ImageView fx:id="playBtn" fitHeight="62.0" fitWidth="33.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../pictures/play.png" />
+                  <Image url="@pictures/play.png" />
                </image>
             </ImageView>
             <ImageView fx:id="helpBtn" fitHeight="33.0" fitWidth="49.0" layoutX="102.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../pictures/fragezeichen.png" />
+                  <Image url="@pictures/fragezeichen.png" />
                </image>
             </ImageView>
             <ImageView fx:id="settingsBtn" fitHeight="62.0" fitWidth="33.0" layoutX="56.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../pictures/settings.png" />
+                  <Image url="@pictures/settings.png" />
                </image>
             </ImageView>
             <Button fx:id="SpielFortsetzenBtn" layoutX="200.0" layoutY="411.0" mnemonicParsing="false" text="Spiel fortsetzen">

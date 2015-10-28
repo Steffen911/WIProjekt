@@ -19,12 +19,12 @@
          <children>
             <ImageView fitHeight="535.0" fitWidth="826.0" layoutX="-7.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../pictures/background_stars.gif" />
+                  <Image url="@pictures/background_stars.gif" />
                </image>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="517.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../pictures/rocket_ohne.png" />
+                  <Image url="@pictures/rocket_ohne.png" />
                </image>
             </ImageView>
             <RadioButton fx:id="radioBtnX" layoutX="106.0" layoutY="400.0" mnemonicParsing="false" text="X" textFill="WHITE">
@@ -96,14 +96,14 @@
                </font></Label>
             <ImageView fx:id="helpBtn" fitHeight="33.0" fitWidth="49.0" layoutX="59.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../pictures/fragezeichen.png" />
+                  <Image url="@pictures/fragezeichen.png" />
                </image>
             </ImageView>
             <Button fx:id="chooserBtn" layoutX="624.0" layoutY="263.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="3.0" text="..." visible="false" />
             <TextField fx:id="PfadEdit" layoutX="455.0" layoutY="263.0" visible="false" />
             <ImageView fx:id="playBtn" fitHeight="33.0" fitWidth="49.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../pictures/play.png" />
+                  <Image url="@pictures/play.png" />
                </image>
             </ImageView>
          </children>
