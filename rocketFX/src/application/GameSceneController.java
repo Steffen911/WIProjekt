@@ -131,6 +131,8 @@ public class GameSceneController implements  Initializable{
 							satz.addZugGEGNER(gegnerP);
 							satz.setSIEGER(reuse.getSpiel().getGEGNER());// Gegner gewonnen
 							System.out.println("Thread durch.");
+							gewonnenLabel.setText("Spiel beendet");
+							gewonnenLabel.setVisible(true);
 						}
 					});
 					
@@ -138,6 +140,13 @@ public class GameSceneController implements  Initializable{
 				}else{
 					System.out.println("Wir haben gewonnen.");
 					reuse.getSpiel().getCurrentSatz().setSIEGER("rocket");
+					
+					Platform.runLater(new Runnable() {
+						@Override public void run() {
+							gewonnenLabel.setText("Spiel beendet");
+							gewonnenLabel.setVisible(true);
+						}
+					});
 				}
 		
 				Satz satz = reuse.getSpiel().getCurrentSatz();
@@ -147,12 +156,9 @@ public class GameSceneController implements  Initializable{
 				}else{
 					satz.setSTARTER(reuse.getSpiel().getGEGNER());
 				}
-				gewonnenLabel.setText("Spiel beendet");
-				gewonnenLabel.setVisible(true);
+				
 			}
-		}).start();
-	
-		
+		}).start();	
 	}
 
 	private void arrayAusgebenConsole(String[][] ausgabe){
