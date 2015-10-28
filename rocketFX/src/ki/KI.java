@@ -113,13 +113,6 @@ public class KI {
 			return 3;
 		}
 		
-		for(int i=0; i < moeglicheZuege.length; i++){
-			if(siegMuster(i, moeglicheZuege[i]) && moeglicheZuege[i] < 7){
-				setzeEigenenStein(i);
-				return i;
-			}
-		}
-		
 		hauptProgramm(4);
 		
 		spalteVollAbfangen(gespeicherterZug);
@@ -199,8 +192,8 @@ public class KI {
 	
 	public void spalteVollAbfangen(int gespeicherterZug){
 		if(spielfeld[gespeicherterZug][5] == eigenerStein || spielfeld[gespeicherterZug][5] == gegnerStein){
-			this.gespeicherterZug++;
-			spalteVollAbfangen(gespeicherterZug+1);
+			this.gespeicherterZug = (gespeicherterZug+1)%7;
+			spalteVollAbfangen((gespeicherterZug+1)%7);
 		}
 	}
 	
