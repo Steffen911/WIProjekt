@@ -131,7 +131,7 @@ public class GameSceneController implements  Initializable{
 							satz.addZugGEGNER(gegnerP);
 							satz.setSIEGER(reuse.getSpiel().getGEGNER());// Gegner gewonnen
 							System.out.println("Thread durch.");
-							gewonnenLabel.setText("Spiel beendet");
+							gewonnenLabel.setText("Spiel verloren.");
 							gewonnenLabel.setVisible(true);
 						}
 					});
@@ -143,7 +143,7 @@ public class GameSceneController implements  Initializable{
 					
 					Platform.runLater(new Runnable() {
 						@Override public void run() {
-							gewonnenLabel.setText("Spiel beendet");
+							gewonnenLabel.setText("Spiel gewonnen! :-)");
 							gewonnenLabel.setVisible(true);
 						}
 					});
