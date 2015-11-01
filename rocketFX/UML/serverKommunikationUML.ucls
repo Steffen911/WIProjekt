@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="serverKommunikation.FileSchnittstelle" project="rocketFX" 
     file="/rocketFX/src/serverKommunikation/FileSchnittstelle.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1036" y="308"/>    
+    <position height="-1" width="-1" x="148" y="252"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,96 +12,79 @@
   </class>  
   <class id="2" language="java" name="serverKommunikation.HmacSHA256" project="rocketFX" 
     file="/rocketFX/src/serverKommunikation/HmacSHA256.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1003" y="83"/>    
+    <position height="-1" width="-1" x="709" y="592"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="serverKommunikation.MenschSchnittstelle" project="rocketFX" 
-    file="/rocketFX/src/serverKommunikation/MenschSchnittstelle.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="765" y="73"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="serverKommunikation.PushSchnittstelle" project="rocketFX" 
+  <class id="3" language="java" name="serverKommunikation.PushSchnittstelle" project="rocketFX" 
     file="/rocketFX/src/serverKommunikation/PushSchnittstelle.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="767" y="604"/>    
+    <position height="-1" width="-1" x="732" y="325"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="serverKommunikation.ServerGuiKontakt" project="rocketFX" 
+  <class id="4" language="java" name="serverKommunikation.ServerGuiKontakt" project="rocketFX" 
     file="/rocketFX/src/serverKommunikation/ServerGuiKontakt.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="422" y="444"/>    
+    <position height="-1" width="-1" x="407" y="523"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="serverKommunikation.Task" project="rocketFX" 
+  <class id="5" language="java" name="serverKommunikation.Task" project="rocketFX" 
     file="/rocketFX/src/serverKommunikation/Task.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="596" y="73"/>    
+    <position height="-1" width="-1" x="108" y="448"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="serverKommunikation.TimerStart" project="rocketFX" 
+  <class id="6" language="java" name="serverKommunikation.TimerStart" project="rocketFX" 
     file="/rocketFX/src/serverKommunikation/TimerStart.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="767" y="241"/>    
+    <position height="-1" width="-1" x="402" y="163"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="8">    
+  <association id="7">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="9" name="ts"/>      
-      <multiplicity id="10" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="11">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="12" name="fileS"/>      
-      <multiplicity id="13" minimum="0" maximum="1"/>    
+      <attribute id="8" name="fileS"/>      
+      <multiplicity id="9" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="14">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="15" name="pushS"/>      
-      <multiplicity id="16" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="17">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="18" name="ts"/>      
-      <multiplicity id="19" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="20">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="21" name="menschS"/>      
-      <multiplicity id="22" minimum="0" maximum="1"/>    
+  <association id="10">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="11" name="pushS"/>      
+      <multiplicity id="12" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="13">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="14" name="ts"/>      
+      <multiplicity id="15" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="16">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="17" name="ts"/>      
+      <multiplicity id="18" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
