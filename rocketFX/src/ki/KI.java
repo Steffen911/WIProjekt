@@ -125,7 +125,7 @@ public class KI {
 			}
 		}
 		
-		hauptProgramm(4);
+		hauptProgramm(6);
 		
 		spalteVollAbfangen(gespeicherterZug);
 		

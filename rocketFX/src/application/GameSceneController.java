@@ -84,7 +84,7 @@ public class GameSceneController implements  Initializable{
 				while(!rueckgabe[1].equals("beendet")){		
 					
 					//Berechne neuen Spielzug auf Grundlage des gegnerzugs
-					spielzug = ki.zugBerechnen(Integer.parseInt(rueckgabe[2]));
+					spielzug = ki.gutenZugBerechnen(Integer.parseInt(rueckgabe[2]));
 
 					System.out.println("GegnerZug ist " + rueckgabe[2]);
 					System.out.println("EigenerZug ist " + spielzug);
