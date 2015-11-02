@@ -59,7 +59,16 @@ public class StatistikSceneController implements  Initializable{
 		SiegSpieleBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 		     @Override
 		     public void handle(MouseEvent event) {
-		    	 //TODO: nur die gewonnenen Spiele Anzeigen
+		    	 if(SiegSpieleBtn.getText().contains("Sieg")){
+		    		 // nur SiegSpiele anzeigen
+		    		 fillSpielTable(dbConn.getSiegSpiele());
+		    		 SiegSpieleBtn.setText("Alle Spiele");
+		    	 }else{
+		    		 // alle Spiele anzeigen
+		    		 fillSpielTable(dbConn.getAllSpiele());
+		    		 SiegSpieleBtn.setText("SiegSpiele");
+		    	 }
+	    		 SatzTable.getItems().clear();
 		     }
 		});
 
@@ -101,11 +110,12 @@ public class StatistikSceneController implements  Initializable{
 		});
 		
 
-		fillSpielTable();
+		fillSpielTable(dbConn.getAllSpiele());
 		
 	}
 	
-	private void fillSpielTable(){
+	private void fillSpielTable(ResultSet rs){
+		SpielTable.getItems().clear();
 		//SpielGegnerCol.setCellValueFactory(new PropertyValueFactory<SpielForTable, String>("SpielGegnerCol"));
 		SpielIDCol.setCellValueFactory(new Callback<CellDataFeatures<ObservableList,String>,ObservableValue<String>>(){                    
             public ObservableValue<String> call(CellDataFeatures<ObservableList, String> param) {                                                                                              
@@ -127,8 +137,7 @@ public class StatistikSceneController implements  Initializable{
                 return new SimpleStringProperty(param.getValue().get(3).toString());                        
             }                    
         });
-		ResultSet rs = dbConn.getAllSpiele();
-		
+
 		if(rs != null){
 			ObservableList<ObservableList> data = FXCollections.observableArrayList();
 			// Add Data to Observable List

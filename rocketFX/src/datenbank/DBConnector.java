@@ -88,6 +88,23 @@ public class DBConnector {
 			}
 	}
 	
+	public ResultSet getSiegSpiele(){
+		try {
+			  Statement stmt = con.createStatement(); 
+			  String sql = "select * from SPIELE where SIEGER = 'rocket'";
+			  ResultSet rs = stmt.executeQuery(sql);  
+			  
+		      // Statement schliessen
+		      stmt.close(); 
+		      return rs;
+
+			}catch(SQLException e){
+				e.printStackTrace();
+				return null;
+			}
+		
+	}
+	
 	public ResultSet getSaetzeOfSpiel(String SpielID){
 		try {
 			  Statement stmt = con.createStatement(); 
