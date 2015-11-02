@@ -191,7 +191,7 @@ public class KI {
 	}
 	
 	public void spalteVollAbfangen(int gespeicherterZug){
-		if(spielfeld[gespeicherterZug][5] == eigenerStein || spielfeld[gespeicherterZug][5] == gegnerStein){
+		if(spielfeld[gespeicherterZug][5].equals(eigenerStein) || spielfeld[gespeicherterZug][5].equals(gegnerStein)){
 			this.gespeicherterZug = (gespeicherterZug+1)%7;
 			spalteVollAbfangen((gespeicherterZug+1)%7);
 		}
@@ -205,7 +205,7 @@ public class KI {
 		reihenPruefen pruefen = new reihenPruefen();
 		String gegner;
 		
-		if(spieler == "o"){
+		if(spieler.equals("o")){
 			gegner = "x";
 		}else{
 			gegner = "o";
