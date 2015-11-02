@@ -244,12 +244,12 @@ public class KI {
 		
 		for(int i=0; i<7; i++){
 			for(int j=0; j<6; j++){
-				if(spielfeld[i][j]=="_"){
+				if(spielfeld[i][j].equals("_")){
 					moeglicheZuege[i] = j;
 					keinZugMoeglich = false;
 					break;
 				}
-				if(spielfeld[i][j] != "_"){
+				if(spielfeld[i][j].equals("_")){
 					moeglicheZuege[i] = 7;
 				}
 			}
@@ -261,7 +261,7 @@ public class KI {
 	//Setzt den uebergebenen Stein ins Spielfeld
 	public void fuehreNaechstenZugAus(int spalte, int zeile, String spieler){
 		
-		if(spielfeld[spalte][zeile] == "_"){
+		if(spielfeld[spalte][zeile].equals("_")){
 			spielfeld[spalte][zeile] = spieler;
 		}
 		
@@ -270,7 +270,7 @@ public class KI {
 	//Nimmt den uebergebenen Stein aus dem Spielfeld
 	public void macheZugRueckgaengig(int spalte, int zeile, String spieler){
 		
-		if(spielfeld[spalte][zeile] == spieler){
+		if(spielfeld[spalte][zeile].equals(spieler)){
 			spielfeld[spalte][zeile] = "_";
 		}
 			
@@ -280,7 +280,7 @@ public class KI {
 	public void setzeEigenenStein(int spielzug){		
 		//Setze eigenen Stein
 		for(int i=0; i<6; i++) {
-			if(spielfeld[spielzug][i] == "_"){
+			if(spielfeld[spielzug][i].equals("_")){
 				spielfeld[spielzug][i] = eigenerStein;
 				eigenerPunkt.setLocation(spielzug, i);
 				break;
@@ -293,7 +293,7 @@ public class KI {
 		//Falls eigener Agent startet wird -1 uebergeben
 		if(gegnerZug >= 0){				
 			for(int i=0; i<6; i++) {
-				if(spielfeld[gegnerZug][i] == "_"){
+				if(spielfeld[gegnerZug][i].equals("_")){
 					spielfeld[gegnerZug][i] = gegnerStein;
 					gegnerPunkt.setLocation(gegnerZug, i);
 					break;
@@ -349,35 +349,35 @@ public class KI {
 	//Pruefe waagerecht
 		//Pruefe links -3
 		try{
-			if(spielfeld[spalte-3][zeile] == eigenerStein && spielfeld[spalte-2][zeile] == eigenerStein && spielfeld[spalte-1][zeile] == eigenerStein){
+			if(spielfeld[spalte-3][zeile].equals(eigenerStein) && spielfeld[spalte-2][zeile].equals(eigenerStein) && spielfeld[spalte-1][zeile].equals(eigenerStein)){
 				return true;
 			}
 		}catch(ArrayIndexOutOfBoundsException e){}
 		
 		//Pruefe links -2
 				try{
-					if(spielfeld[spalte-2][zeile] == eigenerStein && spielfeld[spalte-1][zeile] == eigenerStein && spielfeld[spalte+1][zeile] == eigenerStein){
+					if(spielfeld[spalte-2][zeile].equals(eigenerStein) && spielfeld[spalte-1][zeile].equals(eigenerStein) && spielfeld[spalte+1][zeile].equals(eigenerStein)){
 						return true;
 					}
 				}catch(ArrayIndexOutOfBoundsException e){}
 				
 		//Pruefe links -1
 		try{
-			if(spielfeld[spalte-1][zeile] == eigenerStein && spielfeld[spalte+1][zeile] == eigenerStein && spielfeld[spalte+2][zeile] == eigenerStein){
+			if(spielfeld[spalte-1][zeile].equals(eigenerStein) && spielfeld[spalte+1][zeile].equals(eigenerStein) && spielfeld[spalte+2][zeile].equals(eigenerStein)){
 				return true;
 			}
 		}catch(ArrayIndexOutOfBoundsException e){}
 				
 		//Pruefe rechts +3
 		try{
-			if(spielfeld[spalte+1][zeile] == eigenerStein && spielfeld[spalte+2][zeile] == eigenerStein && spielfeld[spalte+3][zeile] == eigenerStein){
+			if(spielfeld[spalte+1][zeile].equals(eigenerStein) && spielfeld[spalte+2][zeile].equals(eigenerStein) && spielfeld[spalte+3][zeile].equals(eigenerStein)){
 				return true;
 			}
 		}catch(ArrayIndexOutOfBoundsException e){}
 				
 	//Pruefe senkrecht
 		try{
-			if(spielfeld[spalte][zeile-3] == eigenerStein && spielfeld[spalte][zeile-2] == eigenerStein && spielfeld[spalte][zeile-1] == eigenerStein){
+			if(spielfeld[spalte][zeile-3].equals(eigenerStein) && spielfeld[spalte][zeile-2].equals(eigenerStein) && spielfeld[spalte][zeile-1].equals(eigenerStein)){
 				return true;
 			}
 		}catch(ArrayIndexOutOfBoundsException e){}
@@ -385,56 +385,56 @@ public class KI {
 	//Pruefe waagerecht
 		//Pruefe diagonal links -3
 		try{
-			if(spielfeld[spalte-3][zeile-3] == eigenerStein && spielfeld[spalte-2][zeile-2] == eigenerStein && spielfeld[spalte-1][zeile-1] == eigenerStein){
+			if(spielfeld[spalte-3][zeile-3].equals(eigenerStein) && spielfeld[spalte-2][zeile-2].equals(eigenerStein) && spielfeld[spalte-1][zeile-1].equals(eigenerStein)){
 				return true;
 			}
 		}catch(ArrayIndexOutOfBoundsException e){}
 		
 		//Pruefe diagonal links -2
 				try{
-					if(spielfeld[spalte-2][zeile-2] == eigenerStein && spielfeld[spalte-1][zeile-1] == eigenerStein && spielfeld[spalte+1][zeile+1] == eigenerStein){
+					if(spielfeld[spalte-2][zeile-2].equals(eigenerStein) && spielfeld[spalte-1][zeile-1].equals(eigenerStein) && spielfeld[spalte+1][zeile+1].equals(eigenerStein)){
 						return true;
 					}
 				}catch(ArrayIndexOutOfBoundsException e){}
 				
 		//Pruefe diagonal links -1
 				try{
-					if(spielfeld[spalte-1][zeile-1] == eigenerStein && spielfeld[spalte+1][zeile+1] == eigenerStein && spielfeld[spalte+2][zeile+2] == eigenerStein){
+					if(spielfeld[spalte-1][zeile-1].equals(eigenerStein) && spielfeld[spalte+1][zeile+1].equals(eigenerStein) && spielfeld[spalte+2][zeile+2].equals(eigenerStein)){
 						return true;
 					}
 				}catch(ArrayIndexOutOfBoundsException e){}
 				
 		//Pruefe diagonal rechts +3
 				try{
-					if(spielfeld[spalte+1][zeile+1] == eigenerStein && spielfeld[spalte+2][zeile+2] == eigenerStein && spielfeld[spalte+3][zeile+3] == eigenerStein){
+					if(spielfeld[spalte+1][zeile+1].equals(eigenerStein) && spielfeld[spalte+2][zeile+2].equals(eigenerStein) && spielfeld[spalte+3][zeile+3].equals(eigenerStein)){
 						return true;
 					}
 				}catch(ArrayIndexOutOfBoundsException e){}
 				
 		//Pruefe diagonal rechts +3 runter
 				try{
-					if(spielfeld[spalte+3][zeile-3] == eigenerStein && spielfeld[spalte+2][zeile-2] == eigenerStein && spielfeld[spalte+3][zeile-3] == eigenerStein){
+					if(spielfeld[spalte+3][zeile-3].equals(eigenerStein) && spielfeld[spalte+2][zeile-2].equals(eigenerStein) && spielfeld[spalte+3][zeile-3].equals(eigenerStein)){
 						return true;
 					}
 				}catch(ArrayIndexOutOfBoundsException e){}
 				
 		//Pruefe diagonal rechts +2 runter
 				try{
-					if(spielfeld[spalte+2][zeile-2] == eigenerStein && spielfeld[spalte+1][zeile-1] == eigenerStein && spielfeld[spalte-1][zeile+1] == eigenerStein){
+					if(spielfeld[spalte+2][zeile-2].equals(eigenerStein) && spielfeld[spalte+1][zeile-1].equals(eigenerStein) && spielfeld[spalte-1][zeile+1].equals(eigenerStein)){
 						return true;
 					}
 				}catch(ArrayIndexOutOfBoundsException e){}
 				
 		//Pruefe diagonal rechts +1 runter
 				try{
-					if(spielfeld[spalte+1][zeile-1] == eigenerStein && spielfeld[spalte-1][zeile+1] == eigenerStein && spielfeld[spalte-2][zeile+2] == eigenerStein){
+					if(spielfeld[spalte+1][zeile-1].equals(eigenerStein) && spielfeld[spalte-1][zeile+1].equals(eigenerStein) && spielfeld[spalte-2][zeile+2].equals(eigenerStein)){
 						return true;
 					}
 				}catch(ArrayIndexOutOfBoundsException e){}
 				
 		//Pruefe diagonal links hoch
 				try{
-					if(spielfeld[spalte-1][zeile+1] == eigenerStein && spielfeld[spalte-2][zeile+2] == eigenerStein && spielfeld[spalte-3][zeile+3] == eigenerStein){
+					if(spielfeld[spalte-1][zeile+1].equals(eigenerStein) && spielfeld[spalte-2][zeile+2].equals(eigenerStein) && spielfeld[spalte-3][zeile+3].equals(eigenerStein)){
 						return true;
 					}
 				}catch(ArrayIndexOutOfBoundsException e){}
@@ -443,35 +443,35 @@ public class KI {
 				//Pruefe waagerecht
 				//Pruefe links -3
 				try{
-					if(spielfeld[spalte-3][zeile] == gegnerStein && spielfeld[spalte-2][zeile] == gegnerStein && spielfeld[spalte-1][zeile] == gegnerStein){
+					if(spielfeld[spalte-3][zeile].equals(gegnerStein) && spielfeld[spalte-2][zeile].equals(gegnerStein) && spielfeld[spalte-1][zeile].equals(gegnerStein)){
 						return true;
 					}
 				}catch(ArrayIndexOutOfBoundsException e){}
 				
 				//Pruefe links -2
 						try{
-							if(spielfeld[spalte-2][zeile] == gegnerStein && spielfeld[spalte-1][zeile] == gegnerStein && spielfeld[spalte+1][zeile] == gegnerStein){
+							if(spielfeld[spalte-2][zeile].equals(gegnerStein) && spielfeld[spalte-1][zeile].equals(gegnerStein) && spielfeld[spalte+1][zeile].equals(gegnerStein)){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 				//Pruefe links -1
 				try{
-					if(spielfeld[spalte-1][zeile] == gegnerStein && spielfeld[spalte+1][zeile] ==gegnerStein && spielfeld[spalte+2][zeile] == gegnerStein){
+					if(spielfeld[spalte-1][zeile].equals(gegnerStein) && spielfeld[spalte+1][zeile].equals(gegnerStein) && spielfeld[spalte+2][zeile].equals(gegnerStein)){
 						return true;
 					}
 				}catch(ArrayIndexOutOfBoundsException e){}
 						
 				//Pruefe rechts +3
 				try{
-					if(spielfeld[spalte+1][zeile] == gegnerStein && spielfeld[spalte+2][zeile] == gegnerStein && spielfeld[spalte+3][zeile] == gegnerStein){
+					if(spielfeld[spalte+1][zeile].equals(gegnerStein) && spielfeld[spalte+2][zeile].equals(gegnerStein) && spielfeld[spalte+3][zeile].equals(gegnerStein)){
 						return true;
 					}
 				}catch(ArrayIndexOutOfBoundsException e){}
 						
 			//Pruefe senkrecht
 				try{
-					if(spielfeld[spalte][zeile-3] == gegnerStein && spielfeld[spalte][zeile-2] == gegnerStein && spielfeld[spalte][zeile-1] == gegnerStein){
+					if(spielfeld[spalte][zeile-3].equals(gegnerStein) && spielfeld[spalte][zeile-2].equals(gegnerStein) && spielfeld[spalte][zeile-1].equals(gegnerStein)){
 						return true;
 					}
 				}catch(ArrayIndexOutOfBoundsException e){}
@@ -479,56 +479,56 @@ public class KI {
 			//Pruefe waagerecht
 				//Pruefe diagonal links -3
 				try{
-					if(spielfeld[spalte-3][zeile-3] == gegnerStein && spielfeld[spalte-2][zeile-2] ==gegnerStein && spielfeld[spalte-1][zeile-1] == gegnerStein){
+					if(spielfeld[spalte-3][zeile-3].equals(gegnerStein) && spielfeld[spalte-2][zeile-2].equals(gegnerStein) && spielfeld[spalte-1][zeile-1].equals(gegnerStein)){
 						return true;
 					}
 				}catch(ArrayIndexOutOfBoundsException e){}
 				
 				//Pruefe diagonal links -2
 						try{
-							if(spielfeld[spalte-2][zeile-2] == gegnerStein && spielfeld[spalte-1][zeile-1] == gegnerStein && spielfeld[spalte+1][zeile+1] == gegnerStein){
+							if(spielfeld[spalte-2][zeile-2].equals(gegnerStein) && spielfeld[spalte-1][zeile-1].equals(gegnerStein) && spielfeld[spalte+1][zeile+1].equals(gegnerStein)){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 				//Pruefe diagonal links -1
 						try{
-							if(spielfeld[spalte-1][zeile-1] == gegnerStein && spielfeld[spalte+1][zeile+1] == gegnerStein && spielfeld[spalte+2][zeile+2] == gegnerStein){
+							if(spielfeld[spalte-1][zeile-1].equals(gegnerStein) && spielfeld[spalte+1][zeile+1].equals(gegnerStein) && spielfeld[spalte+2][zeile+2].equals(gegnerStein)){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 				//Pruefe diagonal rechts +3
 						try{
-							if(spielfeld[spalte+1][zeile+1] == gegnerStein && spielfeld[spalte+2][zeile+2] == gegnerStein && spielfeld[spalte+3][zeile+3] == gegnerStein){
+							if(spielfeld[spalte+1][zeile+1].equals(gegnerStein) && spielfeld[spalte+2][zeile+2].equals(gegnerStein) && spielfeld[spalte+3][zeile+3].equals(gegnerStein)){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 				//Pruefe diagonal rechts +3 runter
 						try{
-							if(spielfeld[spalte+3][zeile-3] == gegnerStein && spielfeld[spalte+2][zeile-2] == gegnerStein && spielfeld[spalte+3][zeile-3] == gegnerStein){
+							if(spielfeld[spalte+3][zeile-3].equals(gegnerStein) && spielfeld[spalte+2][zeile-2].equals(gegnerStein) && spielfeld[spalte+3][zeile-3].equals(gegnerStein)){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 				//Pruefe diagonal rechts +2 runter
 						try{
-							if(spielfeld[spalte+2][zeile-2] == gegnerStein && spielfeld[spalte+1][zeile-1] == gegnerStein && spielfeld[spalte-1][zeile+1] == gegnerStein){
+							if(spielfeld[spalte+2][zeile-2].equals(gegnerStein) && spielfeld[spalte+1][zeile-1].equals(gegnerStein) && spielfeld[spalte-1][zeile+1].equals(gegnerStein)){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 				//Pruefe diagonal rechts +1 runter
 						try{
-							if(spielfeld[spalte+1][zeile-1] == gegnerStein && spielfeld[spalte-1][zeile+1] == gegnerStein && spielfeld[spalte-2][zeile+2] == gegnerStein){
+							if(spielfeld[spalte+1][zeile-1].equals(gegnerStein) && spielfeld[spalte-1][zeile+1].equals(gegnerStein) && spielfeld[spalte-2][zeile+2].equals(gegnerStein)){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
 						
 				//Pruefe diagonal links hoch
 						try{
-							if(spielfeld[spalte-1][zeile+1] == gegnerStein && spielfeld[spalte-2][zeile+2] == gegnerStein && spielfeld[spalte-3][zeile+3] == gegnerStein){
+							if(spielfeld[spalte-1][zeile+1].equals(gegnerStein) && spielfeld[spalte-2][zeile+2].equals(gegnerStein) && spielfeld[spalte-3][zeile+3].equals(gegnerStein)){
 								return true;
 							}
 						}catch(ArrayIndexOutOfBoundsException e){}
