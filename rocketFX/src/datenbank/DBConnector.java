@@ -192,16 +192,18 @@ public class DBConnector {
 	    } catch ( SQLException e ) { 
 	      e.printStackTrace(); 
 	    } 
-//	    finally
-//	    { 
-//	      if ( dbConn != null ) 
-//	      {
-//	        try { 
-//	            con.close(); 
-//	            } catch ( SQLException e ) { 
-//	                e.printStackTrace(); 
-//	            }
-//	      }
-//	    } 
+	}
+	
+	public void closeDB(){
+      if ( con != null ){
+        try { 
+            con.close(); 
+            System.out.println("DB Connection closed.");
+        } catch ( SQLException e ) { 
+            System.out.println("Error while closing DB Connection.");
+        	e.printStackTrace(); 
+        }
+      }
+		
 	}
 }

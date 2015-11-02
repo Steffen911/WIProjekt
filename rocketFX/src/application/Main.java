@@ -5,9 +5,12 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
+import datenbank.DBConnector;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
@@ -29,6 +32,12 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 			primStage.setScene(scene);
 			primStage.show();
+			primStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+		          public void handle(WindowEvent we) {
+		              DBConnector dbConn = new DBConnector();
+		              dbConn.closeDB();
+		          }
+		      });  
 
 		} catch(Exception e) {
 			e.printStackTrace();
