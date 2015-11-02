@@ -35,7 +35,7 @@ public class Main extends Application {
 			primStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 		          public void handle(WindowEvent we) {
 		              DBConnector dbConn = new DBConnector();
-		              dbConn.closeDB();
+		              dbConn.shutDownDB();
 		          }
 		      });  
 

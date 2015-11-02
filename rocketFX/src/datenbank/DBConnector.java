@@ -194,11 +194,17 @@ public class DBConnector {
 	    } 
 	}
 	
-	public void closeDB(){
+	public void shutDownDB(){
       if ( con != null ){
         try { 
-            con.close(); 
-            System.out.println("DB Connection closed.");
+		  Statement stmt = con.createStatement(); 
+		  String sql = "SHUTDOWN";
+		  stmt.executeQuery(sql);  
+		  
+	      // Statement schliessen
+	      stmt.close();        	
+          con.close(); 
+          System.out.println("DB Connection closed.");
         } catch ( SQLException e ) { 
             System.out.println("Error while closing DB Connection.");
         	e.printStackTrace(); 
