@@ -113,6 +113,18 @@ public class KI {
 			return 3;
 		}
 		
+		keineZuegeMehr();
+		
+		int spalte = (int)(Math.random()*6);
+		
+		for(int i=0; i < moeglicheZuege.length; i++){
+			spalte = (i+spalte)%7;
+			if(siegMuster(spalte, moeglicheZuege[spalte]) && moeglicheZuege[spalte] < 6){
+				setzeEigenenStein(spalte);
+				return spalte;
+			}
+		}
+		
 		hauptProgramm(4);
 		
 		spalteVollAbfangen(gespeicherterZug);
