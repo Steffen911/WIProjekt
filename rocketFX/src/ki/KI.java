@@ -261,9 +261,9 @@ public class KI {
 					keinZugMoeglich = false;
 					break;
 				}
-				if(spielfeld[i][j].equals("_")){
-					moeglicheZuege[i] = 7;
-				}
+			}
+			if(!spielfeld[i][5].equals("_")){
+				moeglicheZuege[i] = 7;
 			}
 		}
 			
