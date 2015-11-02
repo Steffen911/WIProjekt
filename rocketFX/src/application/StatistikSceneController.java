@@ -152,7 +152,9 @@ public class StatistikSceneController implements  Initializable{
 				    data.add(row);
 	
 				}
-				SpielTable.setItems(data);
+				if(data != null){
+					SpielTable.setItems(data);
+				}else{ System.out.println("Keine Spieldaten.");}
 			} catch (SQLException e) {
 				System.out.println("Dateneinsortieren fuer Tabelle hat nicht geklappt.");
 				e.printStackTrace();
